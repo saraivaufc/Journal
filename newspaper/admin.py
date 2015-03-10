@@ -1,5 +1,5 @@
 from django.contrib import admin
-from jornal.models import *
+from newspaper.models import *
 
 @admin.register(Classifield)
 class ClassifieldAdmin(admin.ModelAdmin):

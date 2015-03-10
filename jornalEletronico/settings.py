@@ -36,7 +36,19 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'jornal',
+    'newspaper',
+    'rosetta',
+)
+
+INSTALLED_APPS += (
+    'djconfig',
+)
+
+DJC_BACKEND = 'djconfig'
+
+
+TEMPLATE_DIRS = (
+    'newspaper/templates',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,11 +61,47 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
+)
+
+ROOT_URLCONF = 'newspaper.urls'
+
+
+ST_RATELIMIT_ENABLE = True
+ST_RATELIMIT_CACHE_PREFIX = 'srl'
+ST_RATELIMIT_CACHE = 'default'
+
+
 ROOT_URLCONF = 'jornalEletronico.urls'
+
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'newspaper_cache',
+    },
+}
+
+CACHES.update({
+    'djconfig': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    },
+})
+
+
 
 WSGI_APPLICATION = 'jornalEletronico.wsgi.application'
 
-AUTH_USER_MODEL = 'jornal.User'
+AUTH_USER_MODEL = 'newspaper.User'
 
 
 # Database
@@ -76,7 +124,14 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
+
+LANGUAGES = (
+        ('pt', ('Portuguese')),
+        ('en', ('English')),
+        ('es', ('Spanish')),
+)
+
 
 TIME_ZONE = 'UTC'
 
@@ -87,7 +142,27 @@ USE_L10N = True
 USE_TZ = True
 
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
+PROJECT_DIR = os.path.dirname(__file__)
+
+STATICFILES_DIRS = (os.path.join(PROJECT_DIR, '../newspaper/static'),)
+
+
+LOCALE_PATHS = (
+        os.path.join(PROJECT_DIR, '../newspaper/locale'),
+        '/var/local/translations/locale',
+)
+
+MEDIA_ROOT= os.path.join(PROJECT_DIR, '../media')
+MEDIA_URL='/media/'
+
+STATIC_ROOT = os.path.join(PROJECT_DIR, '.')
+
 STATIC_URL = '/static/'
+
+#settings email
+EMAIL_ADMINS = ['saraiva.ufc@gmail.com','saraiva@alu.ufc.br']
+

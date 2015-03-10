@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 from django.apps import AppConfig
 
 
-class JornalConfig(AppConfig):
+class NewsPaperConfig(AppConfig):
 
-    name = 'jornal'
-    verbose_name = "Jornal"
+    name = 'newspaper'
+    verbose_name = "NewsPaper"

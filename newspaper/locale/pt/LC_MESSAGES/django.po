@@ -1,0 +1,111 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-10 19:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: newspaper/models/classifield.py:5 newspaper/models/news.py:6
+#: newspaper/models/page.py:5
+msgid "Title"
+msgstr "Título"
+
+#: newspaper/models/classifield.py:6 newspaper/models/comment.py:7
+#: newspaper/models/news.py:8
+msgid "Text"
+msgstr "Texto"
+
+#: newspaper/models/classifield.py:7
+msgid "Price"
+msgstr "Preço"
+
+#: newspaper/models/classifield.py:8 newspaper/models/comment.py:8
+#: newspaper/models/news.py:12 newspaper/models/page.py:7
+msgid "Image"
+msgstr "Imagem"
+
+#: newspaper/models/classifield.py:10
+msgid "Best Offer"
+msgstr "Melhor Oferta"
+
+#: newspaper/models/classifield.py:11
+msgid "Dating Offer"
+msgstr "Data da Oferta"
+
+#: newspaper/models/classifield.py:12
+msgid "Author Offer"
+msgstr "Autor da Oferta"
+
+#: newspaper/models/classifield.py:19
+msgid "Classifield"
+msgstr "Classificado"
+
+#: newspaper/models/classifield.py:20
+msgid "Classifields"
+msgstr "Classificados"
+
+#: newspaper/models/comment.py:5 newspaper/models/news.py:19
+#: newspaper/models/news.py:20
+msgid "News"
+msgstr "Notícias"
+
+#: newspaper/models/comment.py:6 newspaper/models/news.py:9
+msgid "Author"
+msgstr "Autor"
+
+#: newspaper/models/comment.py:15
+msgid "Comment"
+msgstr "Comentário"
+
+#: newspaper/models/comment.py:16
+msgid "Comments"
+msgstr "Comentários"
+
+#: newspaper/models/news.py:7
+msgid "Subtitle"
+msgstr "Subtítulo"
+
+#: newspaper/models/news.py:10
+msgid "Dating News"
+msgstr "Data das Notícias"
+
+#: newspaper/models/news.py:11 newspaper/models/page.py:14
+msgid "Page"
+msgstr "Seção"
+
+#: newspaper/models/page.py:6
+msgid "Description"
+msgstr "Descrição"
+
+#: newspaper/models/page.py:15
+msgid "Pages"
+msgstr "Seções"
+
+#: newspaper/models/role.py:5
+msgid "Username"
+msgstr "Nome de Usuário"
+
+#: newspaper/models/role.py:6 newspaper/models/role.py:13
+msgid "Role"
+msgstr "Função"
+
+#: newspaper/models/role.py:14
+msgid "Roles"
+msgstr "Funções"
+
+#: newspaper/models/user.py:7
+msgid "Profile Image"
+msgstr "Imagem de Perfil"
