@@ -38,7 +38,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'newspaper',
     'rosetta',
-    'rolepermissions',
 )
 
 INSTALLED_APPS += (
@@ -46,8 +45,6 @@ INSTALLED_APPS += (
 )
 
 DJC_BACKEND = 'djconfig'
-
-ROLEPERMISSIONS_MODULE = 'jornalEletronico.roles'
 
 TEMPLATE_DIRS = (
     'newspaper/templates',
@@ -75,6 +72,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
 )
+
 
 ROOT_URLCONF = 'newspaper.urls'
 
@@ -112,11 +110,11 @@ AUTH_USER_MODEL = 'newspaper.UserAutheticated'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'sqlite3': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
-    'postgres' : {
+    'default' : {
        'ENGINE': 'django.db.backends.postgresql_psycopg2',
        'NAME': 'newspaper',                      
        'USER': 'postgres',

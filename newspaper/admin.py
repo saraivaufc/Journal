@@ -30,8 +30,12 @@ class LectorAdmin(admin.ModelAdmin):
 class NewsAdmin(admin.ModelAdmin):
 	pass
 
-@admin.register(Page)
-class PageAdmin(admin.ModelAdmin):
+@admin.register(Section)
+class SectionAdmin(admin.ModelAdmin):
+	pass
+
+@admin.register(SubSection)
+class SubSectionAdmin(admin.ModelAdmin):
 	pass
 
 @admin.register(Redator)

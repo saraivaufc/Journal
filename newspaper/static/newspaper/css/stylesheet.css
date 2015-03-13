@@ -1,0 +1,8 @@
+/* Fonts */
+@font-face {
+    font-family: 'robotolight';
+    src: url('/static/newspaper/fonts/roboto.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
