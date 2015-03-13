@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'newspaper',
     'rosetta',
+    'rolepermissions',
 )
 
 INSTALLED_APPS += (
@@ -46,10 +47,13 @@ INSTALLED_APPS += (
 
 DJC_BACKEND = 'djconfig'
 
+ROLEPERMISSIONS_MODULE = 'jornalEletronico.roles'
 
 TEMPLATE_DIRS = (
     'newspaper/templates',
 )
+
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -101,7 +105,7 @@ CACHES.update({
 
 WSGI_APPLICATION = 'jornalEletronico.wsgi.application'
 
-AUTH_USER_MODEL = 'newspaper.User'
+AUTH_USER_MODEL = 'newspaper.UserAutheticated'
 
 
 # Database
@@ -112,9 +116,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
-    'Postgres' : {
+    'postgres' : {
        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-       'NAME': 'jornal',                      
+       'NAME': 'newspaper',                      
        'USER': 'postgres',
        'PASSWORD': 'postgres',
        'HOST': 'localhost',

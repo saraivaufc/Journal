@@ -9,7 +9,7 @@ class Classifield(models.Model):
 
 	best_offer = models.FloatField(verbose_name=_("Best Offer"), )
 	date_offer = models.DateTimeField(verbose_name=_("Dating Offer"), null = True, blank=True, )
-	author_offer = models.ForeignKey("newspaper.User", verbose_name=_("Author Offer"), null=True, blank=True, on_delete=models.SET_NULL)
+	author_offer = models.ForeignKey("newspaper.Lector", verbose_name=_("Author Offer"), null=True, blank=True, on_delete=models.SET_NULL)
 
 	def __unicode__(self):
 		return self.title
