@@ -13,6 +13,9 @@
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
+				<li>
+					<a href="/newspaper/home/">{% trans "HOME" %}</a>
+				</li>
 
 				<li class="dropdown">
 					<span class="icon-bar"></span>
@@ -27,7 +30,7 @@
 
 				                <ul class="dropdown-menu">
 				                	<li class="dropdown-header">{{ i.title }}</li>
-				                	{% for k in i.subsections.all %}
+				                	{% for k in i.getSubSections %}
 				                		<li><a href="#">{{ k.title }}</a></li>
 				                	{% endfor %}
 				                </ul>

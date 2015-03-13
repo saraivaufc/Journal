@@ -5,7 +5,7 @@ class SubSection(models.Model):
 	title = models.CharField(max_length=20, verbose_name=_("Title"), )
 	description = models.CharField(max_length=100, verbose_name=_("Description"), )
 	image = models.ImageField(verbose_name=_("Image"),upload_to = 'documents/imagen/page/%Y/%m/%d', null=True, blank=True, default=None)
-
+	sections = models.ManyToManyField("newspaper.Section", verbose_name=_("Sections"))
 	def __unicode__(self):
 		return self.title
 
