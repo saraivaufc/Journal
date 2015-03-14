@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from newspaper.models import Redator, Lector
 
 from .home import *
+from .news import *
 
 def index(request):
 	if request.user.is_authenticated():

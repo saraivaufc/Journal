@@ -3,11 +3,13 @@ from django.http import HttpResponseRedirect, HttpResponse
 from newspaper.models import Section, News, Classifield
 from datetime import datetime
 
-def home(request):
+def home(request, id_subsection=None):
 	sections = []
-	#try:
-	sections = Section.objects.all()
-	news_all = News.objects.all().order_by('-dating_news')
+	sections = Section.objects.filter()
+	if id_subsection != None:
+		news_all = News.objects.filter(subsection = id_subsection).order_by('-dating_news')
+	else:
+		news_all = News.objects.filter().order_by('-dating_news')
 	news_image = []
 	news_no_image = []
 	most_popular = []
@@ -18,6 +20,4 @@ def home(request):
 		else:
 			news_image.append(i)
 			most_popular.append(i)
-	#except:
-	#	print "Erro ao pegar as paginas"
 	return render(request, 'newspaper/user/home.html', locals())

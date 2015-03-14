@@ -1,0 +1,52 @@
+{% extends 'newspaper/user/home.html' %}
+
+{% load i18n %}
+{% load humanize %}
+
+{% block carousel %}
+
+{% endblock %}
+
+{% block news %}
+	<div class="col-md-2">
+		<ul>
+			{% for i in news_all %}
+			<li>
+				<div>
+					{% if i.image != '' %}
+					<figure>
+						<a href="{{ i.image.url }}" class="boxer" title="{{ i.title }}" data-gallery="gallery">
+						    <img class="img-responsive" src="{{ i.image.url }}"/>
+						</a>
+					</figure>
+					{% endif %}
+					<center>
+						<a href="/newspaper/news/{{i.id}}/"><h1>{{ i.title }}</h1></a>
+					</center>
+					<h3>{% trans "By" %} {{ i.author }} , {{ i.dating_news|naturaltime|capfirst }}.</h3>
+					<p>{{ i.subtitle|safe }}</p>
+				</div>
+			</li>
+			<hr class="divider-lite">
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="col-md-10">
+		<h1>{{ news.title }}</h1>
+		<h3>{% trans "By" %} {{ news.author }} , {{ news.dating_news|naturaltime|capfirst }}.</h3>
+		<hr class="divider">
+		<div>
+			<p class="text-justify">
+				{% if news.image != '' %}
+					<figure class="img-float-right">
+						<a href="{{ news.image.url }}" class="boxer" title="{{ news.title }}" data-gallery="gallery">
+						    <img class="img-responsive" src="{{ news.image.url }}"/>
+						</a>
+					</figure>
+				{% endif %}
+				{{ news.description|safe }}
+			</p>
+		</div>
+	</div>
+{% endblock %}
+

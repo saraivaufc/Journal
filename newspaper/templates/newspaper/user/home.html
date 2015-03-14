@@ -12,7 +12,7 @@
 	        </image>
 	    </svg>
 	    	<ul class="masthead-menu">
-				<li class="date">{% trans "It is " %}{% now "F jS o" %}</li>
+				<li class="date">{% trans "It is" %} {% now "jS F Y H:i" %}</li>
 			</ul>
 	        
 	</center>
@@ -24,11 +24,11 @@
 	    <ul class="mini-navigation-menu">
 			{% for i in sections %}
 				<li>
-	            	<a href="#">{{ i.title }}</a>
+	            	<a href="/newspaper/home/{{ i.id }}/">{{ i.title }}</a>
 	        	</li>
 			{% endfor %}        
 	        	<li>
-	        		<a href="#">{% trans "All" %}</a>
+	        		<a href="/newspaper/home/">{% trans "All" %}</a>
 	        	</li>
 		</ul>
 	    </nav>
@@ -78,13 +78,15 @@
 				</div><!-- /.carousel -->
 
 			{% endblock %}
+
+			{% block news %}
 			<!-- News Wihout imagens -->
 			<div id="news-not-image" class="col-md-3">
 				<ul>
 					{% for a in news_no_image %}
 					<li>
 						<div>
-							<h1 class="text-left">{{a.title}}</h1>
+							<a href="/newspaper/news/{{a.id}}/"><h1 class="text-left">{{a.title}}</h1></a>
 							<h3>{% trans "By" %} {{ a.author }} , {{ a.dating_news|naturaltime|capfirst }}.</h3>
 							<p class="text-justify">{{a.subtitle|safe}}</p>
 
@@ -107,7 +109,7 @@
 							</a>
 						</figure>
 						<center>
-							<h1>{{ b.title }}</h1>
+							<a href="/newspaper/news/{{b.id}}/"><h1>{{ b.title }}</h1></a>
 						</center>
 						<h3>{% trans "By" %} {{ b.author }} , {{ b.dating_news|naturaltime|capfirst }}.</h3>
 						<p>{{ b.subtitle|safe }}</p>
@@ -123,7 +125,7 @@
 				<ul>
 				{% for c in classifields %}
 				<li>
-					<h1 class="text-left">{{c.title}}</h1>
+					<a href="/newspaper/classifields/{{c.id}}/"><h1 class="text-left">{{c.title}}</h1></a>
 					{% if c.image != '' %}
 					<figure>
 						<a href="{{ c.image.url }}" class="boxer" title="{{ c.title }}" data-gallery="gallery">
@@ -137,6 +139,7 @@
 				{% endfor %}
 				</ul>
 			</div>
+			{% endblock %}
 
 		</div>
 	</div>

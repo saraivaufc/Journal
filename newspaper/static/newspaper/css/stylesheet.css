@@ -33,3 +33,15 @@
 	border-left:   2px solid  #EEEEEE;
 }
 
+
+/*Float Image in Text */
+.img-float-right{
+	float: right;
+	margin: 10px;
+	width: 50%;
+}
+.img-float-left{
+	float: left;
+	margin: 10px;
+	width: 50%;
+}
