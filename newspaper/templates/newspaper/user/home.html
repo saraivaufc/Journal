@@ -1,2 +1,123 @@
 {% extends 'newspaper/_base.html' %}
 
+{% load i18n %}
+{% load humanize %}
+
+{% block body %}
+	
+	{% block menu-barner %}
+	<center>
+	    <svg class="nyt-logo" width="379" height="64" role="img" aria-label="The New York Times">
+	        <image width="379" height="64" xlink:href="/static/newspaper/img/ny.png" src="/static/newspaper/img/ny.png" alt="The New York Times" border="0">
+	        </image>
+	    </svg>
+	    	<ul class="masthead-menu">
+				<li class="date">{% trans "It is " %}{% now "F jS o" %}</li>
+			</ul>
+	        
+	</center>
+	{% endblock %}
+	
+	{% block menu-sections %}
+	<hr class="divider">
+		<nav id="mini-navigation" class="mini-navigation">
+	    <ul class="mini-navigation-menu">
+			{% for i in sections %}
+				<li>
+	            	<a href="#">{{ i.title }}</a>
+	        	</li>
+			{% endfor %}        
+	        	<li>
+	        		<a href="#">{% trans "All" %}</a>
+	        	</li>
+		</ul>
+	    </nav>
+	<hr class="divider">
+	{% endblock %}
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12" style="background-color: #ABB;">
+				{% if headline.image.url != None %}
+					<div class="col-md-5">
+					<div class="container-fluid">
+						<div class="row">
+							<center>
+								<figure>
+									<a href="{{headline.image.url}}" class="boxer" title="{{ headline.title }}" data-gallery="gallery">
+									    <img class="img-responsive" src="{{headline.image.url}}"/>
+									</a>
+								</figure>
+							</center>
+						</div>
+					</div>
+				</div>
+				<div class='col-md-7'>
+				{% else %}
+				<div class='col-md-12'>
+				{% endif %}
+					<div class="container-fluid">
+						<div class="row">
+							<figure>
+								<a href="/static/newspaper/img/prop.jpg" class="boxer" title="Suez" data-gallery="gallery">
+								    <img class="img-responsive" src="/static/newspaper/img/prop.jpg"/>
+								</a>
+							</figure>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="news-not-image" class="col-md-3">
+				<ul>
+					{% for a in news_no_image %}
+					<li>
+						<div>
+							<h3 class="text-center">{{a.title}}</h3>
+							<h4 class="text-justify">{{a.subtitle}}</h4>
+							<p class="text-justify">{{ a.description|safe }}</p>
+
+						</div>
+					</li>
+					<hr class="divider">
+					{% endfor %}
+				</ul>
+			</div>
+
+			<div id="news-image" class="col-md-6">
+				<ul>
+				{% for b in news_image %}
+				<li>
+					<div>
+						<figure>
+							<a href="{{ b.image.url }}" class="boxer" title="{{ b.title }}" data-gallery="gallery">
+							    <img class="img-responsive" src="{{ b.image.url }}"/>
+							</a>
+						</figure>
+						<center><h1>{{ b.title }}</h1></center>
+						<h2>{{ b.subtitle }}</h2>
+						<h3>{% trans "By" %} {{ b.author }} , {{ b.dating_news|naturaltime|capfirst }}</h3>
+						<p>
+							{{ b.description|safe }}
+						</p>
+					</div>
+				</li>
+				<hr class="divider">
+				{% endfor %}
+				</ul>
+			</div>
+
+			<div id="classifields" class="col-md-3">
+				<ul>
+				{% for c in classifields %}
+				<li>
+					<h1>{{ c.title }}</h1>
+				</li>
+				<hr class="divider">
+				{% endfor %}
+				</ul>
+			</div>
+
+		</div>
+	</div>
+{% endblock %}
+

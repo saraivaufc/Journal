@@ -28,6 +28,11 @@
 
 		<!-- My Styles -->
 		<link rel="stylesheet"  href="{{ STATIC_URL }}newspaper/css/stylesheet.css" >
+
+		<!-- NY TIMES -->
+		<link rel="stylesheet"  href="{{ STATIC_URL }}newspaper/css/styles_ny.css" >
+		<link rel="stylesheet"  href="{{ STATIC_URL }}newspaper/css/zam5nzz-d.css" >
+		
 		<link rel="stylesheet"  href="{{ STATIC_URL }}newspaper/css/nav-bar.css" >
 		<link rel="stylesheet"  href="{{ STATIC_URL }}newspaper/css/font-awesome.min.css" >
 		<link rel="stylesheet"  href="{{ STATIC_URL }}newspaper/css/dropmenu.css" >
@@ -45,11 +50,17 @@
 	<body>
 		{% include 'newspaper/_no_script.html' %}
 		<div class="container">
-			<div class="row">
-				{% block container-site %}
+				<div class="row">
+					{% block header %}
 					{% include 'newspaper/_header.html' %}
-				{% endblock %}
-			</div>
+					{% endblock %}
+					{% block body %}
+
+					{% endblock %}
+					{% block footer %}
+						{% include 'newspaper/_footer.html' %}
+					{% endblock %}
+				</div>
 		</div>
 
 		<!-- Jquery -->
@@ -60,9 +71,17 @@
 		<!-- Json 2-->
 		<script src="{{ STATIC_URL }}newspaper/js/json2.js"></script>
 
+
+		<!-- Jquery Boxer -->
+		<script src="{{ STATIC_URL }}newspaper/frameworks/boxer/jquery.fs.boxer.min.js"></script>
+
+		<!-- Boxer -->
+		<script src="{{ STATIC_URL }}newspaper/js/boxer.js"></script>
+
 		<!-- Jquery Ui -->
 		<script src="{{ STATIC_URL }}newspaper/frameworks/jquery-ui/jquery-ui.min.js"></script>
 		
+
 		<!-- Jquery Boxer -->
 		<script src="{{ STATIC_URL }}newspaper/frameworks/boxer/jquery.fs.boxer.min.js"></script>
 

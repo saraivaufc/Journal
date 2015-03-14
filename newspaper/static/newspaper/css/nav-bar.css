@@ -2,3 +2,7 @@
 	background-color: transparent;
 	background-image: none;
 }
+
+.navbar a{
+	font-weight: bold !important;
+}

@@ -6,3 +6,11 @@
     font-style: normal;
 
 }
+
+.divider{
+	border-style: solid none none;
+    border-width: 4px 0 0;
+    margin-bottom:1px;
+    margin-top: 1px;
+    background-color: #000;
+}
