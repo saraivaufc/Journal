@@ -11,6 +11,10 @@ class AnonymousAdmin(admin.ModelAdmin):
 class ClassifieldAdmin(admin.ModelAdmin):
 	pass
 
+@admin.register(Offer)
+class OfferdAdmin(admin.ModelAdmin):
+	pass
+
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
 	pass

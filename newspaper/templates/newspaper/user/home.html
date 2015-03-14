@@ -125,7 +125,7 @@
 				<ul>
 				{% for c in classifields %}
 				<li>
-					<a href="/newspaper/classifields/{{c.id}}/"><h1 class="text-left">{{c.title}}</h1></a>
+					<a href="/newspaper/classifield/{{c.id}}/"><h1 class="text-left">{{c.title}}</h1></a>
 					{% if c.image != '' %}
 					<figure>
 						<a href="{{ c.image.url }}" class="boxer" title="{{ c.title }}" data-gallery="gallery">
@@ -133,7 +133,7 @@
 						</a>
 					</figure>
 					{% endif %}
-					<p class="text-justify">{{c.text|safe}}</p>
+					<p class="text-justify">{{c.description|safe|truncatewords_html:50}}</p>
 				</li>
 				<hr class="divider-lite">
 				{% endfor %}

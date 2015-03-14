@@ -6,6 +6,7 @@ from newspaper.models import Redator, Lector
 
 from .home import *
 from .news import *
+from .classifield import *
 
 def index(request):
 	if request.user.is_authenticated():

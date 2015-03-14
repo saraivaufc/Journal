@@ -1,0 +1,56 @@
+{% extends 'newspaper/user/home.html' %}
+
+{% load i18n %}
+{% load humanize %}
+
+{% block carousel %}
+
+{% endblock %}
+
+{% block news %}
+	<div class="col-md-3">
+		<ul>
+			{% for i in classifields %}
+			<li>
+				<div>
+					<a href="/newspaper/classifield/{{i.id}}/"><h1 class="text-left">{{ i.title }}</h1></a>
+					{% if i.image != '' %}
+					<figure>
+						<a href="{{ i.image.url }}" class="boxer" title="{{ i.title }}" data-gallery="gallery">
+						    <img class="img-responsive" src="{{ i.image.url }}"/>
+						</a>
+					</figure>
+					{% endif %}
+
+					{% if i.author_offer != None %}
+					<h3>{% trans "By" %} {{ i.author_offer }} , {{ i.date_offer|naturaltime|capfirst }}.</h3>
+					{% endif %}
+
+					<p>{{ i.description|safe|truncatewords_html:50 }}</p>
+				</div>
+			</li>
+			<hr class="divider-lite">
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="col-md-9">
+		<h1>{{ classifield.title }}</h1>
+
+		{% if classifield.author_offer != None %}
+		<h3>{% trans "Best Offer by" %} {{ classifield.author_offer }} , {{ classifield.date_offer|naturaltime|capfirst }} - {% trans "Value is " %}{{ classifield.best_offer }}.</h3>
+		{% endif %}
+		<hr class="divider">
+		<div>
+			<p class="text-justify">
+				{% if classifield.image != '' %}
+					<figure class="img-float-right">
+						<a href="{{ classifield.image.url }}" class="boxer" title="{{ classifield.title }}" data-gallery="gallery">
+						    <img class="img-responsive" src="{{ classifield.image.url }}"/>
+						</a>
+					</figure>
+				{% endif %}
+				{{ classifield.description|safe }}
+			</p>
+		</div>
+	</div>
+{% endblock %}
