@@ -15,7 +15,6 @@ def home(request, id_section=None, id_subsection=None):
 	if id_subsection != None:
 		news_all = []
 		for i in news_filter:
-			print i.subsection_id,id_subsection 
 			if i.subsection_id == int(id_subsection):
 				news_all.append(i)
 	else:

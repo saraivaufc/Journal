@@ -10,7 +10,7 @@ class Classifield(models.Model):
 	image = models.ImageField(verbose_name=_("Image"),upload_to = 'documents/imagen/classifield/%Y/%m/%d', null=True, blank=True, default=None)
 
 	creator_classifield = models.ForeignKey("newspaper.Lector", verbose_name=_("Creador Classifield"), null=True, blank=True, on_delete=models.SET_NULL)
-	phone = models.IntegerField(max_length=10, verbose_name=_("Phone"))
+	phone = models.IntegerField(max_length=12, verbose_name=_("Phone"))
     # phone = models.IntegerField(max_length=10)
 
 	offers = models.ManyToManyField('newspaper.Offer', verbose_name=_("Offers"), null=True, blank=True)
@@ -28,6 +28,5 @@ class Classifield(models.Model):
 		try:
 			offer = self.offers.all().order_by('-value')[0];
 		except:
-			print "eror ao "
 			pass
 		return offer

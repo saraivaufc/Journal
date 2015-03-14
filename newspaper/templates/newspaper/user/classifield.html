@@ -22,8 +22,14 @@
 					</figure>
 					{% endif %}
 
-					{% if i.author_offer != None %}
-					<h3>{% trans "By" %} {{ i.author_offer }} , {{ i.date_offer|naturaltime|capfirst }}.</h3>
+					{% if i.getBestOffer != None %}
+					<h3>
+						{% blocktrans with price=i.price author_offer=i.getBestOffer.author_offer value=i.getBestOffer.value date_offer=i.getBestOffer.date_offer|naturaltime|capfirst phone=i.phone %}
+							Minimum Value: {{ price }},<br>
+							Contact Phone: {{ phone }},<br>
+							Best Offer By: {{ author_offer }} with Value: {{ value }}, {{date_offer}} .
+						{% endblocktrans %}
+					</h3>
 					{% endif %}
 
 					<p>{{ i.description|safe|truncatewords_html:50 }}</p>
@@ -36,8 +42,15 @@
 	<div class="col-md-9">
 		<h1>{{ classifield.title }}</h1>
 
-		{% if classifield.author_offer != None %}
-		<h3>{% trans "Best Offer by" %} {{ classifield.author_offer }} , {{ classifield.date_offer|naturaltime|capfirst }} - {% trans "Value is " %}{{ classifield.best_offer }}.</h3>
+
+		{% if classifield.getBestOffer != None %}
+			<h3>
+				{% blocktrans with price=classifield.price author_offer=classifield.getBestOffer.author_offer value=classifield.getBestOffer.value date_offer=classifield.getBestOffer.date_offer|naturaltime|capfirst phone=classifield.phone %}
+					Minimum Value: {{ price }},<br>
+					Contact Phone: {{ phone }},<br>
+					Best Offer By: {{ author_offer }} with Value: {{ value }}, {{date_offer}} .
+				{% endblocktrans %}
+			</h3>
 		{% endif %}
 		<hr class="divider">
 		<div>

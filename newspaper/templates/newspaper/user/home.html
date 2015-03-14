@@ -126,9 +126,15 @@
 				{% for c in classifields %}
 				<li>
 					<a href="/newspaper/classifield/{{c.id}}/"><h1 class="text-left">{{c.title}}</h1></a>
-					
+
 					{% if c.getBestOffer != None %}
-					<h3>{% trans "Best Offer by: " %}{{ c.getBestOffer.author_offer }}</h3>
+					<h3>
+						{% blocktrans with price=c.price author_offer=c.getBestOffer.author_offer value=c.getBestOffer.value date_offer=c.getBestOffer.date_offer|naturaltime|capfirst phone=c.phone %}
+							Minimum Value: {{ price }},<br>
+							Contact Phone: {{ phone }},<br>
+							Best Offer By: {{ author_offer }} with Value: {{ value }}, {{date_offer}} .
+						{% endblocktrans %}
+					</h3>
 					{% endif %}
 
 					{% if c.image != '' %}
