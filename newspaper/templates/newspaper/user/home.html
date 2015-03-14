@@ -55,33 +55,30 @@
 							{% else %}
 							<div class="item">
 							{% endif %}
-							<div>
-								<img src="{{ i.image.url }}" alt="{{ i.title }}">
-							<div class="container">
-								<div class="carousel-caption">
-									<div class="box-text">
-										<h1>{{ i.title }}</h1>
-										<p class="text-center">
-											{{ i.subtitle }} 
-										</p>
+								<div>
+									<img src="{{ i.image.url }}" alt="{{ i.title }}">
+									<div class="container">
+										<div class="carousel-caption">
+											<div class="box-text">
+												<h1>{{ i.title }}</h1>
+												<p class="text-center">
+													{{ i.subtitle }} 
+												</p>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
-							</div>
-							
-						</div>
 						{% endfor %}
 					</div>
 					
 					<a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
 					<a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-
+					<hr class="divider">
 				</div><!-- /.carousel -->
 
 			{% endblock %}
-			
-			<hr class="divider">
-			
+			<!-- News Wihout imagens -->
 			<div id="news-not-image" class="col-md-3">
 				<ul>
 					{% for a in news_no_image %}
@@ -93,11 +90,12 @@
 
 						</div>
 					</li>
-					<hr class="divider">
+					<hr class="divider-lite">
 					{% endfor %}
 				</ul>
 			</div>
 
+			<!-- News Wihout imagens -->
 			<div id="news-image" class="col-md-6">
 				<ul>
 				{% for b in news_image %}
@@ -115,24 +113,27 @@
 						<p>{{ b.subtitle|safe }}</p>
 					</div>
 				</li>
-				<hr class="divider">
+				<hr class="divider-lite">
 				{% endfor %}
 				</ul>
 			</div>
 
+			<!-- Classifields -->
 			<div id="classifields" class="col-md-3">
 				<ul>
 				{% for c in classifields %}
 				<li>
 					<h1 class="text-left">{{c.title}}</h1>
+					{% if c.image != '' %}
 					<figure>
 						<a href="{{ c.image.url }}" class="boxer" title="{{ c.title }}" data-gallery="gallery">
 						    <img class="img-responsive" src="{{ c.image.url }}"/>
 						</a>
 					</figure>
+					{% endif %}
 					<p class="text-justify">{{c.text|safe}}</p>
 				</li>
-				<hr class="divider">
+				<hr class="divider-lite">
 				{% endfor %}
 				</ul>
 			</div>

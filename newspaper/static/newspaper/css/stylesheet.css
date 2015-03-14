@@ -15,11 +15,21 @@
     background-color: #000;
 }
 
+.divider-lite{
+	border-style: solid none none;
+    border-width: 3px 0 0;
+    margin-bottom:5px;
+    margin-top: 5px;
+    background-color: #EEEEEE;
+}
+
 #news-not-image, #classifields {
 	border-style: solid;
-	border-top:    none;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-top:    3px solid #EEEEEE;
 	border-right:  2px solid #EEEEEE;
-	border-bottom: none;
+	border-bottom: 3px solid #EEEEEE;
 	border-left:   2px solid  #EEEEEE;
 }
 
