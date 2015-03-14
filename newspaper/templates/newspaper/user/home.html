@@ -60,7 +60,7 @@
 									<div class="container">
 										<div class="carousel-caption">
 											<div class="box-text">
-												<h1>{{ i.title }}</h1>
+												<a href="/newspaper/news/{{i.id}}/"><h1>{{ i.title }}</h1></a>
 												<p class="text-center">
 													{{ i.subtitle }} 
 												</p>
@@ -126,6 +126,11 @@
 				{% for c in classifields %}
 				<li>
 					<a href="/newspaper/classifield/{{c.id}}/"><h1 class="text-left">{{c.title}}</h1></a>
+					
+					{% if c.getBestOffer != None %}
+					<h3>{% trans "Best Offer by: " %}{{ c.getBestOffer.author_offer }}</h3>
+					{% endif %}
+
 					{% if c.image != '' %}
 					<figure>
 						<a href="{{ c.image.url }}" class="boxer" title="{{ c.title }}" data-gallery="gallery">
