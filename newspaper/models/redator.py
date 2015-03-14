@@ -13,7 +13,7 @@ class Redator(UserAutheticated):
 		pass
 
 	def __unicode__(self):
-		return self.username
+		return self.first_name + " " + self.last_name
 
 	class Meta:
 		verbose_name = _("Redator")

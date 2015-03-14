@@ -4,8 +4,8 @@ from datetime import datetime
 from .creation import Creation
 
 class News(models.Model):
-	title = models.CharField(max_length=255, verbose_name=_("Title"), )
-	subtitle = models.CharField(max_length=500, verbose_name=_("Subtitle"), null=False, blank=False, )
+	title = models.CharField(max_length=500, verbose_name=_("Title"), )
+	subtitle = models.TextField(verbose_name=_("Subtitle"), null=False, blank=False, )
 	description = models.TextField(verbose_name=_("Description"), )
 	author = models.ForeignKey("newspaper.Journalist", verbose_name=_("Author"), on_delete=models.CASCADE, )
 	dating_news = models.DateTimeField(default=datetime.now,verbose_name=_("Dating News"), )

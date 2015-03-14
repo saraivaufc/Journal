@@ -37,44 +37,59 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-12" style="background-color: #ABB;">
-				{% if headline.image.url != None %}
-					<div class="col-md-5">
-					<div class="container-fluid">
-						<div class="row">
-							<center>
-								<figure>
-									<a href="{{headline.image.url}}" class="boxer" title="{{ headline.title }}" data-gallery="gallery">
-									    <img class="img-responsive" src="{{headline.image.url}}"/>
-									</a>
-								</figure>
-							</center>
+			{% block carousel %}
+						<!-- Carousel
+				================================================== -->
+				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						{% for i in most_popular %}
+						<li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}" ></li>
+						{% endfor %}
+					</ol>
+					
+					<div class="carousel-inner">
+						{% for i in most_popular %}
+							{% if forloop.counter0 == 0 %}
+							<div class="item active">
+							{% else %}
+							<div class="item">
+							{% endif %}
+							<div>
+								<img src="{{ i.image.url }}" alt="{{ i.title }}">
+							<div class="container">
+								<div class="carousel-caption">
+									<div class="box-text">
+										<h1>{{ i.title }}</h1>
+										<p class="text-center">
+											{{ i.subtitle }} 
+										</p>
+									</div>
+								</div>
+							</div>
+							</div>
+							
 						</div>
+						{% endfor %}
 					</div>
-				</div>
-				<div class='col-md-7'>
-				{% else %}
-				<div class='col-md-12'>
-				{% endif %}
-					<div class="container-fluid">
-						<div class="row">
-							<figure>
-								<a href="/static/newspaper/img/prop.jpg" class="boxer" title="Suez" data-gallery="gallery">
-								    <img class="img-responsive" src="/static/newspaper/img/prop.jpg"/>
-								</a>
-							</figure>
-						</div>
-					</div>
-				</div>
-			</div>
+					
+					<a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+					<a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+
+				</div><!-- /.carousel -->
+
+			{% endblock %}
+			
+			<hr class="divider">
+			
 			<div id="news-not-image" class="col-md-3">
 				<ul>
 					{% for a in news_no_image %}
 					<li>
 						<div>
-							<h3 class="text-center">{{a.title}}</h3>
-							<h4 class="text-justify">{{a.subtitle}}</h4>
-							<p class="text-justify">{{ a.description|safe }}</p>
+							<h1 class="text-left">{{a.title}}</h1>
+							<h3>{% trans "By" %} {{ a.author }} , {{ a.dating_news|naturaltime|capfirst }}.</h3>
+							<p class="text-justify">{{a.subtitle|safe}}</p>
 
 						</div>
 					</li>
@@ -93,12 +108,11 @@
 							    <img class="img-responsive" src="{{ b.image.url }}"/>
 							</a>
 						</figure>
-						<center><h1>{{ b.title }}</h1></center>
-						<h2>{{ b.subtitle }}</h2>
-						<h3>{% trans "By" %} {{ b.author }} , {{ b.dating_news|naturaltime|capfirst }}</h3>
-						<p>
-							{{ b.description|safe }}
-						</p>
+						<center>
+							<h1>{{ b.title }}</h1>
+						</center>
+						<h3>{% trans "By" %} {{ b.author }} , {{ b.dating_news|naturaltime|capfirst }}.</h3>
+						<p>{{ b.subtitle|safe }}</p>
 					</div>
 				</li>
 				<hr class="divider">
@@ -110,7 +124,13 @@
 				<ul>
 				{% for c in classifields %}
 				<li>
-					<h1>{{ c.title }}</h1>
+					<h1 class="text-left">{{c.title}}</h1>
+					<figure>
+						<a href="{{ c.image.url }}" class="boxer" title="{{ c.title }}" data-gallery="gallery">
+						    <img class="img-responsive" src="{{ c.image.url }}"/>
+						</a>
+					</figure>
+					<p class="text-justify">{{c.text|safe}}</p>
 				</li>
 				<hr class="divider">
 				{% endfor %}

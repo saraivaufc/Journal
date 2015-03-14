@@ -10,12 +10,14 @@ def home(request):
 	news_all = News.objects.all().order_by('-dating_news')
 	news_image = []
 	news_no_image = []
+	most_popular = []
 	classifields = Classifield.objects.all()
 	for i in news_all:
 		if i.image == '':
 			news_no_image.append(i)
 		else:
 			news_image.append(i)
+			most_popular.append(i)
 	#except:
 	#	print "Erro ao pegar as paginas"
 	return render(request, 'newspaper/user/home.html', locals())
