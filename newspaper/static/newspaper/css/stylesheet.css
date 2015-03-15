@@ -23,7 +23,7 @@
     background-color: #EEEEEE;
 }
 
-#news-not-image, #classifields {
+.dividers {
 	border-style: solid;
 	padding-top: 5px;
 	padding-bottom: 5px;
@@ -44,4 +44,12 @@
 	float: left;
 	margin: 10px;
 	width: 50%;
+}
+
+.fill{
+	width: 100%;
+}
+
+.table-title{
+	font-weight: bold;
 }

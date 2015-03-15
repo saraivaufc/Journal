@@ -37,6 +37,7 @@
 
 	<div class="container-fluid">
 		<div class="row">
+			{% if most_popular|length > 0 %}
 			{% block carousel %}
 						<!-- Carousel
 				================================================== -->
@@ -79,33 +80,39 @@
 
 			{% endblock %}
 
+			{% else %}
+				<h1 class="text-center">{% trans "There are no questions available." %}</h1>
+			{% endif %}
+
 			{% block news %}
 			<!-- News Wihout imagens -->
-			<div id="news-not-image" class="col-md-3">
+			<div class="col-md-3 dividers">
 				<ul>
 					{% for a in news_no_image %}
 					<li>
 						<div>
-							<a href="/newspaper/news/{{a.id}}/"><h1 class="text-left">{{a.title}}</h1></a>
+							<a href="/newspaper/news/{{a.id}}/"><h1 class="text-left">{{a.title }}</h1></a>
 							<h3>{% trans "By" %} {{ a.author }} , {{ a.dating_news|naturaltime|capfirst }}.</h3>
 							<p class="text-justify">{{a.subtitle|safe}}</p>
-
 						</div>
 					</li>
+					{% if forloop.last == False %}
 					<hr class="divider-lite">
+					{% endif %}
+
 					{% endfor %}
 				</ul>
 			</div>
 
 			<!-- News Wihout imagens -->
-			<div id="news-image" class="col-md-6">
+			<div class="col-md-6 dividers">
 				<ul>
 				{% for b in news_image %}
 				<li>
 					<div>
 						<figure>
 							<a href="{{ b.image.url }}" class="boxer" title="{{ b.title }}" data-gallery="gallery">
-							    <img class="img-responsive" src="{{ b.image.url }}"/>
+							    <img class="img-responsive fill" src="{{ b.image.url }}"/>
 							</a>
 						</figure>
 						<center>
@@ -115,26 +122,28 @@
 						<p>{{ b.subtitle|safe }}</p>
 					</div>
 				</li>
-				<hr class="divider-lite">
+				{% if forloop.last == False %}
+					<hr class="divider-lite">
+					{% endif %}
 				{% endfor %}
 				</ul>
 			</div>
 
 			<!-- Classifields -->
-			<div id="classifields" class="col-md-3">
+			<div class="col-md-3 dividers">
 				<ul>
 				{% for c in classifields %}
 				<li>
 					<a href="/newspaper/classifield/{{c.id}}/"><h1 class="text-left">{{c.title}}</h1></a>
 
 					{% if c.getBestOffer != None %}
-					<h3>
-						{% blocktrans with price=c.price author_offer=c.getBestOffer.author_offer value=c.getBestOffer.value date_offer=c.getBestOffer.date_offer|naturaltime|capfirst phone=c.phone %}
+					<h5>
+						{% blocktrans with price=c.price author_offer=c.getBestOffer.author_offer value=c.getBestOffer.value date_offer=c.getBestOffer.date_offer|naturaltime|capfirst phone=c.phone|phone2numeric %}
 							Minimum Value: {{ price }},<br>
 							Contact Phone: {{ phone }},<br>
 							Best Offer By: {{ author_offer }} with Value: {{ value }}, {{date_offer}} .
 						{% endblocktrans %}
-					</h3>
+					</h5>
 					{% endif %}
 
 					{% if c.image != '' %}
@@ -146,7 +155,9 @@
 					{% endif %}
 					<p class="text-justify">{{c.description|safe|truncatewords_html:50}}</p>
 				</li>
-				<hr class="divider-lite">
+				{% if forloop.last == False %}
+					<hr class="divider-lite">
+					{% endif %}
 				{% endfor %}
 				</ul>
 			</div>

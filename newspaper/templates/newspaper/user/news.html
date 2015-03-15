@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block news %}
-	<div class="col-md-3">
+	<div class="col-md-3 dividers">
 		<ul>
 			{% for i in news_all %}
 			<li>
@@ -31,12 +31,14 @@
 					</p>
 				</div>
 			</li>
+			{% if forloop.last == False %}
 			<hr class="divider-lite">
+			{% endif %}
 			{% endfor %}
 		</ul>
 	</div>
-	<div class="col-md-9">
-		<h1>{{ news.title }}</h1>
+	<div class="col-md-9 dividers">
+		<h1>{{ news.title|title }}</h1>
 		<h3>{% trans "By" %} {{ news.author }} , {{ news.dating_news|naturaltime|capfirst }}.</h3>
 		<hr class="divider">
 		<div>

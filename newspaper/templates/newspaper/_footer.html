@@ -1,0 +1,114 @@
+{% load i18n %}
+<div class="container-fluid">
+	<div class="row">
+	<hr class="divider">
+		
+		<header class="section-header">
+			<p class="section-heading" style="position: relative; margin-top: 20px;">
+				
+				<h3>
+					<a class="user-action text-right img-float-right" href="/newspaper/" style="color: blue;">{% trans "Go to Home Page" %} »</a>
+				</h3>
+
+
+				<span class="visually-hidden">Site Index</span>
+				<a href="/newspaper/">
+					<script>window.magnum.writeLogo('small', '/static/newspaper/img/', '', '','standard');
+					</script>
+					<svg aria-label="The New York Times" role="img" height="26" width="185" class="nyt-logo">
+						<image border="0" alt="The New York Times" src="/static/newspaper/img/nyt-logo-185x26.png" xlink:href="/static/newspaper/img/nyt-logo-185x26.svg" height="26" width="185"/>
+					</svg>
+					<img alt="The New York Times" class="nyt-logo-print" src="/static/newspaper/img/nyt-logo-185x26.png">
+				</a>
+			</p>
+		</header>
+
+		<table class="table">
+			<tr>
+			{% for i in sections %}
+				<td>
+					<div class="table-responsive">
+						<table class="table">
+							<tr>
+								<td class="table-title">{{ i.title|upper }}</td>
+							</tr>
+							{% for k in i.getSubSections %}
+							<tr>
+								<td>{{ k.title }}</td>
+							</tr>
+							{% endfor %}
+						</table>
+					</div>
+				</td>
+			{% endfor %}
+			</tr>
+		</table>
+	<hr class="divider">
+
+
+
+
+	<footer role="contentinfo" class="page-footer" id="page-footer">
+	<nav>
+		 <ul>
+			 <li>
+				<a itemprop="copyrightNotice" href="http://www.nytimes.com/content/help/rights/copyright/copyright-notice.html">
+					&copy; <span itemprop="copyrightYear">2015</span><span itemid="http://www.nytimes.com" itemtype="http://schema.org/Organization" itemscope="" itemprop="copyrightHolder provider sourceOrganization"><span itemprop="name"> The New York Times Company</span><meta content="NYSE NYT" itemprop="tickerSymbol"></span>
+				</a>
+			</li>
+			
+			<li class="wide-viewport-item">
+				<a href="http://www.nytimes.com/ref/membercenter/help/infoservdirectory.html">Contact Us</a>
+			</li>
+			
+			<li class="wide-viewport-item">
+				<a href="http://www.nytco.com/careers">Work With Us</a>
+			</li>
+			
+			<li class="wide-viewport-item">
+				<a href="http://www.nytimes.whsites.net/mediakit">Advertise</a>
+			</li>
+			
+			<li class="wide-viewport-item">
+				<a href="http://www.nytimes.com/content/help/rights/privacy/policy/privacy-policy.html#pp">Your Ad Choices</a>
+			</li>
+			
+			<li>
+				<a href="http://www.nytimes.com/privacy">Privacy</a>
+			</li>
+			
+			<li>
+				<a itemprop="usageTerms" href="http://www.nytimes.com/ref/membercenter/help/agree.html">Terms of Service</a>
+			</li>
+			
+			<li class="wide-viewport-item last-item">
+				<a href="http://www.nytimes.com/content/help/rights/sale/terms-of-sale.html">Terms of Sale</a>
+			</li>
+		 </ul>
+	</nav>
+	<nav class="last-nav">
+		<ul>
+			<li>
+				<a href="http://spiderbites.nytimes.com">Site Map</a>
+			</li>
+			
+			<li>
+				<a href="http://www.nytimes.com/membercenter/sitehelp.html">Help</a>
+			</li>
+			
+			<li>
+				<a href="https://myaccount.nytimes.com/membercenter/feedback.html">Site Feedback</a>
+			</li>
+			
+			<li class="wide-viewport-item last-item">
+				<a href="http://www.nytimes.com/subscriptions/Multiproduct/lp5558.html?campaignId=37WXW">Subscriptions</a>
+			</li>
+		</ul>
+	</nav>
+
+	<div class="mobile-banner hidden" id="mobile-banner">
+		<a href="http://mobile.nytimes.com/" class="banner-message">View Mobile Version</a>
+	</div>
+</footer>
+	</div>
+</div>

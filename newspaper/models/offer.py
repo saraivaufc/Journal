@@ -7,12 +7,14 @@ class Offer(models.Model):
 	author_offer = models.ForeignKey("newspaper.Lector", verbose_name=_("Author"), on_delete=models.CASCADE, )
 	date_offer = models.DateTimeField(verbose_name=_("Dating Offer"), null = True, blank=True, )
 	value = models.FloatField(default=0, verbose_name=_("Value"),)
-	phone = models.IntegerField(max_length=12, verbose_name=_("Phone"),)
+	phone = models.CharField(max_length=15, verbose_name=_("Phone"),)
     # phone = models.IntegerField(max_length=10)
 
+	def __unicode__(self):
+		return str(self.value)
 
 	class Meta:
-		ordering = ['value']
+		ordering = ['-value']
 		verbose_name = _("Offer")
 		verbose_name_plural = _("Offers")
 

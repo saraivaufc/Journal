@@ -22,12 +22,11 @@ def home(request, id_section=None, id_subsection=None):
 
 	news_image = []
 	news_no_image = []
-	most_popular = []
 	classifields = Classifield.objects.all()
 	for i in news_all:
 		if i.image == '':
 			news_no_image.append(i)
 		else:
 			news_image.append(i)
-			most_popular.append(i)
+	most_popular = news_image[:5]
 	return render(request, 'newspaper/user/home.html', locals())

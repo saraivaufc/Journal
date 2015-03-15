@@ -8,12 +8,14 @@
 {% endblock %}
 
 {% block news %}
-	<div class="col-md-3">
+	<div class="col-md-3 dividers">
 		<ul>
 			{% for i in classifields %}
 			<li>
 				<div>
-					<a href="/newspaper/classifield/{{i.id}}/"><h1 class="text-left">{{ i.title }}</h1></a>
+					<a href="/newspaper/classifield/{{i.id}}/">
+						<h2 class="text-left">{{ i.title }}</h2>
+					</a>
 					{% if i.image != '' %}
 					<figure>
 						<a href="{{ i.image.url }}" class="boxer" title="{{ i.title }}" data-gallery="gallery">
@@ -23,29 +25,31 @@
 					{% endif %}
 
 					{% if i.getBestOffer != None %}
-					<h3>
-						{% blocktrans with price=i.price author_offer=i.getBestOffer.author_offer value=i.getBestOffer.value date_offer=i.getBestOffer.date_offer|naturaltime|capfirst phone=i.phone %}
+					<h5>
+						{% blocktrans with price=i.price author_offer=i.getBestOffer.author_offer value=i.getBestOffer.value date_offer=i.getBestOffer.date_offer|naturaltime|capfirst phone=i.phone|phone2numeric %}
 							Minimum Value: {{ price }},<br>
 							Contact Phone: {{ phone }},<br>
 							Best Offer By: {{ author_offer }} with Value: {{ value }}, {{date_offer}} .
 						{% endblocktrans %}
-					</h3>
+					</h5>
 					{% endif %}
 
 					<p>{{ i.description|safe|truncatewords_html:50 }}</p>
 				</div>
 			</li>
-			<hr class="divider-lite">
+			{% if forloop.last == False %}
+				<hr class="divider-lite">
+			{% endif %}
 			{% endfor %}
 		</ul>
 	</div>
-	<div class="col-md-9">
+	<div class="col-md-9 dividers">
 		<h1>{{ classifield.title }}</h1>
 
 
 		{% if classifield.getBestOffer != None %}
 			<h3>
-				{% blocktrans with price=classifield.price author_offer=classifield.getBestOffer.author_offer value=classifield.getBestOffer.value date_offer=classifield.getBestOffer.date_offer|naturaltime|capfirst phone=classifield.phone %}
+				{% blocktrans with price=classifield.price author_offer=classifield.getBestOffer.author_offer value=classifield.getBestOffer.value date_offer=classifield.getBestOffer.date_offer|naturaltime|capfirst phone=classifield.phone|phone2numeric %}
 					Minimum Value: {{ price }},<br>
 					Contact Phone: {{ phone }},<br>
 					Best Offer By: {{ author_offer }} with Value: {{ value }}, {{date_offer}} .
