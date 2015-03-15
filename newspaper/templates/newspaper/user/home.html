@@ -119,7 +119,7 @@
 							<a href="/newspaper/news/{{b.id}}/"><h1>{{ b.title }}</h1></a>
 						</center>
 						<h3>{% trans "By" %} {{ b.author }} , {{ b.dating_news|naturaltime|capfirst }}.</h3>
-						<p>{{ b.subtitle|safe }}</p>
+						<p class="text-justify">{{ b.subtitle|safe }}</p>
 					</div>
 				</li>
 				{% if forloop.last == False %}

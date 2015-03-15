@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 from .creation import Creation
+from .lector import Lector 
 from datetime import datetime
 
 class Comment(models.Model):
@@ -16,3 +17,10 @@ class Comment(models.Model):
 		ordering = ['-dating_comment']
 		verbose_name = _("Comment")
 		verbose_name_plural = _("Comments")
+
+	def getAuthor(self):
+		try:
+			return Lector.objects.get(id = self.author_id)
+		except:
+			print "Nao Encontrado"
+			return None

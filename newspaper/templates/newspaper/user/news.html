@@ -27,7 +27,7 @@
 							</a>
 						</figure>
 						{% endif %}
-						{{ i.subtitle|safe }}
+						<p class="text-justify">{{ i.subtitle|safe }}</p>
 					</p>
 				</div>
 			</li>
@@ -50,15 +50,28 @@
 						</a>
 					</figure>
 				{% endif %}
-				{{ news.description|safe }}
+				<p class="text-justify">{{ news.description|safe }}</p>
 			</p>
 			<h1>{% trans "Comments:" %}</h1>
 			<ul>
 			{% for i in news.comments.all %}
-				<li>
+				<li >
 					<div class="container-fluid">
 						<div class="row">
-							<h3>{% trans "Author: " %}{{ i.author }}, {{ i.dating_comment|naturaltime|capfirst }}</h3>
+							<h3>
+								{% if i.getAuthor.profile_image != '' %}
+								{% trans "Author: " %}
+								<figure >
+									<a href="{{ i.getAuthor.profile_image.url }}" class="boxer" title="{{ i.getAuthor }}" data-gallery="gallery">
+									    <img class="img-responsive" width="50px" height="50px" src="{{ i.getAuthor.profile_image.url }}"/>
+									</a>
+								</figure>
+								{{ i.author }}, {{ i.dating_comment|naturaltime|capfirst }}
+								
+								{% else %}
+								{% trans "Author: " %}{{ i.author }}, {{ i.dating_comment|naturaltime|capfirst }}
+								{% endif %}
+							</h3>
 							{% if i.image != '' %}
 							<figure class="img-float-right">
 								<a href="{{ i.image.url }}" class="boxer" title="{{ i.title }}" data-gallery="gallery">
@@ -66,7 +79,7 @@
 								</a>
 							</figure>
 							{% endif %}
-							<p>{{ i.text|safe }}</p>
+							<p class="text-justify">{{ i.text|safe }}</p>
 						</div>
 					</div>
 				</li>
