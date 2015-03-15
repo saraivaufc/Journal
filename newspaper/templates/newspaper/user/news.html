@@ -52,6 +52,28 @@
 				{% endif %}
 				{{ news.description|safe }}
 			</p>
+			<h1>{% trans "Comments:" %}</h1>
+			<ul>
+			{% for i in news.comments.all %}
+				<li>
+					<div class="container-fluid">
+						<div class="row">
+							<h3>{% trans "Author: " %}{{ i.author }}, {{ i.dating_comment|naturaltime|capfirst }}</h3>
+							{% if i.image != '' %}
+							<figure class="img-float-right">
+								<a href="{{ i.image.url }}" class="boxer" title="{{ i.title }}" data-gallery="gallery">
+								    <img class="img-responsive" src="{{ i.image.url }}"/>
+								</a>
+							</figure>
+							{% endif %}
+							<p>{{ i.text|safe }}</p>
+						</div>
+					</div>
+				</li>
+			{% endfor %}
+			</ul>
+			<h1>{% trans "Add your comment:" %}</h1>
+			{{form_comment.as_p}}
 		</div>
 	</div>
 {% endblock %}

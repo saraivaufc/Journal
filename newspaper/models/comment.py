@@ -10,7 +10,7 @@ class Comment(models.Model):
 	dating_comment = models.DateTimeField(default=datetime.now,verbose_name=_("Dating Comment"), )
 	
 	def __unicode__(self):
-		return self.news
+		return str(self.author)
 
 	class Meta:
 		ordering = ['-dating_comment']

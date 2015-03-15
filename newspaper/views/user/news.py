@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from newspaper.models import Section, News, Classifield
 from datetime import datetime
 from newspaper.utils import getSections, getNewsFromSection
+from newspaper.forms import CommentForm, PartialCommentForm
 def viewNews(request, id_news):
 	sections = []
 	sections = Section.objects.filter()
@@ -19,4 +20,8 @@ def viewNews(request, id_news):
 	#except:
 		#print "Erro"
 		#pass
+	if request.method == 'POST':
+		pass
+	else:
+		form_comment = PartialCommentForm()
 	return render(request, 'newspaper/user/news.html', locals())
