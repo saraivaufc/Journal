@@ -2,8 +2,8 @@ $('#login').click(function(e) {
     $('#sign_up').lightbox_me({
         centered: true, 
         onLoad: function() { 
-            $('#sign_up').find('input:first').focus()
-            }
+            $('#sign_up').find('input:first').focus();
+        }
         });
     e.preventDefault();
 });
@@ -12,7 +12,6 @@ $('#login').click(function(e) {
 $(document).ready(function(){
     $('.modal-footer button').click(function(){
 		var button = $(this);
-
 		if ( button.attr("data-dismiss") != "modal" ){
 			var inputs = $('form input');
 			var title = $('.modal-title');
