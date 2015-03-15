@@ -34,7 +34,7 @@
 							</tr>
 							{% for k in i.getSubSections %}
 							<tr>
-								<td>{{ k.title }}</td>
+								<td><a href="/newspaper/{{ i.id }}/{{ k.id }}/">{{ k.title }}</a></td>
 							</tr>
 							{% endfor %}
 						</table>
