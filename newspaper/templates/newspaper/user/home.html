@@ -136,11 +136,11 @@
 				<li>
 					<a href="/newspaper/classifield/{{c.id}}/"><h1 class="text-left">{{c.title}}</h1></a>
 
-					{% if c.getBestOffer != None %}
 					<h5>
-						{% blocktrans with price=c.price author_offer=c.getBestOffer.author_offer value=c.getBestOffer.value date_offer=c.getBestOffer.date_offer|naturaltime|capfirst phone=c.phone|phone2numeric %}
-							Minimum Value: {{ price }},<br>
-							Contact Phone: {{ phone }},<br>
+						{% trans "Minimum Value:" %} {{c.price}}<br>
+						{% trans "Contact Phone:" %} {{c.phone|phone2numeric}}<br>
+					{% if c.getBestOffer != None %}
+						{% blocktrans with author_offer=c.getBestOffer.author_offer value=c.getBestOffer.value date_offer=c.getBestOffer.date_offer|naturaltime|capfirst %}
 							Best Offer By: {{ author_offer }} with Value: {{ value }}, {{date_offer}} .
 						{% endblocktrans %}
 					</h5>

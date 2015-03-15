@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ('description', models.TextField(verbose_name='Description')),
                 ('price', models.FloatField(default=0, verbose_name='Price')),
                 ('image', models.ImageField(default=None, upload_to=b'documents/imagen/classifield/%Y/%m/%d', null=True, verbose_name='Image', blank=True)),
-                ('phone', models.IntegerField(unique=True, max_length=10, verbose_name='Phone', validators=[django.core.validators.RegexValidator(regex=b'^\\d{10}$', message='Length has to be 10', code='Invalid number')])),
+                ('phone', models.CharField(max_length=15, verbose_name='Phone')),
             ],
             options={
                 'ordering': ['-title'],
@@ -84,10 +84,10 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('date_offer', models.DateTimeField(null=True, verbose_name='Dating Offer', blank=True)),
                 ('value', models.FloatField(default=0, verbose_name='Value')),
-                ('phone', models.IntegerField(unique=True, max_length=10, verbose_name='Phone', validators=[django.core.validators.RegexValidator(regex=b'^\\d{10}$', message='Length has to be 10', code='Invalid number')])),
+                ('phone', models.CharField(max_length=15, verbose_name='Phone')),
             ],
             options={
-                'ordering': ['value'],
+                'ordering': ['-value'],
                 'verbose_name': 'Offer',
                 'verbose_name_plural': 'Offers',
             },
@@ -216,6 +216,12 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='news',
+            name='comments',
+            field=models.ManyToManyField(to='newspaper.Comment', null=True, verbose_name='Comments', blank=True),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='news',
             name='subsection',
             field=models.ForeignKey(verbose_name='SubSection', to='newspaper.SubSection'),
             preserve_default=True,
@@ -227,12 +233,6 @@ class Migration(migrations.Migration):
             preserve_default=True,
         ),
         migrations.AddField(
-            model_name='comment',
-            name='news',
-            field=models.ForeignKey(verbose_name='News', to='newspaper.News'),
-            preserve_default=True,
-        ),
-        migrations.AddField(
             model_name='classifield',
             name='creator_classifield',
             field=models.ForeignKey(on_delete=django.db.models.deletion.SET_NULL, verbose_name='Creador Classifield', blank=True, to='newspaper.Lector', null=True),
@@ -241,7 +241,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='classifield',
             name='offers',
-            field=models.ManyToManyField(to='newspaper.Offer', verbose_name='Offers'),
+            field=models.ManyToManyField(to='newspaper.Offer', null=True, verbose_name='Offers', blank=True),
             preserve_default=True,
         ),
         migrations.AddField(
