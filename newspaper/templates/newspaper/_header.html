@@ -25,18 +25,18 @@
 
 					<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
 						{% for i in sections %}
-			              	<li class="dropdown-submenu">
-			                	<a tabindex="-1" href="/newspaper/{{ i.id }}/">{{ i.title }}</a>
+							<li class="dropdown-submenu">
+								<a tabindex="-1" href="/newspaper/{{ i.id }}/">{{ i.title }}</a>
 
-				                <ul class="dropdown-menu">
-				                	<li class="dropdown-header">{{ i.title }}</li>
-				                	{% for k in i.getSubSections %}
-				                		<li><a href="/newspaper/{{ i.id }}/{{ k.id }}/">{{ k.title }}</a></li>
-				                	{% endfor %}
-				                </ul>
-			              	</li>
+								<ul class="dropdown-menu">
+									<li class="dropdown-header">{{ i.title }}</li>
+									{% for k in i.getSubSections %}
+										<li><a href="/newspaper/{{ i.id }}/{{ k.id }}/">{{ k.title }}</a></li>
+									{% endfor %}
+								</ul>
+							</li>
 						{% endfor %}
-			        </ul>
+					</ul>
 				</li>
 
 				<li>
@@ -45,11 +45,65 @@
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li>
-					<a href="#">{% trans "SUBSCRIBE NOW" %}</a>
-				</li>
-				<li>
-					<a data-toggle="modal" data-target="#loginModal" href="#">{% trans "LOG IN" %}</a>
+				
+				<li id="menuLogin" class="dropdown">
+					<a id="navLogin" data-toggle="dropdown" href="#" class="dropdown-toggle">
+						{% trans "LOG IN" %}
+					</a>
+					<div style="padding:17px;" class="dropdown-menu">
+						<hr class="divider-lite">
+						{% trans "Login" %}
+						<hr class="divider-lite">
+						<form class="form" id="formLogin">
+							<div class="form-group"> 
+								<input type="text" required="" 
+								title="{% trans "Enter your username"%}" 
+								data-valid-min="6" 
+								pattern="^[a-z,A-Z,0-9,_]{6,15}$" 
+								placeholder="{% trans "Username" %}" 
+								id="username" name="username" class="form-control">
+							</div>
+							<div class="form-group">
+								<input type="password" required="" 
+								title="{% trans "Enter your password" %} " 
+								placeholder="{% trans "Password" %}" 
+								id="password" name="password" class="form-control">
+							</div>
+							<button class="btn btn-default" id="btnLogin" type="button">
+								{% trans "Login" %}
+							</button>
+						</form>
+						<hr class="divider-lite">
+						<form>
+							<a data-target="#formRegister" data-toggle="collapse" id="btnNewUser" title="Fast and free sign up!" href="#" class="collapsed">New User? Sign-up..</a>
+						</form>
+						<hr class="divider-lite">
+						<form class="form collapse" id="formRegister" style="height: 0px;">
+							<div class="form-group">
+								<input type="email" required="" 
+								placeholder="{% trans "Email" %}" id="inputEmail" name="email" class="form-control">
+							</div>
+							<div class="form-group">
+								<input type="text" required="" 
+								title="{% trans "Choose a username" %}" data-valid-min="6" 
+								pattern="^[a-z,A-Z,0-9,_]{6,15}$" 
+								placeholder="{% trans "Username" %}" id="inputUsername" 
+								name="username" class="form-control">
+							</div>
+							<div class="form-group">
+								<input type="password" required="" 
+								placeholder="{% trans "Password" %} " id="inputpassword" 
+								name="password" class="form-control">
+							</div>
+							<div class="form-group">
+								<input type="password" required="" 
+								placeholder="{% trans "Password (again)" %}" id="inputVerify" name="verify" class="form-control">
+							</div>                                  
+							<button class="btn btn-default" id="btnRegister" type="button">
+								{% trans "Sign Up" %}
+							</button>
+						</form>
+					</div>
 				</li>
 				<li>
 					<a href="../navbar-static-top/"><spam class=" glyphicon glyphicon-cog"></spam></a>
