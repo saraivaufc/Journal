@@ -19,10 +19,6 @@
 		<link rel="stylesheet" href="{{ STATIC_URL }}newspaper/frameworks/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="{{ STATIC_URL }}newspaper/frameworks/bootstrap/css/bootstrap-theme.min.css" >
 
-		<!-- Jquery Ui -->
-		<link rel="stylesheet" href="{{ STATIC_URL }}newspaper/frameworks/jquery-ui/jquery-ui.min.css">
-		<link rel="stylesheet" href="{{ STATIC_URL }}newspaper/frameworks/jquery-ui/jquery-ui.theme.min.css">
-
 		<!-- Jquery Boxer -->
 		<link rel="stylesheet" href="{{ STATIC_URL }}newspaper/frameworks/boxer/jquery.fs.boxer.min.css">
 
@@ -55,7 +51,8 @@
 					{% include 'newspaper/_header.html' %}
 					{% endblock %}
 					{% block body %}
-
+					{% endblock %}
+					{% block modals %}
 					{% endblock %}
 					{% block footer %}
 						{% include 'newspaper/_footer.html' %}
@@ -65,8 +62,13 @@
 
 		<!-- Jquery -->
 		<script src="{{ STATIC_URL }}newspaper/frameworks/jquery/jquery-2.1.3.min.js"></script>
+		
+
 		<!-- Bootstrap -->
 		<script src="{{ STATIC_URL }}newspaper/frameworks/bootstrap/js/bootstrap.min.js"></script>
+
+		<!-- BootBox -->
+		<script src="{{ STATIC_URL }}newspaper/frameworks/bootstrap/js/bootbox.min.js"></script>
 
 		<!-- Json 2-->
 		<script src="{{ STATIC_URL }}newspaper/js/json2.js"></script>
@@ -77,13 +79,9 @@
 
 		<!-- Boxer -->
 		<script src="{{ STATIC_URL }}newspaper/js/boxer.js"></script>
-
-		<!-- Jquery Ui -->
-		<script src="{{ STATIC_URL }}newspaper/frameworks/jquery-ui/jquery-ui.min.js"></script>
 		
-
-		<!-- Jquery Boxer -->
-		<script src="{{ STATIC_URL }}newspaper/frameworks/boxer/jquery.fs.boxer.min.js"></script>
+		<!-- My Scripts -->
+		<script src="{{ STATIC_URL }}newspaper/js/scripts.js"></script>
 
 		{% block scripts %}
 		{% endblock %}

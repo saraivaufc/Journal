@@ -1,3 +1,0 @@
-$(".boxer").boxer({
-    mobile: true
-});
