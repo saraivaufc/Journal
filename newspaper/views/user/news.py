@@ -21,7 +21,9 @@ def viewNews(request, id_news):
 		#print "Erro"
 		#pass
 	if request.method == 'POST':
-		pass
-	else:
-		form_comment = PartialCommentForm()
+		form = CommentForm(request.POST, request.FILES)
+		if form.is_valid():
+			form.save()
+	
+	form = PartialCommentForm()
 	return render(request, 'newspaper/user/news.html', locals())
