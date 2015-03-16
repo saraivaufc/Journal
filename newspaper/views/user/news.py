@@ -19,8 +19,15 @@ def viewNews(request, id_news):
 		if request.user.is_authenticated():			
 			if request.user.has_perm('newspaper.comment_news'):
 				try:
-					lector = Lector.objects.get(username = request.user.username)
-					if lector.commentNews(news, lector, request.POST['text'], request.FILES['image']):
+					try:
+						lector = Lector.objects.get(username = request.user.username)
+					except:
+						pass
+					try:
+						image = request.FILES['image']
+					except:
+						image = ''
+					if lector.commentNews(news, lector, request.POST['text'], image):
 						print _("Comment successfully added")
 					else:
 						print _("Error adding comment")

@@ -63,6 +63,7 @@
 					{% block footer %}
 						{% include 'newspaper/_footer.html' %}
 					{% endblock %}
+					{% include 'newspaper/_msg.html' %}
 				</div>
 		</div>
 
@@ -90,6 +91,7 @@
 
 		<!-- My Scripts -->
 		<script src="{{ STATIC_URL }}newspaper/js/scripts.js"></script>
+		<script src="{{ STATIC_URL }}newspaper/js/msg.js"></script>
 
 		{% block scripts %}
 		{% endblock %}

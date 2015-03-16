@@ -5,7 +5,7 @@ from django.utils.translation import ugettext as _
 from .userAutheticated import UserAutheticated
 
 class Lector(UserAutheticated):
-	def commentNews(self, news, lector, text, image):
+	def commentNews(self, news, lector, text, image=''):
 		try:
 			from .comment import Comment
 			c = Comment(author = lector, text= text, image = image)

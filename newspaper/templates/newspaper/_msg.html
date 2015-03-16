@@ -1,0 +1,7 @@
+{% load i18n %}
+{% if  msg != None and msg|length != 0 %}
+	{% for i in msg %}
+		<input type='hidden' name='msg' value='{{ i }}' />
+	{% endfor %}
+{% endif %}
+adf

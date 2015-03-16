@@ -83,13 +83,15 @@
 						</div>
 					</div>
 				</li>
+				<hr class="divider-lite">
 			{% empty %}
 			<h2>{% trans "News has no comments." %}</h2>
 			{% endfor %}
 			</ul>
-			
-			<h1>{% trans "Add your comment:" %}</h1>
-			{% include "newspaper/_form.html" %}
+			{% if request.user.is_authenticated %}
+				<h1>{% trans "Add your comment:" %}</h1>
+				{% include "newspaper/_form.html" %}
+			{% endif %}
 		</div>
 	</div>
 {% endblock %}
