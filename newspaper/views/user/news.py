@@ -15,11 +15,12 @@ def viewNews(request, id_news):
 		return HttpResponse("Fail")
 
 	if request.method == 'POST':
+		print request.FILES
 		if request.user.is_authenticated():			
 			if request.user.has_perm('newspaper.comment_news'):
 				try:
 					lector = Lector.objects.get(username = request.user.username)
-					if lector.commentNews(news, lector, request.POST['text'], request.POST['image']):
+					if lector.commentNews(news, lector, request.POST['text'], request.FILES['image']):
 						print _("Comment successfully added")
 					else:
 						print _("Error adding comment")
