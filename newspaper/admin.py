@@ -20,16 +20,6 @@ class CommentAdmin(admin.ModelAdmin):
 	pass
 
 
-@admin.register(Journalist)
-class JournalistAdmin(admin.ModelAdmin):
-	pass
-
-
-@admin.register(Lector)
-class LectorAdmin(admin.ModelAdmin):
-	pass
-
-
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
 	pass
@@ -46,9 +36,14 @@ class SubSectionAdmin(admin.ModelAdmin):
 class RedatorAdmin(admin.ModelAdmin):
 	pass
 
-@admin.register(User)
-class UserAdmin(admin.ModelAdmin):
+@admin.register(Lector)
+class LectorAdmin(admin.ModelAdmin):
 	pass
+
+@admin.register(Journalist)
+class JournalistAdmin(admin.ModelAdmin):
+	pass
+
 
 @admin.register(UserAutheticated)
 class UserAutheticatedAdmin(admin.ModelAdmin):

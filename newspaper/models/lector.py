@@ -15,3 +15,7 @@ class Lector(UserAutheticated):
 	class Meta:
 		verbose_name = _("Lector")
 		verbose_name_plural = _("Lectors")
+		permissions = (("registering_lector", "Registering Lector"),
+                       ("comment_news", "Comment News"),
+                       ("offer_to_buy", "Offer to Buy"),
+                      )
