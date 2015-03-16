@@ -1,3 +1,5 @@
+#-*- encoding=utf-8 -*-
+
 from django.forms import ModelForm,  Textarea, Select, TextInput,  NumberInput
 from newspaper.models import Comment
 
@@ -9,4 +11,4 @@ class CommentForm(ModelForm):
 class PartialCommentForm(ModelForm):
 	class Meta:
 		model= Comment
-		exclude  = ['author', 'dating_comment']
+		exclude  = [ 'author','dating_comment']

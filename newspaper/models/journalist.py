@@ -9,7 +9,7 @@ class Journalist(UserAutheticated):
 		pass
 
 	def __unicode__(self):
-		return self.first_name + " " + self.last_name
+		return self.username
 
 	class Meta:
 		verbose_name = _("Journalist")

@@ -1,16 +1,27 @@
+#-*- encoding=utf-8 -*-
+
 from django.db import models
 from django.utils.translation import ugettext as _
 from .userAutheticated import UserAutheticated
 
 class Lector(UserAutheticated):
-	def commentNews(self):
-		pass
+	def commentNews(self, news, lector, text, image):
+		try:
+			from .comment import Comment
+			c = Comment(author = lector, text= text, image = image)
+			c.save()
+			news.comments.add(c)
+			print "Comment add sucess"
+			return True
+		except:
+		 	print "Fail add Comment"
+		 	return False
 
 	def addOffer(self):
 		pass
 
 	def __unicode__(self):
-		return self.first_name + " " + self.last_name
+		return self.username
 
 	class Meta:
 		verbose_name = _("Lector")

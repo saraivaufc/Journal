@@ -3,6 +3,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login as login_user
 from django.contrib.auth.views import logout as logout_sys
 from newspaper.forms import PartialLectorForm
+from newspaper.models import Lector
+from django.contrib.auth.models import Group, Permission
 try:
 	from hashlib import md5
 except:
@@ -42,10 +44,16 @@ def signup(request):
 	request.POST['password'] =  md5(request.POST['password'] ).hexdigest()
 	form = PartialLectorForm(request.POST)
 	if form.is_valid():
-		try:
-			form.save()
-		except:
-			print "Falha ao adicionar Lector"
+		#try:
+		form.save()
+		u = Lector.objects.get(username = request.POST['username'])
+		permission1 = Permission.objects.get(name='Registering Lector')
+		permission2 = Permission.objects.get(name='Comment News')
+		permission3 = Permission.objects.get(name='Offer to Buy')
+		u.user_permissions.add(permission1, permission2, permission3)
+		#	print "Hee"
+		#except:
+		#	print "Falha ao adicionar Lector"
 
 	return HttpResponseRedirect("/newspaper/")
 
