@@ -23,36 +23,44 @@
 {% block container %}
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-4" style="background-color: blue;">
+		<div class="col-md-4">
 			<div class="row">
 
 				<!--News -->
 				<ul class="list-group">
 				  <li class="list-group-item list-group-item-info" data-toggle="collapse" data-parent="#accordion" href="#collapseNews">
-				  	<h3 class="text-center">{% trans "News" %}</h3>
+				  	<h3 class="text-center">
+				  		{% trans "News" %}
+				  	</h3>
 				  </li>
 				  <ul  id="collapseNews" class="list-group panel-collapse collapse">
-				  		{% for i in sections %}
-				  		<li class="list-group-item  col-md-11 col-md-offset-1" data-toggle="collapse" data-parent="#collapseNews" href="#collapse{{i.id}}">
-				  			<h4>{{ i.title }}</h4>
-				  		</li>
-				  		<ul id="collapse{{i.id}}" class="list-group panel-collapse collapse">
-				  			{% for k in i.getSubSections %}
-				  			<li class="list-group-item col-md-11 col-md-offset-1">
-				  				<h4>{{ k.title }}</h4>
-				  			</li>
-				  			{% endfor %}
-				  		</ul>
-
-				  		{% endfor %}
-						
+				  		<div class="col-md-11 col-md-offset-1">
+					  		<div class="row">
+					  		{% for i in sections %}
+					  		<li class="list-group-item" data-toggle="collapse" data-parent="#collapseNews" href="#collapse{{i.id}}">
+					  			<h4>{{ i.title }}</h4>
+					  		</li>
+					  		<ul id="collapse{{i.id}}" class="list-group panel-collapse collapse">
+					  			<div class="col-md-10 col-md-offset-2">
+						  			<div class="row">
+						  				{% for k in i.getSubSections %}
+							  			<li class="list-group-item">
+							  				<h4>{{ k.title }}</h4>
+							  			</li>
+							  			{% endfor %}
+						  			</div>
+					  			</div>
+					  		</ul>
+					  		{% endfor %}
+					  		</div>
+				  		</div>
 				  </ul>
 				</ul>
 
 
 			</div>
 		</div>
-		<div class="col-md-8" style="background-color: red;">
+		<div class="col-md-8">
 
 		</div>
 		</div>
