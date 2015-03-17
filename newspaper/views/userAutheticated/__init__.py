@@ -2,11 +2,10 @@
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
+from .manager import *
 
 def index(request):
 	if request.user.is_authenticated():
-		return HttpResponseRedirect('/newspaper/home/')
+		return HttpResponseRedirect('/home/')
 	else:
-		return HttpResponseRedirect('/newspaper/userAutheticated/')
-
-
+		return HttpResponseRedirect('/userAutheticated/')

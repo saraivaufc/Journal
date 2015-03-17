@@ -11,7 +11,9 @@ class News(models.Model):
 	dating_news = models.DateTimeField(default=datetime.now,verbose_name=_("Dating News"), )
 	subsection = models.ForeignKey("newspaper.SubSection", verbose_name=_("SubSection"), on_delete=models.CASCADE, )
 	image = models.ImageField(verbose_name=_("Image"),upload_to = 'documents/imagen/news/%Y/%m/%d', null=True, blank=True, default=None)
+	video = models.FileField(verbose_name=_("Video"), upload_to = 'documents/video/news/%Y/%m/%d', null=True, blank=True,)
 	comments = models.ManyToManyField('newspaper.Comment', verbose_name=_("Comments"), null=True, blank=True)
+
 
 	def __unicode__(self):
 		return self.title

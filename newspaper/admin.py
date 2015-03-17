@@ -1,7 +1,6 @@
 from django.contrib import admin
 from newspaper.models import *
 
-
 @admin.register(Anonymous)
 class AnonymousAdmin(admin.ModelAdmin):
 	pass

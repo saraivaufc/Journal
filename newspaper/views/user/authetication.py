@@ -12,7 +12,6 @@ except:
 
 def login(request):
 	if request.user.is_authenticated():
-		print "entrou porra"
 		return HttpResponseRedirect("/newspaper/")
 
 	if request.method == "POST":
@@ -21,7 +20,6 @@ def login(request):
 			username = request.POST['username']
 			password = request.POST['password']
 		except:
-			print "bsta"
 			pass
 
 		user = authenticate(username=username, password=password)
@@ -29,7 +27,7 @@ def login(request):
 			login_user(request, user)
 			return login(request)
 		else:
-			print "sdsd"
+			pass
 
 	else:
 		pass
@@ -37,23 +35,22 @@ def login(request):
 
 def logout(request):
 	logout_sys(request)
-	return login(request)
+	return HttpResponseRedirect("/newspaper/")
 
 def signup(request):
 	request.POST = request.POST.copy()
 	request.POST['password'] =  md5(request.POST['password'] ).hexdigest()
 	form = PartialLectorForm(request.POST)
 	if form.is_valid():
-		#try:
-		form.save()
-		u = Lector.objects.get(username = request.POST['username'])
-		permission1 = Permission.objects.get(name='Registering Lector')
-		permission2 = Permission.objects.get(name='Comment News')
-		permission3 = Permission.objects.get(name='Offer to Buy')
-		u.user_permissions.add(permission1, permission2, permission3)
-		#	print "Hee"
-		#except:
-		#	print "Falha ao adicionar Lector"
+		try:
+			form.save()
+			u = Lector.objects.get(username = request.POST['username'])
+			permission1 = Permission.objects.get(name='Registering Lector')
+			permission2 = Permission.objects.get(name='Comment News')
+			permission3 = Permission.objects.get(name='Offer to Buy')
+			u.user_permissions.add(permission1, permission2, permission3)
+		except:
+			pass
 
 	return HttpResponseRedirect("/newspaper/")
 

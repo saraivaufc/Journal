@@ -4,7 +4,7 @@ from newspaper.models import Section, News, Classifield
 from datetime import datetime
 from newspaper.utils import getNewsFromSection
 
-def home(request, id_section=None, id_subsection=None):
+def home(request, id_section=None, id_subsection=None): 
 	sections = []
 	sections = Section.objects.filter()
 	if id_section != None:

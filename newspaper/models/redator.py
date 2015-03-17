@@ -18,9 +18,10 @@ class Redator(UserAutheticated):
 	class Meta:
 		verbose_name = _("Redator")
 		verbose_name_plural = _("Redators")
-		permissions = (("registering_journalist", "Registering Journalist"),
-                       ("registering_classifield", "Registering Classifield"),
-                       ("registering_section", "Registering Section"),
-                       ("registering_subsection", "Registering SubSection"),
+		permissions = (("keep_journalist", "Keep Journalist"),
+                       ("keep_classifield", "Keep Classifield"),
+                       ("keep_section", "Keep Section"),
+                       ("keep_subsection", "Keep SubSection"),
                        ("delete_news", "Delete News"),
+                       ("access_manager", "Access Manager"),
                       )

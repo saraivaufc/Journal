@@ -6,6 +6,7 @@ from .user import User
 class UserAutheticated(AbstractUser, User):
 	profile_image = models.ImageField(verbose_name=_("Profile Image"),upload_to = 'documents/imagen/profile_image/%Y/%m/%d', null=True, blank=True, default=None)
 
+
 	def __unicode__(self):
 		return self.username
 

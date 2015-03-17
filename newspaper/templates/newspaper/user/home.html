@@ -35,6 +35,7 @@
 	<hr class="divider">
 	{% endblock %}
 
+	{% block container %}
 	<div class="container-fluid">
 		<div class="row">
 			{% if most_popular|length > 0 %}
@@ -94,8 +95,18 @@
 							<a href="/newspaper/news/{{a.id}}/"><h1 class="text-left">{{a.title }}</h1></a>
 							<h3>{% trans "By" %} {{ a.author }} , {{ a.dating_news|naturaltime|capfirst }}.</h3>
 							<p class="text-justify">{{a.subtitle|safe}}</p>
+							<div class="container-flui">
+								<div class="row">
+									{% if a.video %}
+									<video width="100%" height="100%" controls>
+									<source src="{{ a.video.url }}" type="video/mp4">
+									</video> 
+									{% endif %}
+								</div>
+							</div>
 						</div>
 					</li>
+
 					{% if forloop.last == False %}
 					<hr class="divider-lite">
 					{% endif %}
@@ -120,6 +131,15 @@
 						</center>
 						<h3>{% trans "By" %} {{ b.author }} , {{ b.dating_news|naturaltime|capfirst }}.</h3>
 						<p class="text-justify">{{ b.subtitle|safe }}</p>
+						<div class="container-fluid">
+							<div class="row">
+								{% if b.video %}
+								<video width="100%" height="100%" controls>
+									<source src="{{ b.video.url }}" type="video/mp4">
+								</video> 
+								{% endif %}
+							</div>
+						</div>
 					</div>
 				</li>
 				{% if forloop.last == False %}
@@ -165,6 +185,7 @@
 
 		</div>
 	</div>
+	{% endblock %}
 
 {% endblock %}
 
