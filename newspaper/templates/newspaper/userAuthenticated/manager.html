@@ -26,44 +26,108 @@
 		<div class="col-md-4">
 			<div class="row">
 
+
+				{% if perms.journalist.keep_news or perms.redator.delete_news %}
 				<!--News -->
 				<ul class="list-group">
-				  <li class="list-group-item list-group-item-info" data-toggle="collapse" data-parent="#accordion" href="#collapseNews">
-				  	<h3 class="text-center">
-				  		{% trans "News" %}
+				  <li class="list-group-item active" >
+				  	<h3>
+				  		<div class="container-fluid">
+					  		<div class="col-xs-6  col-md-8 text-center">
+						 		<a data-toggle="collapse" data-parent="#accordion" href="#collapseNews">
+					  				{% trans "News" %}
+					  			</a>
+						 	</div>
+							<div class="col-xs-6 col-md-4 text-right">
+								<a href="/newspaper/userAuthenticated/manager/">
+									<span class=" glyphicon glyphicon-eye-open pointer"></span>
+								</a>
+								&nbsp;
+								{% if perms.journalist.keep_news %}
+								<span class="glyphicon glyphicon-plus pointer"></span>
+								{% endif %}
+							</div>
+						</div>
 				  	</h3>
 				  </li>
-				  <ul  id="collapseNews" class="list-group panel-collapse collapse">
-				  		<div class="col-md-11 col-md-offset-1">
-					  		<div class="row">
-					  		{% for i in sections %}
-					  		<li class="list-group-item" data-toggle="collapse" data-parent="#collapseNews" href="#collapse{{i.id}}">
-					  			<h4>{{ i.title }}</h4>
-					  		</li>
-					  		<ul id="collapse{{i.id}}" class="list-group panel-collapse collapse">
-					  			<div class="col-md-10 col-md-offset-2">
-						  			<div class="row">
-						  				{% for k in i.getSubSections %}
-							  			<li class="list-group-item">
+					  {% if open_sections %}
+					  <ul  id="collapseNews" class="list-group panel-collapse collapse in">
+					  {% else %}
+					  <ul  id="collapseNews" class="list-group panel-collapse collapse">
+					  {% endif %}
+				  		{% for i in sections %}
+				  		<li class="list-group-item">
+				  			<div class="container-fluid">
+						  		<div class="col-xs-6  col-md-8 text-left">
+							 		<a data-toggle="collapse" data-parent="#collapseNews" href="#collapse{{i.id}}">
+						  				<h4>{{ i.title }}</h4>
+						  			</a>
+							 	</div>
+								<div class="col-xs-6 col-md-4 text-right">
+									<a href="/newspaper/userAuthenticated/manager/section={{i.id }}/">
+										<span class=" glyphicon glyphicon-eye-open pointer"></span>
+									</a>
+								</div>
+							</div>
+				  		</li>
+				  		{% if open_subsections %}
+				  			<ul id="collapse{{i.id}}" class="list-group panel-collapse collapse in">
+				  		{% else %}
+				  			<ul id="collapse{{i.id}}" class="list-group panel-collapse collapse">
+				  		{% endif %}
+			  				{% for k in i.getSubSections %}
+			  				<li class="list-group-item list-group-item-info list-retreat">
+			  					<div class="container-fluid">
+							  		<div class="col-xs-6  col-md-8 text-left">
+								 		<a>
 							  				<h4>{{ k.title }}</h4>
-							  			</li>
-							  			{% endfor %}
-						  			</div>
-					  			</div>
-					  		</ul>
-					  		{% endfor %}
-					  		</div>
-				  		</div>
+							  			</a>
+								 	</div>
+									<div class="col-xs-6 col-md-4 text-right">
+										<a href="/newspaper/userAuthenticated/manager/section={{i.id }}/subsection={{k.id}}/">
+											<span class=" glyphicon glyphicon-eye-open pointer"></span>
+										</a>
+									</div>
+								</div>
+				  			</li>
+				  			{% empty %}
+				  			<li class="list-group-item list-group-item-warning list-retreat">
+				  				<h4>{% trans "Section does not have subsection." %}</h4>
+				  			</li>
+				  			{% endfor %}
+				  		</ul>
+				  		{% endfor %}
 				  </ul>
 				</ul>
+				<!-- Quit News -->
+				{% endif %}
 
 
 			</div>
 		</div>
 		<div class="col-md-8">
-
+			<div class="row">
+				<div class="panel-group" id="accordion">
+					{% for i in news %}
+					<div class="panel panel-default">
+						<div class="panel-heading">
+					      	<h4 class="panel-title">
+						        <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ i.id}}">
+						       		{{ i.title }}
+						        </a>
+					    	</h4>
+						</div>
+					    <div id="collapse{{i.id}}" class="panel-collapse collapse">
+					      	<div class="panel-body">
+					        	{{ i.subtitle }}
+					        </div>
+					    </div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
 		</div>
-		</div>
+	</div>
 </div>
 {% endblock %}
 

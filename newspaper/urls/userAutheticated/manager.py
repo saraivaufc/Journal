@@ -3,5 +3,6 @@ from newspaper.views.userAutheticated import manager
 
 urlpatterns = patterns('',
 	url(r'^$', manager),
-	url(r'^list/$', manager),
+	url(r'^section=(?P<id_section>\d+)/$', manager),
+	url(r'^section=(?P<id_section>\d+)/subsection=(?P<id_subsection>\d+)/$', manager),
 )

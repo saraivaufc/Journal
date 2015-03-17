@@ -53,3 +53,18 @@
 .table-title{
 	font-weight: bold;
 }
+
+
+.list-group, .list-group-item{
+	 border-top-left-radius: none;
+    border-top-right-radius: none;
+}
+
+.pointer{
+	cursor: pointer;
+}
+
+.list-retreat{
+	position: relative;
+	margin-left: 10%;
+}
