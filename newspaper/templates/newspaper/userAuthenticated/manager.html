@@ -119,9 +119,19 @@
 						</div>
 					    <div id="collapse{{i.id}}" class="panel-collapse collapse">
 					      	<div class="panel-body">
-					        	{{ i.subtitle }}
+					        	{% include "newspaper/userAuthenticated/_render_news.html" %}
 					        </div>
 					    </div>
+					</div>
+					{% empty %}
+					<div class="jumbotron">
+						<h1 class="text-center">{% trans "There are no news" %}</h1>
+						<p></p>
+					 	<p class="text-center">
+					 		<a class="btn btn-primary btn-lg" role="button" href="/newspaper/userAuthenticated/manager/">
+					 			{% trans "All News" %}
+					 		</a>
+					 	</p>
 					</div>
 					{% endfor %}
 				</div>
