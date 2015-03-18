@@ -10,8 +10,8 @@ from .subsection import SubSection
 from .creation import Creation
 from .redator import Redator
 from .user import User
-from .userAutheticated import UserAutheticated
+from .userAuthenticated import UserAuthenticated
 
 __all__ = [
-    'Anonymous','Classifield', 'Offer', 'Comment', 'Journalist', 'Lector', 'News', 'Section', 'SubSection', 'Redator', 'User','UserAutheticated',
+    'Anonymous','Classifield', 'Offer', 'Comment', 'Journalist', 'Lector', 'News', 'Section', 'SubSection', 'Redator', 'User','UserAuthenticated',
 ]

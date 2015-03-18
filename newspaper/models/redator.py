@@ -1,10 +1,14 @@
 from django.db import models
 from django.utils.translation import ugettext as _
-from .userAutheticated import UserAutheticated
+from .userAuthenticated import UserAuthenticated
 
-class Redator(UserAutheticated):
-	def registeringJournalist(self):
-		pass
+class Redator(UserAuthenticated):
+	def registeringJournalist(self, form):
+		if form.is_valid():
+			form.save()
+			return True
+		else:
+			return False
 
 	def registeringPage(self):
 		pass

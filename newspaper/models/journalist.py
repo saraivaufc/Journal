@@ -1,10 +1,17 @@
 from django.db import models
 from django.utils.translation import ugettext as _
-from .userAutheticated import UserAutheticated
+from .userAuthenticated import UserAuthenticated
 
-class Journalist(UserAutheticated):
-	def registeringNews(self):
-		pass
+class Journalist(UserAuthenticated):
+	def registeringNews(self, form):
+		print form.fields['author'], self.id 
+		form.setAuthor(self.id)
+		if form.is_valid():
+			form.save()
+			print _("Added news with success")
+		else:
+			print _("Failed to add news")
+	
 	def deleteNews(self):
 		pass
 

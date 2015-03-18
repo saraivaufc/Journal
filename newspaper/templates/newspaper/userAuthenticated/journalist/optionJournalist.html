@@ -1,0 +1,47 @@
+{% load i18n %}
+{% load humanize %}
+
+<!--News -->
+<ul class="list-group">
+  <li class="list-group-item active" >
+  	<h3>
+  		<div class="container-fluid">
+	  		<div class="col-xs-6  col-md-8 text-center">
+		 		<a data-toggle="collapse" data-parent="#accordion" href="#collapseJournalist">
+	  				{% trans "Journalists" %}
+	  			</a>
+		 	</div>
+			<div class="col-xs-6 col-md-4 text-right">
+				{% if perms.newspaper.keep_journalist %}
+				<a href="/newspaper/userAuthenticated/manager/journalist/add/">
+					<span class="glyphicon glyphicon-plus pointer"></span>
+				</a>
+				{% endif %}
+			</div>
+		</div>
+  	</h3>
+  </li>
+	  {% if open_sections %}
+	  <ul  id="collapseJournalist" class="list-group panel-collapse collapse in">
+	  {% else %}
+	  <ul  id="collapseJournalist" class="list-group panel-collapse collapse">
+	  {% endif %}
+  		{% for i in journalists %}
+	  		<li class="list-group-item">
+	  			<div class="container-fluid">
+			  		<div class="col-xs-6  col-md-8 text-left">
+				 		<a data-toggle="collapse" data-parent="#collapseJournalist" href="#collapse{{i.id}}">
+			  				<h4>{{ i.username }}</h4>
+			  			</a>
+				 	</div>
+					<div class="col-xs-6 col-md-4 text-right">
+						<a href="/newspaper/userAuthenticated/manager/section={{i.id }}/">
+							<span class=" glyphicon glyphicon-eye-open pointer"></span>
+						</a>
+					</div>
+				</div>
+	  		</li>
+  		{% endfor %}
+  	</ul>
+</ul>
+<!-- Quit News -->

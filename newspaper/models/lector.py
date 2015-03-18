@@ -2,9 +2,9 @@
 
 from django.db import models
 from django.utils.translation import ugettext as _
-from .userAutheticated import UserAutheticated
+from .userAuthenticated import UserAuthenticated
 
-class Lector(UserAutheticated):
+class Lector(UserAuthenticated):
 	def commentNews(self, news, lector, text, image=''):
 		try:
 			from .comment import Comment

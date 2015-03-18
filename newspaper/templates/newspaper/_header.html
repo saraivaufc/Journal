@@ -66,21 +66,13 @@
 					</a>
 
 					<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-						{% if perms.journalist.access_manager or perms.redator.access_manager  %}
+						{% if perms.newspaper.access_manager  %}
 						<li>
 							<a href="/newspaper/">{% trans "LECTOR" %}</a>
 						</li>
 						<li>
 							<a href="/newspaper/userAuthenticated/manager/">
-								{% if perms.journalist.access_manager and  perms.redator.access_manager %}
-									{% trans "ADMIN" %}
-								{% elif perms.journalist.access_manager %}
-									{% trans "JOURNALIST" %}
-								{% elif perms.redator.access_manager %}
-									{% trans "REDATOR" %}
-								{% else %}
-									{% trans "MANAGER" %}
-								{% endif %}
+								{% trans "MANAGER" %}
 							</a>
 						</li>
 						{% endif %}

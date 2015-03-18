@@ -44,7 +44,7 @@ class JournalistAdmin(admin.ModelAdmin):
 	pass
 
 
-@admin.register(UserAutheticated)
-class UserAutheticatedAdmin(admin.ModelAdmin):
+@admin.register(UserAuthenticated)
+class UserAuthenticatedAdmin(admin.ModelAdmin):
 	pass
 

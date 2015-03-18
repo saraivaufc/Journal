@@ -13,3 +13,9 @@ $('#openBtn').click(function(){
 // 	}
 // 	return true;
 // }
+
+function removeNews(id){
+	if(window.confirm("Want to remove the news?")){
+		
+	}
+}

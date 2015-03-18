@@ -104,7 +104,7 @@ CACHES.update({
 
 WSGI_APPLICATION = 'jornalEletronico.wsgi.application'
 
-AUTH_USER_MODEL = 'newspaper.UserAutheticated'
+AUTH_USER_MODEL = 'newspaper.UserAuthenticated'
 
 
 # Database
