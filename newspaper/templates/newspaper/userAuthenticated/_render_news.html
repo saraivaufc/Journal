@@ -1,6 +1,8 @@
 {% load i18n %}
 {% load humanize %}
 
+<h3>{% trans "By" %} {{ i.author }} , {{ i.dating_news|naturaltime|capfirst }}.</h3>
+<hr class="divider">
 <div>
 	<p class="text-justify">
 		{% if i.image != '' %}
