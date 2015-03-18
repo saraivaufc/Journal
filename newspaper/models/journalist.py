@@ -15,6 +15,12 @@ class Journalist(UserAuthenticated):
 	def deleteNews(self):
 		pass
 
+	def editNews(self, form):
+		if form.is_valid():
+			form.save()
+		else:
+			print "form invalid"
+
 	def __unicode__(self):
 		return self.username
 

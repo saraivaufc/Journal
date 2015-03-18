@@ -41,48 +41,7 @@
 		<div class="col-md-9">
 			<div class="row">
 			{% block right %}
-
-				<div class="panel-group" id="accordion">
-					{% for i in news %}
-					<div class="panel panel-default">
-						<div class="panel-heading">
-					      	<h4 class="panel-title">
-					      		<div class="row">
-						      		<div class="col-xs-10 col-md-10 text-left">
-								        <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ i.id}}">
-								       		{{ i.title }}
-								        </a>
-							    	</div>
-							        <div class="col-xs-2 col-md-2 text-right">
-							        	<a href="">
-							        		<span class="glyphicon glyphicon-edit"></span>
-							        	</a>
-							        	&nbsp;
-							        	<a href="/newspaper/userAuthenticated/manager/news/rem/{{i.id}}/">
-											<span class="glyphicon glyphicon-remove"></span>
-							        	</a>
-									</div>
-								</div>
-					    	</h4>
-						</div>
-					    <div id="collapse{{i.id}}" class="panel-collapse collapse">
-					      	<div class="panel-body">
-					        	{% include "newspaper/userAuthenticated/news/_render_news.html" %}
-					        </div>
-					    </div>
-					</div>
-					{% empty %}
-					<div class="jumbotron">
-						<h1 class="text-center">{% trans "There are no news" %}</h1>
-						<p></p>
-					 	<p class="text-center">
-					 		<a class="btn btn-primary btn-lg" role="button" href="/newspaper/userAuthenticated/manager/">
-					 			{% trans "All News" %}
-					 		</a>
-					 	</p>
-					</div>
-					{% endfor %}
-				</div>
+				{% include "newspaper/userAuthenticated/news/_render_list_news.html" %}
 			{% endblock %}
 			</div>
 		</div>
