@@ -25,7 +25,7 @@
 	<div class="row">
 		<div class="col-md-3">
 			<div class="row">
-			{%  block manager-left %}
+			{%  block left %}
 				
 				{% if perms.newspaper.keep_news or perms.newspaper.delete_news %}
 					{% include "newspaper/userAuthenticated/news/optionNews.html" %}

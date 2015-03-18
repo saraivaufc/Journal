@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 from .userAuthenticated import UserAuthenticated
+from newspaper.models import Journalist
 
 class Redator(UserAuthenticated):
 	def registeringJournalist(self, form):
@@ -9,6 +10,21 @@ class Redator(UserAuthenticated):
 			return True
 		else:
 			return False
+
+	def editJournalist(self,form):
+		if form.is_valid():
+			form.save()
+			return True
+		else:
+			return False
+	def remJournalist(self, id):
+		try:
+			Journalist.objects.get(id = id).delete()
+			return True
+		except:
+			print "Falah ao remover Journalist"
+			return False
+
 
 	def registeringPage(self):
 		pass

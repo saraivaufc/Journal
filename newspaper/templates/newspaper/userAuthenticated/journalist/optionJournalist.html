@@ -1,7 +1,7 @@
 {% load i18n %}
 {% load humanize %}
 
-<!--News -->
+<!--Jornalist -->
 <ul class="list-group">
   <li class="list-group-item active" >
   	<h3>
@@ -21,7 +21,7 @@
 		</div>
   	</h3>
   </li>
-	  {% if open_sections %}
+	  {% if open_journalist %}
 	  <ul  id="collapseJournalist" class="list-group panel-collapse collapse in">
 	  {% else %}
 	  <ul  id="collapseJournalist" class="list-group panel-collapse collapse">
@@ -29,14 +29,22 @@
   		{% for i in journalists %}
 	  		<li class="list-group-item">
 	  			<div class="container-fluid">
-			  		<div class="col-xs-6  col-md-8 text-left">
+			  		<div class="col-xs-6  col-md-7 text-left">
 				 		<a data-toggle="collapse" data-parent="#collapseJournalist" href="#collapse{{i.id}}">
 			  				<h4>{{ i.username }}</h4>
 			  			</a>
 				 	</div>
-					<div class="col-xs-6 col-md-4 text-right">
-						<a href="/newspaper/userAuthenticated/manager/section={{i.id }}/">
+					<div class="col-xs-6 col-md-5 text-right">
+						<a href="/newspaper/userAuthenticated/manager/journalist/view/{{i.id}}/">
 							<span class=" glyphicon glyphicon-eye-open pointer"></span>
+						</a>
+						&nbsp;
+						<a href="/newspaper/userAuthenticated/manager/journalist/edit/{{i.id}}/">
+							<span class="  glyphicon glyphicon-edit pointer"></span>
+						</a>
+						&nbsp;
+						<a href="/newspaper/userAuthenticated/manager/journalist/rem/{{i.id}}/">
+							<span class="  glyphicon glyphicon-remove pointer"></span>
 						</a>
 					</div>
 				</div>
