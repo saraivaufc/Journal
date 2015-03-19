@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 from .userAuthenticated import UserAuthenticated
-from newspaper.models import Journalist
+from newspaper.models import Journalist, Section, SubSection
 
 class Redator(UserAuthenticated):
 	def registeringJournalist(self, form):
@@ -26,8 +26,48 @@ class Redator(UserAuthenticated):
 			return False
 
 
-	def registeringPage(self):
-		pass
+	def registeringSection(self, form):
+		if form.is_valid():
+			form.save()
+			return True
+		else:
+			return False
+	def editSection(self, form):
+		if form.is_valid():
+			form.save()
+			return True
+		else:
+			return False
+
+	def remSection(self, id_section):
+		try:
+			Section.objects.get(id = id_section).delete()
+			return True
+		except:
+			return False
+
+
+
+	def registeringSubSection(self, form):
+		if form.is_valid():
+			form.save()
+			return True
+		else:
+			return False
+	def editSubSection(self, form):
+		if form.is_valid():
+			form.save()
+			return True
+		else:
+			return False
+
+	def remSubSection(self, id_subsection):
+		try:
+			SubSection.objects.get(id = id_subsection).delete()
+			return True
+		except:
+			return False
+
 
 	def registeringClassifield(self):
 		pass

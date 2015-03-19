@@ -33,6 +33,9 @@
 				{% if perms.newspaper.keep_journalist or perms.newspaper.keep_journalist %}
 					{% include "newspaper/userAuthenticated/journalist/optionJournalist.html" %}
 				{% endif %}
+				{% if perms.newspaper.keep_section or perms.newspaper.keep_subsection %}
+					{% include "newspaper/userAuthenticated/section/optionSection.html" %}
+				{% endif %}
 
 			{% endblock %}
 			</div>
@@ -50,5 +53,5 @@
 {% endblock %}
 
 {% block modals %}
-
+	{% include "newspaper/userAuthenticated/section/modals.html" %}
 {% endblock %}

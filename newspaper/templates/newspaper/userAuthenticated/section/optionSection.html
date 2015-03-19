@@ -1,0 +1,77 @@
+{% load i18n %}
+{% load humanize %}
+
+<!--News -->
+<ul class="list-group">
+  <li class="list-group-item active" >
+  	<h3>
+  		<div class="container-fluid">
+	  		<div class="col-xs-6  col-md-8 text-center">
+		 		<a data-toggle="collapse" data-parent="#accordion" href="#collapseSection2">
+	  				{% trans "Sections and SubSections" %}
+	  			</a>
+		 	</div>
+			<div class="col-xs-6 col-md-4 text-right">
+				{% if perms.newspaper.keep_section %}
+				<a data-toggle="modal" data-target="#modalSection" href="#">
+					<span class="glyphicon glyphicon-plus pointer"></span>
+				</a>
+				{% endif %}
+			</div>
+		</div>
+  	</h3>
+  </li>
+	  {% if open_sections2 %}
+	  <ul  id="collapseSection2" class="list-group panel-collapse collapse in">
+	  {% else %}
+	  <ul  id="collapseSection2" class="list-group panel-collapse collapse">
+	  {% endif %}
+  		{% for i in sections %}
+  		<li class="list-group-item">
+  			<div class="container-fluid">
+		  		<div class="col-xs-6  col-md-6 text-left">
+			 		<a data-toggle="collapse" data-parent="#collapseSection2" href="#collapse2{{i.id}}">
+		  				<h4>{{ i.title }}</h4>
+		  			</a>
+			 	</div>
+			 	<div class="col-xs-6 col-md-4 text-right">
+					<a href="/newspaper/userAuthenticated/manager/section/edit/{{i.id }}/">
+						<span class=" glyphicon glyphicon-edit pointer"></span>
+					</a>
+					<a href="/newspaper/userAuthenticated/manager/section/rem/{{i.id }}/">
+						<span class=" glyphicon glyphicon-remove pointer"></span>
+					</a>
+				</div>
+			</div>
+  		</li>
+  		{% if open_subsections2 %}
+  			<ul id="collapse2{{i.id}}" class="list-group panel-collapse collapse in">
+  		{% else %}
+  			<ul id="collapse2{{i.id}}" class="list-group panel-collapse collapse">
+  		{% endif %}
+				{% for k in i.getSubSections %}
+				<li class="list-group-item list-retreat">
+					<div class="container-fluid">
+			  		<div class="col-xs-8  col-md-8 text-left">
+			  			<h4>{{ k.title }}</h4>
+				 	</div>
+				 	<div class="col-xs-4 col-md-4 text-right">
+						<a href="/newspaper/userAuthenticated/manager/subsection/edit/{{k.id }}/">
+							<span class=" glyphicon glyphicon-edit pointer"></span>
+						</a>
+						<a href="/newspaper/userAuthenticated/manager/subsection/rem/{{k.id }}/">
+							<span class=" glyphicon glyphicon-remove pointer"></span>
+						</a>
+					</div>
+				</div>
+  			</li>
+  			{% empty %}
+  			<li class="list-group-item list-group-item-warning list-retreat">
+  				<h4>{% trans "Section does not have subsection." %}</h4>
+  			</li>
+  			{% endfor %}
+  		</ul>
+  		{% endfor %}
+  </ul>
+</ul>
+<!-- Quit News -->

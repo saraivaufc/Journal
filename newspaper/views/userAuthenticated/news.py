@@ -18,7 +18,7 @@ def addNews(request):
 				pass
 			return HttpResponseRedirect("/newspaper/userAuthenticated/manager/")
 		else:
-			form = PartialNewsForm
+			form = PartialNewsForm()
 			option = _("News")
 			return render(request, "newspaper/userAuthenticated/news/addNews.html", locals())
 	else:
@@ -53,6 +53,6 @@ def remNews(request, id_news):
 	if request.user.has_perm('newspaper.keep_news') or request.user.has_perm('newspaper.delete_news'):
 		try:
 			News.objects.get(id = id_news).delete()
-		except Exception, e:
-			raise e
+		except:
+			print "Erro ao remover noticia"
 	return HttpResponseRedirect("/newspaper/userAuthenticated/manager/")
