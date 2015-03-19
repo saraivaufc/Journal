@@ -1,0 +1,25 @@
+{% load i18n %}
+{% load humanize %}
+
+<div>
+	<h2 class="text-left">{{ i.title }}</h2>
+	{% if i.image != '' %}
+	<figure class="img-float-right">
+		<a href="{{ i.image.url }}" class="boxer" title="{{ i.title }}" data-gallery="gallery">
+		    <img class="img-responsive" src="{{ i.image.url }}"/>
+		</a>
+	</figure>
+	{% endif %}
+
+	<h5>
+		{% trans "Minimum Value:" %} {{i.price}}<br>
+		{% trans "Contact Phone:" %} {{i.phone|phone2numeric}}<br>
+		{% if i.getBestOffer != None %}
+			{% blocktrans with author_offer=i.getBestOffer.author_offer value=i.getBestOffer.value date_offer=i.getBestOffer.date_offer|naturaltime|capfirst %}
+				Best Offer By: {{ author_offer }} with Value: {{ value }}, {{date_offer}} .
+			{% endblocktrans %}
+	</h5>
+	{% endif %}
+
+	<p class="text-justify">{{ i.description|safe|truncatewords_html:50 }}</p>
+</div>

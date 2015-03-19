@@ -1,0 +1,38 @@
+{% load i18n %}
+{% load humanize %}
+
+<div class="panel-group" id="accordion">
+{% for i in classifields %}
+<div class="panel panel-default">
+	<div class="panel-heading">
+      	<h4 class="panel-title">
+      		<div class="row">
+	      		<div class="col-xs-10 col-md-10 text-left">
+			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseClassifield{{ i.id}}">
+			       		{{ i.title }}
+			        </a>
+		    	</div>
+		        <div class="col-xs-2 col-md-2 text-right">
+		        	<a href="/newspaper/userAuthenticated/manager/classifield/edit/{{i.id}}/">
+		        		<span class="glyphicon glyphicon-edit"></span>
+		        	</a>
+		        	&nbsp;
+		        	<a href="/newspaper/userAuthenticated/manager/classifield/rem/{{i.id}}/">
+						<span class="glyphicon glyphicon-remove"></span>
+		        	</a>
+				</div>
+			</div>
+    	</h4>
+	</div>
+    <div id="collapseClassifield{{i.id}}" class="panel-collapse collapse">
+      	<div class="panel-body">
+        	{% include "newspaper/userAuthenticated/classifield/_render_classifield.html" %}
+        </div>
+    </div>
+</div>
+{% empty %}
+<div class="jumbotron">
+	<h1 class="text-center">{% trans "There are no classifields" %}</h1>
+</div>
+{% endfor %}
+</div>

@@ -7,6 +7,7 @@ from .news import *
 from .journalist import *
 from .section import *
 from .subsection import *
+from .classifield import *
 
 def index(request):
 	if request.user.is_authenticated():

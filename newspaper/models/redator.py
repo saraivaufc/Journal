@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 from .userAuthenticated import UserAuthenticated
-from newspaper.models import Journalist, Section, SubSection
+from newspaper.models import Journalist, Section, SubSection, Classifield
 
 class Redator(UserAuthenticated):
 	def registeringJournalist(self, form):
@@ -69,8 +69,26 @@ class Redator(UserAuthenticated):
 			return False
 
 
-	def registeringClassifield(self):
-		pass
+	def registeringClassifield(self, form):
+		if form.is_valid():
+			form.save()
+			return True
+		else:
+			return False
+
+	def remClassifield(self, id_classifield):
+		try:
+			Classifield.objects.get(id = id_classifield).delete()
+			return True
+		except:
+			return False
+
+	def editClassifield(self, form):
+		if form.is_valid():
+			form.save()
+			return True
+		else:
+			return False
 
 	def __unicode__(self):
 		return self.username

@@ -10,7 +10,7 @@ def addSection(request):
 	if request.user.has_perm('newspaper.keep_section'):
 		news = News.objects.all()
 		sections = Section.objects.all()
-		subsections = Section.objects.all()
+		subsections = SubSection.objects.all()
 		if request.user.has_perm('newspaper.keep_journalist'):
 			journalists = Journalist.objects.all()
 		if request.method == "POST":
@@ -36,7 +36,6 @@ def editSection(request, id_section):
 	if request.user.has_perm('newspaper.keep_section'):
 		news = News.objects.all()
 		sections = Section.objects.all()
-		subsections = Section.objects.all()
 		if request.user.has_perm('newspaper.keep_journalist'):
 			journalists = Journalist.objects.all()
 		try:

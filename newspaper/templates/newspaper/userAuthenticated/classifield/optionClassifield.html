@@ -1,0 +1,40 @@
+{% load i18n %}
+{% load humanize %}
+
+
+<ul class="list-group">
+  <li class="list-group-item active" >
+  	<h3>
+  		<div class="container-fluid">
+	  		<div class="col-xs-6  col-md-8 text-center">
+		 		<a data-toggle="collapse" data-parent="#accordion" href="#collapseClassifield">
+	  				{% trans "Classifield" %}
+	  			</a>
+		 	</div>
+			<div class="col-xs-6 col-md-4 text-right">
+				{% if perms.newspaper.keep_classifield %}
+				<a href="/newspaper/userAuthenticated/manager/classifield/add/">
+					<span class="glyphicon glyphicon-plus pointer"></span>
+				</a>
+				{% endif %}
+			</div>
+		</div>
+  	</h3>
+  </li>
+  {% if open_classfield %}
+  <ul id="collapseClassifield" class="list-group panel-collapse collapse in">
+  {% else %}
+  <ul id="collapseClassifield" class="list-group panel-collapse collapse">
+  {% endif %}
+		<li class="list-group-item">
+			<div class="container-fluid">
+	  		<div class="col-xs-12  col-md-12">
+	  			<a href="/newspaper/userAuthenticated/manager/classifield/view/">
+	  				<h2 class="text-center">
+		  				<span class="glyphicon glyphicon-play-circle"></span>
+		  			</h2>
+	  			</a>
+		 	</div>
+		</li>
+	</ul>
+</ul>

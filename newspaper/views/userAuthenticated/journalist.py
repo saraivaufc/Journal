@@ -14,7 +14,6 @@ def addJournalist(request):
 	if request.user.has_perm('newspaper.keep_journalist') :
 		news = News.objects.all()
 		sections = Section.objects.all()
-		subsections = Section.objects.all()
 		if request.method == "POST":
 			try:
 				request.POST = request.POST.copy()
@@ -41,7 +40,6 @@ def viewJournalist(request, id_journalist):
 	if request.user.has_perm('newspaper.keep_journalist'):
 		news = News.objects.all()
 		sections = Section.objects.all()
-		subsections = Section.objects.all()
 		try:
 			journalist = Journalist.objects.get(id = id_journalist)
 			journalists = Journalist.objects.all()
@@ -68,7 +66,6 @@ def editJournalist(request, id_journalist):
 	if request.user.has_perm('newspaper.keep_journalist'):
 		news = News.objects.all()
 		sections = Section.objects.all()
-		subsections = Section.objects.all()
 		try:
 			user = Redator.objects.get(username = request.user.username)
 			journalist = Journalist.objects.get(id = id_journalist)

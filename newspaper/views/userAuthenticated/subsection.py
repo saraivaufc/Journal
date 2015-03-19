@@ -10,7 +10,6 @@ def addSubSection(request):
 	if request.user.has_perm('newspaper.keep_subsection'):
 		news = News.objects.all()
 		sections = Section.objects.all()
-		subsections = Section.objects.all()
 		if request.user.has_perm('newspaper.keep_journalist'):
 			journalists = Journalist.objects.all()
 		if request.method == "POST":
@@ -36,7 +35,6 @@ def editSubSection(request, id_subsection):
 	if request.user.has_perm('newspaper.keep_subsection'):
 		news = News.objects.all()
 		sections = Section.objects.all()
-		subsections = Section.objects.all()
 		if request.user.has_perm('newspaper.keep_journalist'):
 			journalists = Journalist.objects.all()
 		try:

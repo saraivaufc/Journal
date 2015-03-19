@@ -7,5 +7,6 @@ urlpatterns = patterns('',
 	url(r'^manager/journalist/', include('newspaper.urls.userAuthenticated.journalist')),
 	url(r'^manager/section/', include('newspaper.urls.userAuthenticated.section')),
 	url(r'^manager/subsection/', include('newspaper.urls.userAuthenticated.subsection')),
+	url(r'^manager/classifield/', include('newspaper.urls.userAuthenticated.classifield')),
 )
 

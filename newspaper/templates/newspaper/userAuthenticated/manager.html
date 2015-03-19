@@ -36,6 +36,9 @@
 				{% if perms.newspaper.keep_section or perms.newspaper.keep_subsection %}
 					{% include "newspaper/userAuthenticated/section/optionSection.html" %}
 				{% endif %}
+				{% if perms.newspaper.keep_classifield %}
+					{% include "newspaper/userAuthenticated/classifield/optionClassifield.html" %}
+				{% endif %}
 
 			{% endblock %}
 			</div>

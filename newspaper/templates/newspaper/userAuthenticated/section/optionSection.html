@@ -52,10 +52,10 @@
 				{% for k in i.getSubSections %}
 				<li class="list-group-item list-retreat">
 					<div class="container-fluid">
-			  		<div class="col-xs-8  col-md-8 text-left">
+			  		<div class="col-xs-6  col-md-8 text-left">
 			  			<h4>{{ k.title }}</h4>
 				 	</div>
-				 	<div class="col-xs-4 col-md-4 text-right">
+				 	<div class="col-xs-6 col-md-4 text-right">
 						<a href="/newspaper/userAuthenticated/manager/subsection/edit/{{k.id }}/">
 							<span class=" glyphicon glyphicon-edit pointer"></span>
 						</a>
@@ -72,11 +72,9 @@
   			{% endfor %}
   		</ul>
   		{% empty %}
-  		<ul class="list-group">
-  			<li class="list-group-item list-group-item-warning">
-  				{% trans "No sections" %}
-  			</li>
-  		</ul>
+		<li class="list-group-item list-group-item-warning">
+			{% trans "No sections" %}
+		</li>
   		{% endfor %}
   </ul>
 </ul>

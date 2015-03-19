@@ -11,7 +11,6 @@ def manager(request, id_section = None, id_subsection = None):
 
 	news = News.objects.all()
 	sections = Section.objects.all()
-	subsections = Section.objects.all()
 	if request.user.has_perm('newspaper.keep_journalist'):
 		journalists = Journalist.objects.all()
 
