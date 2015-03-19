@@ -61,4 +61,8 @@
 	<h2>{% trans "News has no comments." %}</h2>
 	{% endfor %}
 	</ul>
+	{% if perms.newspaper.comment_news %}
+		<h1>{% trans "Add your comment:" %}</h1>
+		{% include "newspaper/_form.html" %}
+	{% endif %}
 </div>
