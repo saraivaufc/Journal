@@ -22,9 +22,7 @@ class Classifield(models.Model):
 		verbose_name_plural = _("Classifields")
 
 	def getBestOffer(self):
-		offer =None
 		try:
-			offer = self.offers.all().order_by('-value')[0];
+			return self.offers.all().order_by('-value')[0];
 		except:
-			pass
-		return offer
+			return None
