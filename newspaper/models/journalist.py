@@ -29,5 +29,4 @@ class Journalist(UserAuthenticated):
 		verbose_name_plural = _("Journalists")
 
 		permissions = (("keep_news", "Keep News"),
-					   ("access_manager", "Access Manager"),
                       )

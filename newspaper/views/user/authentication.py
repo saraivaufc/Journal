@@ -45,9 +45,9 @@ def signup(request):
 		try:
 			form.save()
 			u = Lector.objects.get(username = request.POST['username'])
-			permission1 = Permission.objects.get(name='Registering Lector')
-			permission2 = Permission.objects.get(name='Comment News')
-			permission3 = Permission.objects.get(name='Offer to Buy')
+			permission1 = Permission.objects.get(codename='registering_lector')
+			permission2 = Permission.objects.get(codename='comment_news')
+			permission3 = Permission.objects.get(codename='offer_to_buy')
 			u.user_permissions.add(permission1, permission2, permission3)
 		except:
 			pass

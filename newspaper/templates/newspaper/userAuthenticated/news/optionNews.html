@@ -26,6 +26,20 @@
 	  {% else %}
 	  <ul  id="collapseNews" class="list-group panel-collapse collapse">
 	  {% endif %}
+  		<li class="list-group-item">
+  			<div class="container-fluid">
+		  		<div class="col-xs-6  col-md-8 text-left">
+			 		<a href="#collapse{{i.id}}">
+		  				<h4>{%  trans "All" %}</h4>
+		  			</a>
+			 	</div>
+				<div class="col-xs-6 col-md-4 text-right">
+					<a href="/newspaper/userAuthenticated/manager/">
+						<span class=" glyphicon glyphicon-eye-open pointer"></span>
+					</a>
+				</div>
+			</div>
+  		</li>
   		{% for i in sections %}
   		<li class="list-group-item">
   			<div class="container-fluid">

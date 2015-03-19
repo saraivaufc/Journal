@@ -32,7 +32,8 @@ def addJournalist(request):
 			return HttpResponseRedirect("/newspaper/userAuthenticated/manager/")
 		form = PartialJournalistForm
 		option = _("Journalist")
-		return render(request, "newspaper/userAuthenticated/news/addNews.html", locals())
+		open_journalist = True
+		return render(request, "newspaper/userAuthenticated/journalist/addJournalist.html", locals())
 	else:
 		return HttpResponseRedirect("/newspaper/userAuthenticated/manager/")
 

@@ -15,3 +15,6 @@ class UserAuthenticated(AbstractUser, User):
 		ordering = ['-first_name']
 		verbose_name = _("User Authenticated")
 		verbose_name_plural = _("Users Authenticated")
+		permissions = (
+						("access_manager", "Access Manager"),
+                      )
