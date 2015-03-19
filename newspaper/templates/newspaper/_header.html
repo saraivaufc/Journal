@@ -1,8 +1,10 @@
 {% load i18n %}
 
+<div class="container-fluid">
+<div class="row">
 <!-- Fixed navbar -->
 <div class="navbar navbar-default navbar-static-top" role="navigation">
-	<div class="container">
+	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 				<span class="sr-only">Toggle navigation</span>
@@ -13,7 +15,7 @@
 		</div>
 		<div class="navbar-collapse collapse">
 			{% block nav-left %}
-			<ul class="nav navbar-nav">
+			<ul class="nav navbar-nav navbar-left">
 				<li>
 					{% if perms.journalist.access_manager or perms.redator.access_manager  %}
 					<a  href="/newspaper/userAuthenticated/manager/">{% trans "HOME" %}</a>
@@ -157,4 +159,6 @@
 			{% endblock %}
 		</div>
 	</div><!--/.nav-collapse -->
+</div>
+</div>
 </div>

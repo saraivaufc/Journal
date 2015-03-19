@@ -51,20 +51,24 @@
 	<body>
 		<input type='hidden' name='csrfmiddlewaretoken' value='{{ csrf_token }}' />
 		{% include 'newspaper/_no_script.html' %}
-		<div class="container">
-				<div class="row">
-					{% block header %}
-					{% include 'newspaper/_header.html' %}
-					{% endblock %}
-					{% block body %}
-					{% endblock %}
-					{% block modals %}
-					{% endblock %}
-					{% block footer %}
-						{% include 'newspaper/_footer.html' %}
-					{% endblock %}
-					{% include 'newspaper/_msg.html' %}
+		<div class="container-fluid">
+			<div class="row">
+				<div class="container-fluid">
+					<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+						{% block header %}
+						{% include 'newspaper/_header.html' %}
+						{% endblock %}
+						{% block body %}
+						{% endblock %}
+						{% block modals %}
+						{% endblock %}
+						{% block footer %}
+							{% include 'newspaper/_footer.html' %}
+						{% endblock %}
+						{% include 'newspaper/_msg.html' %}
+					</div>
 				</div>
+			</div>
 		</div>
 
 		<!-- Jquery -->
