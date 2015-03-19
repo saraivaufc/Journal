@@ -47,6 +47,10 @@
 					</div>
 				</div>
 	  		</li>
+	  		{% empty %}
+  			<li class="list-group-item list-group-item-warning">
+  				{% trans "There is no Journalists" %}
+  			</li>
   		{% endfor %}
   	</ul>
 </ul>

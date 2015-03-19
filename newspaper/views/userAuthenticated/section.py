@@ -67,10 +67,9 @@ def editSection(request, id_section):
 
 def remSection(request, id_section):
 	if request.user.has_perm('newspaper.keep_section'):
-		if request.method == "POST":
-			try:
-				user = Redator.objects.get(username=request.user.username)
-				user.remSection(id_section)
-			except:
-				pass
+		try:
+			user = Redator.objects.get(username=request.user.username)
+			user.remSection(id_section)
+		except:
+			pass
 	return HttpResponseRedirect("/newspaper/userAuthenticated/manager/")

@@ -69,6 +69,12 @@
   			</li>
   			{% endfor %}
   		</ul>
+  		{% empty %}
+  		<ul class="list-group">
+  			<li class="list-group-item list-group-item-warning">
+  				{% trans "No sections" %}
+  			</li>
+  		</ul>
   		{% endfor %}
   </ul>
 </ul>
