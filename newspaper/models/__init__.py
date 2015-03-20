@@ -1,4 +1,3 @@
-from .anonymous import Anonymous
 from .classifield import Classifield
 from .offer import Offer
 from .comment import Comment
@@ -13,5 +12,5 @@ from .user import User
 from .userAuthenticated import UserAuthenticated
 
 __all__ = [
-    'Anonymous','Classifield', 'Offer', 'Comment', 'Journalist', 'Lector', 'News', 'Section', 'SubSection', 'Redator', 'User','UserAuthenticated',
+   	'Classifield', 'Offer', 'Comment', 'Journalist', 'Lector', 'News', 'Section', 'SubSection', 'Redator', 'User','UserAuthenticated',
 ]

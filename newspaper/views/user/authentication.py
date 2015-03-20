@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login as login_user
 from django.contrib.auth.views import logout as logout_sys
 from newspaper.forms import PartialLectorForm
-from newspaper.models import Lector, Anonymous
+from newspaper.models import Lector
 
 try:
 	from hashlib import md5
@@ -42,7 +42,7 @@ def signup(request):
 		request.POST = request.POST.copy()
 		request.POST['password'] =  md5(request.POST['password'] ).hexdigest()
 		form = PartialLectorForm(request.POST)
-		anonymous = Anonymous()
-		anonymous.registering_lector(form)
+		lector = Lector()
+		lector.registering_lector(form)
 	return HttpResponseRedirect("/newspaper/")
 
