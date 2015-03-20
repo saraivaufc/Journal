@@ -64,12 +64,16 @@
 						</a>
 					</div>
 				</div>
-  			</li>
-  			{% empty %}
-  			<li class="list-group-item list-group-item-warning">
-  				<h4>{% trans "Section does not have subsection." %}</h4>
-  			</li>
-  			{% endfor %}
+	  			</li>
+	  			{% empty %}
+	  			<li class="list-group-item list-group-item-warning list-retreat">
+	  				<div class="container-fluid">
+	  					<div class="row">
+	  						<h4>{% trans "Section does not have subsection." %}</h4>
+	  					</div>
+	  				</div>
+	  			</li>
+	  			{% endfor %}
   		</ul>
   		{% empty %}
 		<li class="list-group-item list-group-item-warning">

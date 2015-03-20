@@ -18,9 +18,9 @@
 			<ul class="nav navbar-nav navbar-left">
 				<li>
 					{% if perms.newspaper.access_manager %}
-					<a  href="/newspaper/userAuthenticated/manager/">{% trans "HOME" %}</a>
+					<a id="home"  href="/newspaper/userAuthenticated/manager/">{% trans "HOME" %}</a>
 					{% else %}
-					<a  href="/newspaper/">{% trans "HOME" %}</a>
+					<a id="home" href="/newspaper/">{% trans "HOME" %}</a>
 					{% endif %}
 				</li>
 
