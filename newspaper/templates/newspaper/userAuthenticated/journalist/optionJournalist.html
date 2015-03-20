@@ -6,17 +6,21 @@
   <li class="list-group-item active" >
   	<h3>
   		<div class="container-fluid">
-	  		<div class="col-xs-6  col-md-8 text-center">
-		 		<a data-toggle="collapse" data-parent="#accordion" href="#collapseJournalist">
-	  				{% trans "Journalists" %}
-	  			</a>
+	  		<div class="col-xs-6  col-md-8  text-center">
+	  			<div class="row">
+			 		<a data-toggle="collapse" data-parent="#accordion" href="#collapseJournalist">
+		  				{% trans "Journalists" %}
+		  			</a>
+	  			</div>
 		 	</div>
 			<div class="col-xs-6 col-md-4 text-right">
-				{% if perms.newspaper.keep_journalist %}
-				<a href="/newspaper/userAuthenticated/manager/journalist/add/">
-					<span class="glyphicon glyphicon-plus pointer"></span>
-				</a>
-				{% endif %}
+				<div class="row">
+					{% if perms.newspaper.keep_journalist %}
+					<a href="/newspaper/userAuthenticated/manager/journalist/add/">
+						<span class="glyphicon glyphicon-plus pointer"></span>
+					</a>
+					{% endif %}
+				</div>
 			</div>
 		</div>
   	</h3>
@@ -29,10 +33,10 @@
   		{% for i in journalists %}
 	  		<li class="list-group-item">
 	  			<div class="container-fluid">
-			  		<div class="col-xs-6  col-md-7 text-left">
+			  		<div class="col-xs-6  col-md-6 text-left">
 		  				<h4>{{ i.username }}</h4>
 				 	</div>
-					<div class="col-xs-6 col-md-5 text-right">
+					<div class="col-xs-6 col-md-6 text-right">
 						<a href="/newspaper/userAuthenticated/manager/journalist/view/{{i.id}}/">
 							<span class=" glyphicon glyphicon-eye-open pointer"></span>
 						</a>
