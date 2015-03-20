@@ -68,6 +68,15 @@
 				<p class="text-justify">{{ classifield.description|safe }}</p>
 			</p>
 		</div>
+		{% if perms.newspaper.keep_classifield %}
+		<h1>{% trans "List Offers: " %}</h1>
+		
+		{% include "newspaper/userAuthenticated/offer/_render_list_offer.html" %}	
+		{% endif %}
+		{% if perms.newspaper.offer_to_buy %}
+		<h1>{% trans "Add Offer: " %}</h1>
 		{% include "newspaper/_form.html" %}
+		{% endif %}
+
 	</div>
 {% endblock %}

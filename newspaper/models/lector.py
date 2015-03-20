@@ -28,14 +28,19 @@ class Lector(UserAuthenticated):
 		if form.is_valid():
 			try:
 				value = form.cleaned_data['value']
-				details = form.cleaned_data['details']
+				phone = form.cleaned_data['phone']
+				if value > classifield.price and value > classifield.getBestOffer().value:
+					details = form.cleaned_data['details']
 
-				offer = Offer(author_offer_id = self.id,
-							  value = value,
-							  details = details,)
-				offer.save()
-				classifield.offers.add(offer)
-				return True
+					offer = Offer(author_offer_id = self.id,
+								  value = value,
+								  phone = phone,
+								  details = details,)
+					offer.save()
+					classifield.offers.add(offer)
+					return True
+				else:
+					return False
 			except:
 				print "Erro ao adicionar oferta"
 				return False
@@ -56,7 +61,7 @@ class Lector(UserAuthenticated):
 			return False
 
 	def __unicode__(self):
-		return self.username
+		return self.first_name + " " + self.last_name
 
 	class Meta:
 		verbose_name = _("Lector")

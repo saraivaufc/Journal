@@ -1,0 +1,36 @@
+{% load i18n %}
+
+<ul>
+	{% for i in classifield.offers.all  %}
+	<li>
+		<table class="table">
+			<tr>
+				<td>{% trans "Author:" %}</td>
+				<td>{{ i.author_offer }}</td>
+			</tr>
+			<tr>
+				<td>{% trans "Date Offer:" %}</td>
+				<td>{{ i.date_offer }}</td>
+			</tr>
+			<tr>
+				<td>{% trans "Value:" %}</td>
+				<td>{{ i.value }}</td>
+			</tr>
+			{% if i.phone %}
+			<tr>
+				<td>{% trans "Phone:" %}</td>
+				<td>{{ i.phone }}</td>
+			</tr>
+			{% endif %}
+			{% if i.details %}
+			<tr>
+				<td>{% trans "Details:" %}</td>
+				<td>{{ i.details }}</td>
+			</tr>
+			{% endif %}
+
+		</table>
+	</li>
+	<hr class="divider-light">
+	{% endfor %}
+</ul>

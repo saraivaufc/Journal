@@ -2,24 +2,27 @@
 {% load humanize %}
 
 <div>
-	<h2 class="text-left">{{ i.title }}</h2>
-	{% if i.image != '' %}
+	<h2 class="text-left">{{ classifield.title }}</h2>
+	{% if classifield.image != '' %}
 	<figure class="img-float-right">
-		<a href="{{ i.image.url }}" class="boxer" title="{{ i.title }}" data-gallery="gallery">
-		    <img class="img-responsive" src="{{ i.image.url }}"/>
+		<a href="{{ classifield.image.url }}" class="boxer" title="{{ classifield.title }}" data-gallery="gallery">
+		    <img class="img-responsive" src="{{ classifield.image.url }}"/>
 		</a>
 	</figure>
 	{% endif %}
 
 	<h5>
-		{% trans "Minimum Value:" %} {{i.price}}<br>
-		{% trans "Contact Phone:" %} {{i.phone|phone2numeric}}<br>
+		{% trans "Minimum Value:" %} {{classifield.price}}<br>
+		{% trans "Contact Phone:" %} {{classifield.phone|phone2numeric}}<br>
 		{% if i.getBestOffer != None %}
-			{% blocktrans with author_offer=i.getBestOffer.author_offer value=i.getBestOffer.value date_offer=i.getBestOffer.date_offer|naturaltime|capfirst %}
+			{% blocktrans with author_offer=classifield.getBestOffer.author_offer value=classifield.getBestOffer.value date_offer=classifield.getBestOffer.date_offer|naturaltime|capfirst %}
 				Best Offer By: {{ author_offer }} with Value: {{ value }}, {{date_offer}} .
 			{% endblocktrans %}
 	</h5>
 	{% endif %}
-
-	<p class="text-justify">{{ i.description|safe|truncatewords_html:50 }}</p>
+	<p class="text-justify">{{ classifield.description|safe|truncatewords_html:50 }}</p>
+	{% if perms.newspaper.keep_classifield %}
+		<h1>{% trans "List Offers: " %}</h1>
+		{% include "newspaper/userAuthenticated/offer/_render_list_offer.html" %}	
+	{% endif %}
 </div>

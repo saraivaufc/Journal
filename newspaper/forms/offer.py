@@ -12,4 +12,4 @@ class OfferForm(ModelForm):
 class PartialOfferForm(ModelForm):
 	class Meta:
 		model= Offer
-		fields  = ['value', 'details']
+		fields  = ['value', 'details', 'phone']

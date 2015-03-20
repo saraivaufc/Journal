@@ -18,5 +18,6 @@ def viewClassifield(request, id_classifield):
 		except:
 			print "Falha pegar user"
 
+
 	form = PartialOfferForm()
 	return render(request, 'newspaper/user/classifield.html', locals())

@@ -8,7 +8,10 @@ class UserAuthenticated(AbstractUser, User):
 
 
 	def __unicode__(self):
-		return self.username
+		if self.first_name == '' or self.last_name == '':
+			return self.username
+		else:
+			return self.first_name + " " + self.last_name
 
 	class Meta:
 		db_table = 'auth_user'

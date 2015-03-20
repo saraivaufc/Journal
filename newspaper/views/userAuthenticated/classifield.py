@@ -3,7 +3,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.utils.translation import ugettext as _
-from newspaper.models import Redator, Classifield, News, Journalist, Section, SubSection
+from newspaper.models import Redator, Classifield, News, Journalist, Section, SubSection, Offer
 from newspaper.forms import ClassifieldForm, PartialClassifieldForm
 
 def addClassifield(request):
@@ -42,7 +42,7 @@ def viewClassifield(request):
 			classifields = Classifield.objects.all()
 			return render(request, "newspaper/userAuthenticated/classifield/viewClassifields.html", locals())
 		except:
-			print "Erro ao poasdoakd"
+			print "Erro ao pegar classifield"
 	else:
 		print "Sem permisão"
 	return HttpResponseRedirect("/newspaper/userAuthenticated/manager/")
