@@ -1,3 +1,5 @@
 $(function(){
-	$(".boxer").boxer();
+	$(".boxer").boxer({
+    	mobile: true
+	});
 });
