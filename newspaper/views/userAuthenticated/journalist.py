@@ -14,6 +14,7 @@ def addJournalist(request):
 	if request.user.has_perm('newspaper.keep_journalist') :
 		news = News.objects.all()
 		sections = Section.objects.all()
+		journalists = Journalist.objects.all()
 		if request.method == "POST":
 			try:
 				request.POST = request.POST.copy()

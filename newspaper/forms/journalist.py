@@ -2,6 +2,7 @@
 
 from django.forms import ModelForm,  Textarea, Select, TextInput,  NumberInput
 from newspaper.models import Journalist
+import hashlib
 
 class JournalistForm(ModelForm):
 	class Meta:
@@ -12,3 +13,10 @@ class PartialJournalistForm(ModelForm):
 	class Meta:
 		model= Journalist
 		fields = ("first_name", "last_name", "email","username", "password", "profile_image")
+
+	def clean_profile_image(self):
+		image = self.cleaned_data["profile_image"]
+		if image:
+			hash = hashlib.md5(image.read()).hexdigest()
+			image.name = "".join((hash, ".", image.name.split(".")[-1]))
+		return image

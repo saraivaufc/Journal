@@ -3,6 +3,8 @@
 from django.forms import ModelForm,  Textarea, Select, TextInput,  NumberInput
 from django.forms.widgets import HiddenInput
 from newspaper.models import News
+import hashlib
+
 
 class NewsForm(ModelForm):
 	class Meta:
@@ -20,3 +22,14 @@ class PartialNewsForm(ModelForm):
 		data = self.data.copy()
 		data['author'] = author
 		self.data = data
+
+	def clean_image(self):
+		image = self.cleaned_data["image"]
+		if image:
+			hash = hashlib.md5(image.read()).hexdigest()
+			image.name = "".join((hash, ".", image.name.split(".")[-1]))
+		return image
+
+
+	def updateNameImage(self):
+		pass

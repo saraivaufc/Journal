@@ -3,10 +3,10 @@ from django.utils.translation import ugettext as _
 from .userAuthenticated import UserAuthenticated
 
 class Journalist(UserAuthenticated):
-	def registeringNews(self, form):
-		print form.fields['author'], self.id 
+	def registeringNews(self, form): 
 		form.setAuthor(self.id)
 		if form.is_valid():
+			form.updateNameImage()
 			form.save()
 			print _("Added news with success")
 		else:
