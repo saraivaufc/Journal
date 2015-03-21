@@ -1,0 +1,16 @@
+{% load i18n %}
+
+{% if message %}
+    {% if message.type == "SUCCESS" %}
+    <div class="alert alert-success">
+    {% elif  message.type == "ERROR" %}
+    <div class="alert alert-danger">
+    {% elif  message.type == "WARNING" %}
+    <div class="alert alert-warning">
+    {% else %}
+    <div class="alert alert-info">
+    {% endif  %}
+    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+    	{{ message.text }}
+    </div>
+{% endif %}

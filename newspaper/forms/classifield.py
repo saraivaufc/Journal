@@ -3,7 +3,7 @@
 from django.forms import ModelForm,  Textarea, Select, TextInput,  NumberInput
 from newspaper.models import Classifield
 import hashlib
-
+from django import forms
 
 class ClassifieldForm(ModelForm):
 	class Meta:
