@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from newspaper.models import Classifield, Section, Lector
 from newspaper.forms import PartialOfferForm
+from newspaper.entities import Message, TypeMessage
+from django.utils.translation import ugettext as _
 
 def viewClassifield(request, id_classifield):
 	try:
@@ -14,9 +16,12 @@ def viewClassifield(request, id_classifield):
 		form = PartialOfferForm(request.POST)
 		try:
 			user = Lector.objects.get(username = request.user.username)
-			user.addOffer(id_classifield, form)
+			if user.addOffer(id_classifield, form):
+				message = Message(_("Offer was successful!!!"), TypeMessage.SUCCESS)
+			else:
+				message = Message(_("Your offer must be greater than the minimum value and the best offer currently ranked."), TypeMessage.ERROR)
 		except:
-			print "Falha pegar user"
+			message = Message(_("Failed to make offer!!!"), TypeMessage.ERROR)
 
 
 	form = PartialOfferForm()

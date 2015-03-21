@@ -49,6 +49,10 @@ def signup(request):
 		request.POST['password'] =  md5(request.POST['password'] ).hexdigest()
 		form = PartialLectorForm(request.POST)
 		lector = Lector()
-		lector.registering_lector(form)
-	return HttpResponseRedirect("/newspaper/")
+		if lector.registeringLector(form):
+			messages = Message(_("User created successfully!!!"), TypeMessage.SUCCESS)
+		else:
+			messages = Message(_("Failed to create user!!!"), TypeMessage.ERROR)
+
+	return home(request,None, None, messages)
 

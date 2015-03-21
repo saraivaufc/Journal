@@ -3,13 +3,19 @@ from django.http import HttpResponseRedirect, HttpResponse
 from newspaper.models import Section, News, Classifield
 from datetime import datetime
 from newspaper.utils import getNewsFromSection
+from newspaper.entities import Message, TypeMessage
+from django.utils.translation import ugettext as _
 
 def home(request, id_section=None, id_subsection=None, message = None): 
 	sections = []
 	sections = Section.objects.filter()
 	if id_section != None:
-		section = Section.objects.get(id = int(id_section))
-		news_filter = getNewsFromSection(section)
+		try:
+			section = Section.objects.get(id = int(id_section))
+			news_filter = getNewsFromSection(section)
+		except:
+			news_filter = []
+			message = Message(_("This session does not exist!!!"), TypeMessage.ERROR)
 	else:
 		news_filter = News.objects.filter().order_by('-dating_news')
 	if id_subsection != None:

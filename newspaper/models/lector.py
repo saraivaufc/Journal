@@ -13,10 +13,8 @@ class Lector(UserAuthenticated):
 			c = Comment(author = lector, text= text, image = image)
 			c.save()
 			news.comments.add(c)
-			print "Comment add sucess"
 			return True
 		except:
-		 	print "Fail add Comment"
 		 	return False
 
 	def addOffer(self, classifield_id, form):
@@ -29,32 +27,30 @@ class Lector(UserAuthenticated):
 			try:
 				value = form.cleaned_data['value']
 				phone = form.cleaned_data['phone']
-				if value > classifield.price and value > classifield.getBestOffer().value:
-					details = form.cleaned_data['details']
-
-					offer = Offer(author_offer_id = self.id,
-								  value = value,
-								  phone = phone,
-								  details = details,)
-					offer.save()
-					classifield.offers.add(offer)
-					return True
-				else:
-					return False
+				if value > classifield.price:
+					if classifield.getBestOffer() == None or value > classifield.getBestOffer().value:
+						details = form.cleaned_data['details']
+						offer = Offer(author_offer_id = self.id,
+									  value = value,
+									  phone = phone,
+									  details = details,)
+						offer.save()
+						classifield.offers.add(offer)
+						return True
 			except:
-				print "Erro ao adicionar oferta"
-				return False
+				pass
+		return False
 		
-
 	def registeringLector(self, form):
 		if form.is_valid():
 			form.save()
 			try:
-				u = Lector.objects.get(username = request.POST['username'])
+				u = Lector.objects.get(username = form.cleaned_data['username'])
 				permission1 = Permission.objects.get(codename='registering_lector')
 				permission2 = Permission.objects.get(codename='comment_news')
 				permission3 = Permission.objects.get(codename='offer_to_buy')
 				u.user_permissions.add(permission1, permission2, permission3)
+				return True
 			except:
 				return False
 		else:
