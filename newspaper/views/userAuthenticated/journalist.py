@@ -30,6 +30,8 @@ def addJournalist(request):
 				user = Redator.objects.get(username = request.user.username)
 			except:
 				message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.SUCCESS)
+				return manager(request, None, None, message)
+				
 			if user.registeringJournalist(form):
 				message = Message(TextMessage.JOURNALIST_SUCCESS_ADD, TypeMessage.SUCCESS)
 			else:
