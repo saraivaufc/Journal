@@ -17,7 +17,7 @@ class PartialClassifieldForm(ModelForm):
 
 		widgets = {
 			'title': TextInput(attrs={'required': 'required'}),
-			'description': TextInput(attrs={'required': 'required'}),
+			'description': Textarea(attrs={'required': 'required'}),
 			'price': NumberInput(attrs={'required': 'required'}),
 			'phone' : TextInput(),
 		}

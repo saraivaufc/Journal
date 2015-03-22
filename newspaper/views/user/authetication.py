@@ -55,13 +55,13 @@ def signup(request):
 			message = Message(TextMessage.ERROR_GET_PARAMETERS, TypeMessage.ERROR)
 			return home(request,None, None, message)
 
-		form = PartialLectorForm(request.POST)
+		form = PartialLectorForm(request.POST, request.FILES)
 		lector = Lector()
 		if lector.registeringLector(form):
-			messages = Message(TextMessage.USER_CREATED_SUCCESS, TypeMessage.SUCCESS)
+			message = Message(TextMessage.USER_CREATED_SUCCESS, TypeMessage.SUCCESS)
 		else:
-			messages = Message(TextMessage.USER_CREATED_ERROR, TypeMessage.ERROR)
+			message = Message(TextMessage.USER_CREATED_ERROR, TypeMessage.ERROR)
 	else:
 		message = Message(TextMessage.POST_REQUIRED, TypeMessage.ERROR)
-	return home(request,None, None, messages)
+	return home(request,None, None, message)
 

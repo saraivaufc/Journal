@@ -86,11 +86,11 @@
 					</ul>
 				</li>
 				{% else %}
-				<li id="menuLogin" class="dropdown">
+				<li id="menuLogin" class="dropdown  dropdown-large">
 					<a id="navLogin" data-toggle="dropdown" href="#" class="dropdown-toggle">
 						{% trans "LOG IN" %}
 					</a>
-					<div style="padding:17px;" class="dropdown-menu">
+					<div style="padding:17px;" class="dropdown-menu dropdown-menu-large row">
 						<hr class="divider-lite">
 						<h3>{% trans "Login" %}</h3>
 						<hr class="divider-lite">
@@ -117,7 +117,7 @@
 							</a>
 						</form>
 						<hr class="divider-lite">
-						<form class="form collapse" id="formRegister" action="/newspaper/authentication/signup/"  method="POST" style="height: 0px;">
+						<form class="form collapse" id="formRegister" action="/newspaper/authentication/signup/"  enctype="multipart/form-data"  class="js-reply" method="POST" style="height: 0px;">
 							{% csrf_token %}
 							<div class="form-group">
 								<input type="text" required=""
@@ -144,6 +144,14 @@
 								<input type="password" required="" 
 								placeholder="{% trans "Password" %} " id="inputpassword" 
 								name="password" class="form-control vTextField required">
+							</div>
+							<div class="form-group">
+								<input id="id_profile_image" 
+									class="form-control"
+									name="profile_image" type="file">
+									<label for="id_profile_image">
+										{% trans "Profile Picture" %}
+									</label>
 							</div>    
 							<button class="btn btn-default" id="btnRegister" type="submit">
 								{% trans "Sign Up" %}
