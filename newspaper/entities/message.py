@@ -69,6 +69,19 @@ class TextMessage():
 
 	SUBSECTION_NOT_FOUND = _("SubSection not found")
 
+	#Section
+	CLASSIFIELD_SUCCESS_ADD = _("Classifield successfully added")
+	CLASSIFIELD_ERROR_ADD = _("Error adding classifield")
+	
+	CLASSIFIELD_SUCCESS_EDIT = _("Classifield successfully edit")
+	CLASSIFIELD_ERROR_EDIT = _("Error edit classifield")
+	
+	CLASSIFIELD_SUCCESS_REM = _("Classifield successfully removed")
+	CLASSIFIELD_ERROR_REM = _("Error remove classifield")
+
+	CLASSIFIELD_NOT_FOUND = _("Classifield not found")
+	CLASSIFIELDS_NOT_FOUND = _("Classifields not found")
+
 	
 	
 
