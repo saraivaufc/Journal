@@ -13,3 +13,6 @@ class PartialOfferForm(ModelForm):
 	class Meta:
 		model= Offer
 		fields  = ['value', 'details', 'phone']
+		widgets = {
+			'value': NumberInput(attrs={'required': 'required'}),
+		}

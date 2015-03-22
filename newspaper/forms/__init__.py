@@ -7,3 +7,4 @@ from .journalist import JournalistForm, PartialJournalistForm
 from .section import SectionForm, PartialSectionForm
 from .subsection import SubSectionForm, PartialSubSectionForm 
 from .offer import OfferForm, PartialOfferForm
+from .userAuthenticated import UserAuthenticatedForm, PartialUserAuthenticatedForm 

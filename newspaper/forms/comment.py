@@ -1,6 +1,6 @@
 #-*- encoding=utf-8 -*-
 
-from django.forms import ModelForm,  Textarea, Select, TextInput,  NumberInput
+from django.forms import ModelForm,  Textarea
 from newspaper.models import Comment
 import hashlib
 
@@ -12,7 +12,10 @@ class CommentForm(ModelForm):
 class PartialCommentForm(ModelForm):
 	class Meta:
 		model= Comment
-		exclude  = [ 'author','dating_comment']
+		fields  = [ 'text','image']
+		widgets = {
+			'text': Textarea(attrs={'required': 'required'}),
+		}
 
 	def clean_image(self):
 		image = self.cleaned_data["image"]

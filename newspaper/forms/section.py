@@ -1,4 +1,4 @@
-from django.forms import ModelForm,  Textarea, Select, TextInput,  NumberInput
+from django.forms import ModelForm, TextInput
 from newspaper.models import Section
 import hashlib
 
@@ -11,6 +11,10 @@ class SectionForm(ModelForm):
 class PartialSectionForm(ModelForm):
 	class Meta:
 		model= Section
+		fields = ['title', 'image']
+		widgets = {
+			'title': TextInput(attrs={'required': 'required'}),
+		}
 
 	def clean_image(self):
 		image = self.cleaned_data["image"]

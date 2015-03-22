@@ -13,7 +13,14 @@ class ClassifieldForm(ModelForm):
 class PartialClassifieldForm(ModelForm):
 	class Meta:
 		model= Classifield
-		exclude  = ['creator_classifield', 'offers']
+		fields  = ['title', 'description', 'price', 'phone', 'image']
+
+		widgets = {
+			'title': TextInput(attrs={'required': 'required'}),
+			'description': TextInput(attrs={'required': 'required'}),
+			'price': NumberInput(attrs={'required': 'required'}),
+			'phone' : TextInput(),
+		}
 
 	def clean_image(self):
 		image = self.cleaned_data["image"]

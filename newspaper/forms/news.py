@@ -15,8 +15,12 @@ class NewsForm(ModelForm):
 class PartialNewsForm(ModelForm):
 	class Meta:
 		model= News
-		exclude  = ['dating_news', 'comments']		
+		fields = ['title', 'subtitle', 'description','subsection', 'image', 'video', 'author']	
 		widgets = {
+			'title': TextInput(attrs={'required': 'required'}),
+			'subtitle': TextInput(attrs={'required': 'required'}),
+			'description': TextInput(attrs={'required': 'required'}),
+			'subsection': Select(attrs={'required': 'required'}),
 			'author': HiddenInput(),
 		}
 
