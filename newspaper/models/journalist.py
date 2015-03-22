@@ -8,18 +8,24 @@ class Journalist(UserAuthenticated):
 		if form.is_valid():
 			form.updateNameImage()
 			form.save()
-			print _("Added news with success")
+			return True
 		else:
-			print _("Failed to add news")
+			return False
 	
-	def deleteNews(self):
-		pass
+	def deleteNews(self, id_news):
+		try:
+			from newspaper.models import News
+			News.objects.get(id = id_news).delete()
+			return True
+		except:
+			return False
 
 	def editNews(self, form):
 		if form.is_valid():
 			form.save()
+			return True
 		else:
-			print "form invalid"
+			return False
 
 	def __unicode__(self):
 		return self.first_name + " " + self.last_name

@@ -8,7 +8,7 @@ from newspaper.entities import Message, TypeMessage
 from django.utils.translation import ugettext as _
 from newspaper.views.user import home
 
-def manager(request, id_section = None, id_subsection = None):
+def manager(request, id_section = None, id_subsection = None, message = None):
 	if not request.user.has_perm('newspaper.access_manager'):
 		message = Message(_("You do not have access!!!"), TypeMessage.ERROR)
 		return home(request,None, None, message)
