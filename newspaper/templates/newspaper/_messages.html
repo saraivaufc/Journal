@@ -2,15 +2,14 @@
 
 {% if message %}
     {% if message.type == "SUCCESS" %}
-    <div class="alert alert-success">
+    <input type='hidden' id="alert-success" value="{{ message.text }}">
     {% elif  message.type == "ERROR" %}
-    <div class="alert alert-danger">
+    <input type='hidden' id="alert-danger" value="{{ message.text }}">
     {% elif  message.type == "WARNING" %}
-    <div class="alert alert-warning">
+    <input type='hidden' id="alert-warning" value="{{ message.text }}">
+    {% elif message.type == "INFO" %}
+    <input type='hidden' id="alert-info" value="{{ message.text }}">
     {% else %}
-    <div class="alert alert-info">
+    
     {% endif  %}
-    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-    	{{ message.text }}
-    </div>
 {% endif %}
