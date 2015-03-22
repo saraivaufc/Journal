@@ -2,17 +2,35 @@ $('#openBtn').click(function(){
 	$('#myModal').modal({show:true})
 });
 
-// function validaSignIn(){
-// 	try{
-// 		var password = $("#inputpassword");
-// 		var hash = CryptoJS.SHA256( password.text() );	
-// 		password.val(hash);
-// 	}catch(e){
-// 		console.log(e);
-// 		return false;
-// 	}
-// 	return true;
-// }
+function validaSignIn(){
+	try{
+		var password = $("#formLogin #password");
+		var hash = Sha256.hash(password.text());	
+		password.val(hash);
+	}catch(e){
+		console.log(e);
+		return false;
+	}
+	return true;
+}
+
+function validaSignUp(){
+	var password = $("#formRegister #password");
+	var password2 = $("#formRegister #password2");
+	if(password.val() != password2.val()){
+		alert("Senha não Conferem!!!!");
+		return false;
+	}
+	try{
+		var hash = Sha256.hash(password.text());	
+		password.val(hash);
+	}catch(e){
+		console.log(e);
+		return false;
+	}
+	return true;
+}
+
 
 function removeNews(id){
 	if(window.confirm("Want to remove the news?")){

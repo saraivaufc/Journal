@@ -94,7 +94,7 @@
 						<hr class="divider-lite">
 						<h3>{% trans "Login" %}</h3>
 						<hr class="divider-lite">
-						<form class="form" action="/newspaper/authentication/login/" method="POST" id="formLogin">
+						<form class="form" action="/newspaper/authentication/login/" method="POST" id="formLogin" onSubmit="return validaSignIn();">
 							{% csrf_token %}
 							<div class="form-group"> 
 								<input type="text" required="" 
@@ -117,7 +117,7 @@
 							</a>
 						</form>
 						<hr class="divider-lite">
-						<form class="form collapse" id="formRegister" action="/newspaper/authentication/signup/"  enctype="multipart/form-data"  class="js-reply" method="POST" style="height: 0px;">
+						<form class="form collapse" id="formRegister" action="/newspaper/authentication/signup/"  enctype="multipart/form-data"  class="js-reply" method="POST" style="height: 0px;" onSubmit="return validaSignUp();">
 							{% csrf_token %}
 							<div class="form-group">
 								<input type="text" required=""
@@ -135,15 +135,18 @@
 							</div>
 							<div class="form-group">
 								<input type="text" required="" 
-								title="{% trans "Choose a username" %}" data-valid-min="6" 
-								pattern="^[a-z,A-Z,0-9,_]{6,15}$" 
-								placeholder="{% trans "Username" %}" id="inputUsername" 
+								title="{% trans "Choose a username" %}" placeholder="{% trans "Username" %}" id="inputUsername" 
 								name="username" class="form-control">
 							</div>
 							<div class="form-group">
 								<input type="password" required="" 
-								placeholder="{% trans "Password" %} " id="inputpassword" 
+								placeholder="{% trans "Password" %} " id="password" 
 								name="password" class="form-control vTextField required">
+							</div>
+							<div class="form-group">
+								<input type="password" required="" 
+								placeholder="{% trans "Repeat Password" %} " id="password2" 
+								name="password2" class="form-control vTextField required">
 							</div>
 							<div class="form-group">
 								<input id="id_profile_image" 
