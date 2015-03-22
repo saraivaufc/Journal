@@ -1,1 +1,1 @@
-from . message import Message, TypeMessage
+from . message import Message, TypeMessage, TextMessage

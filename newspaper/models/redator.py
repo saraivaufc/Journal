@@ -6,7 +6,7 @@ from django.contrib.auth.models import Group, Permission
 
 class Redator(UserAuthenticated):
 	def registeringJournalist(self, form):
-		if form.is_valid():			
+		if form.is_valid():	
 			form.save()
 			data = form.cleaned_data
 			username = data['username']
@@ -29,7 +29,14 @@ class Redator(UserAuthenticated):
 			Journalist.objects.get(id = id).delete()
 			return True
 		except:
-			print "Falah ao remover Journalist"
+			return False
+
+	def deleteNews(self, id_news):
+		try:
+			from newspaper.models import News
+			News.objects.get(id = id_news).delete()
+			return True
+		except:
 			return False
 
 
@@ -61,6 +68,7 @@ class Redator(UserAuthenticated):
 			return True
 		else:
 			return False
+
 	def editSubSection(self, form):
 		if form.is_valid():
 			form.save()

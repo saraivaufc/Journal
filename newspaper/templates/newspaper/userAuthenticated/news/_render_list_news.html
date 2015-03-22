@@ -13,9 +13,11 @@
 				        </a>
 			    	</div>
 			        <div class="col-xs-2 col-md-2 text-right">
+			        	{% if perms.newspaper.keep_news %}
 			        	<a href="/newspaper/userAuthenticated/manager/news/edit/{{i.id}}/">
 			        		<span class="glyphicon glyphicon-edit"></span>
 			        	</a>
+			        	{% endif %}
 			        	&nbsp;
 			        	<a href="/newspaper/userAuthenticated/manager/news/rem/{{i.id}}/">
 							<span class="glyphicon glyphicon-remove"></span>

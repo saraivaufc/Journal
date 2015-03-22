@@ -4,13 +4,13 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from newspaper.models import News, Section, SubSection, Journalist
 from newspaper.utils import getNewsFromSection
-from newspaper.entities import Message, TypeMessage
+from newspaper.entities import Message, TypeMessage, TextMessage
 from django.utils.translation import ugettext as _
 from newspaper.views.user import home
 
 def manager(request, id_section = None, id_subsection = None, message = None):
 	if not request.user.has_perm('newspaper.access_manager'):
-		message = Message(_("You do not have access!!!"), TypeMessage.ERROR)
+		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
 		return home(request,None, None, message)
 
 	news = News.objects.all()

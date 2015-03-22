@@ -3,9 +3,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.utils.translation import ugettext as _
-from newspaper.models import News, Journalist
+from newspaper.models import News, Journalist, Redator
 from newspaper.forms import NewsForm, PartialNewsForm
-from newspaper.entities import Message, TypeMessage
+from newspaper.entities import Message, TypeMessage, TextMessage
 from django.utils.translation import ugettext as _
 from newspaper.views.userAuthenticated import manager
 
@@ -19,17 +19,17 @@ def addNews(request):
 										username=request.user.username)
 				form = PartialNewsForm(request.POST, request.FILES)
 				if user.registeringNews(form):
-					message = Message(_("News added successfully!!!"), TypeMessage.SUCCESS)
+					message = Message(TextMessage.NEWS_SUCCESS_ADD, TypeMessage.SUCCESS)
 				else:
-					message = Message(_("Failed to add the news!!!"), TypeMessage.ERROR)
+					message = Message(TextMessage.NEWS_ERROR_ADD, TypeMessage.ERROR)
 			except:
-				message = Message(_("Journalist does not exist!!!"), TypeMessage.ERROR)
+				message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
 		else:
 			form = PartialNewsForm()
 			option = _("News")
 			return render(request, "newspaper/userAuthenticated/news/addNews.html", locals())
 	else:
-		message = Message(_("User does not have permission!!!"), TypeMessage.ERROR)
+		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
 
 	return manager(request, None, None, message )
 
@@ -39,19 +39,23 @@ def editNews(request, id_news):
 		try:
 			news = News.objects.get(id = id_news)
 		except:
-			return HttpResponseRedirect("/newspaper/userAuthenticated/manager/")
+			message = Message(TextMessage.NEWS_NOT_FOUND, TypeMessage.ERROR)
+			return manager(request, None, None, message )
 
 		if request.method == "POST":
 			try:
-				user = Journalist.objects.get(
-											username=request.user.username)
+				try:
+					user = Journalist.objects.get(username=request.user.username)
+				except:
+					message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
+					return manager(request, None, None, message )
 				form = PartialNewsForm(request.POST, request.FILES, instance=news)
 				if user.editNews(form):
-					message = Message(_("News edited successfully!!!"), TypeMessage.SUCCESS)
+					message = Message(TextMessage.NEWS_SUCCESS_EDIT, TypeMessage.SUCCESS)
 				else:
-					message = Message(_("Failed to edit news!!!"), TypeMessage.ERROR)
+					message = Message(TextMessage.NEWS_ERROR_EDIT, TypeMessage.ERROR)
 			except:
-				message = Message(_("Journalist does not exist!!!"), TypeMessage.ERROR)
+				message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
 
 		else:
 			try:
@@ -61,7 +65,7 @@ def editNews(request, id_news):
 			except:
 				pass
 	else:
-		message = Message(_("User does not have permission!!!"), TypeMessage.ERROR)
+		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
 	return manager(request, None, None, message )
 
 
@@ -69,11 +73,21 @@ def remNews(request, id_news):
 	message = None
 	if request.user.has_perm('newspaper.keep_news') or request.user.has_perm('newspaper.delete_news'):
 		try:
-			user = Journalist.objects.get(username=request.user.username)
+			try:
+				user = Journalist.objects.get(username=request.user.username)
+			except:
+				try:
+					user = Redator.objects.get(username=request.user.username)
+				except:
+					message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
+					return manager(request, None, None, message )
+
 			if user.deleteNews(id_news):
-				message = Message(_("Removed successfully News!!!"), TypeMessage.SUCCESS)
+				message = Message(TextMessage.NEWS_SUCCESS_REM, TypeMessage.SUCCESS)
 			else:
-				message = Message(_("Failed to remove news!!!"), TypeMessage.ERROR)
+				message = Message(TextMessage.NEWS_ERROR_REM, TypeMessage.ERROR)
 		except:
-			message = Message(_("Journalist does not exist!!!"), TypeMessage.ERROR)
+			message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
+	else:
+		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
 	return manager(request, None, None, message )
