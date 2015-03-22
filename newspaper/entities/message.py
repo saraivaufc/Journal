@@ -41,7 +41,34 @@ class TextMessage():
 	
 	JOURNALIST_SUCCESS_REM = _("Journalist successfully removed")
 	JOURNALIST_ERROR_REM = _("Error remove journalist")
+
+	JOURNALIST_NOT_FOUND = _("Journalist not found")
+
 	
+	#Section
+	SECTION_SUCCESS_ADD = _("Section successfully added")
+	SECTION_ERROR_ADD = _("Error adding section")
+	
+	SECTION_SUCCESS_EDIT = _("Section successfully edit")
+	SECTION_ERROR_EDIT = _("Error edit section")
+	
+	SECTION_SUCCESS_REM = _("Section successfully removed")
+	SECTION_ERROR_REM = _("Error remove section")
+
+	SECTION_NOT_FOUND = _("Section not found")
+
+	#Section
+	SUBSECTION_SUCCESS_ADD = _("SubSection successfully added")
+	SUBSECTION_ERROR_ADD = _("Error adding subsection")
+	
+	SUBSECTION_SUCCESS_EDIT = _("SubSection successfully edit")
+	SUBSECTION_ERROR_EDIT = _("Error edit subsection")
+	
+	SUBSECTION_SUCCESS_REM = _("SubSection successfully removed")
+	SUBSECTION_ERROR_REM = _("Error remove subsection")
+
+	SUBSECTION_NOT_FOUND = _("SubSection not found")
+
 	
 	
 

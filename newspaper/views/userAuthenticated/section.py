@@ -5,8 +5,12 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.utils.translation import ugettext as _
 from newspaper.models import Section, SubSection, Redator, News, Journalist
 from newspaper.forms import SectionForm, PartialSectionForm, SubSectionForm, PartialSubSectionForm
+from newspaper.entities import Message, TypeMessage,TextMessage
+from django.utils.translation import ugettext as _
+from newspaper.views.userAuthenticated import manager
 
 def addSection(request):
+	message = None 
 	if request.user.has_perm('newspaper.keep_section'):
 		news = News.objects.all()
 		sections = Section.objects.all()
@@ -15,13 +19,19 @@ def addSection(request):
 			journalists = Journalist.objects.all()
 		if request.method == "POST":
 			try:
-				user = Redator.objects.get(
-										username=request.user.username)
+				try:
+					user = Redator.objects.get(username=request.user.username)
+				except:
+					message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
+					return manager(request, None, None, message )
 				form = PartialSectionForm(request.POST, request.FILES)
-				user.registeringSection(form)
+				if user.registeringSection(form):
+					message = Message(TextMessage.SECTION_SUCCESS_ADD, TypeMessage.SUCCESS)
+				else:
+					message = Message(TextMessage.SECTION_ERROR_ADD, TypeMessage.ERROR)
 			except:
 				pass
-			return HttpResponseRedirect("/newspaper/userAuthenticated/manager/")
+			return manager(request, None, None, message )
 		else:
 			form = PartialSectionForm()
 			option = _("Section")
@@ -29,10 +39,11 @@ def addSection(request):
 			open_subsections2 = True
 			return render(request, "newspaper/userAuthenticated/section/addSection.html", locals())
 	else:
-		print "Sem permisão"
-	return HttpResponseRedirect("/newspaper/userAuthenticated/manager/")
+		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
+	return manager(request, None, None, message )
 
 def editSection(request, id_section):
+	message = None
 	if request.user.has_perm('newspaper.keep_section'):
 		news = News.objects.all()
 		sections = Section.objects.all()
@@ -41,13 +52,22 @@ def editSection(request, id_section):
 		try:
 			section = Section.objects.get(id = id_section)
 		except:
-			return HttpResponseRedirect("/newspaper/userAuthenticated/manager/")
+			message = Message(TextMessage.SECTION_NOT_FOUND, TypeMessage.ERROR)
+			return manager(request, None, None, message )
 
 		if request.method == "POST":
 			try:
-				user = Redator.objects.get(username=request.user.username)
+				try:
+					user = Redator.objects.get(username=request.user.username)
+				except:
+					message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
+					return manager(request, None, None, message )
+
 				form = PartialSectionForm(request.POST, request.FILES, instance=section)
-				user.editSection(form)
+				if user.editSection(form):
+					message = Message(TextMessage.SECTION_SUCCESS_EDIT, TypeMessage.SUCCESS)
+				else:
+					message = Message(TextMessage.SECTION_ERROR_EDIT, TypeMessage.ERROR)
 			except:
 				pass
 		else:
@@ -60,15 +80,25 @@ def editSection(request, id_section):
 			except:
 				pass
 	else:
-		print "Sem Permissão"
-	return HttpResponseRedirect("/newspaper/userAuthenticated/manager/")
+		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
+	return manager(request, None, None, message )
 
 
 def remSection(request, id_section):
+	message = None
 	if request.user.has_perm('newspaper.keep_section'):
 		try:
-			user = Redator.objects.get(username=request.user.username)
-			user.remSection(id_section)
+			try:
+				user = Redator.objects.get(username=request.user.username)
+			except:
+				message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
+				return manager(request, None, None, message )
+			if user.remSection(id_section):
+				message = Message(TextMessage.SECTION_SUCCESS_REM, TypeMessage.SUCCESS)
+			else:
+				message = Message(TextMessage.SECTION_ERROR_REM, TypeMessage.ERROR)
 		except:
 			pass
-	return HttpResponseRedirect("/newspaper/userAuthenticated/manager/")
+	else:
+		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
+	return manager(request, None, None, message )

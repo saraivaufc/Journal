@@ -16,7 +16,10 @@ class PartialCommentForm(ModelForm):
 
 	def clean_image(self):
 		image = self.cleaned_data["image"]
-		if image:
-			hash = hashlib.md5(image.read()).hexdigest()
-			image.name = "".join((hash, ".", image.name.split(".")[-1]))
+		try:
+			if image:
+				hash = hashlib.md5(image.read()).hexdigest()
+				image.name = "".join((hash, ".", image.name.split(".")[-1]))
+		except:
+			pass
 		return image

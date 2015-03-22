@@ -5,8 +5,12 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.utils.translation import ugettext as _
 from newspaper.models import Section, SubSection, Redator, News, Journalist
 from newspaper.forms import SubSectionForm, PartialSubSectionForm
+from newspaper.entities import Message, TypeMessage,TextMessage
+from django.utils.translation import ugettext as _
+from newspaper.views.userAuthenticated import manager
 
 def addSubSection(request):
+	message = None
 	if request.user.has_perm('newspaper.keep_subsection'):
 		news = News.objects.all()
 		sections = Section.objects.all()
@@ -14,13 +18,18 @@ def addSubSection(request):
 			journalists = Journalist.objects.all()
 		if request.method == "POST":
 			try:
-				user = Redator.objects.get(
-										username=request.user.username)
+				try:
+					user = Redator.objects.get(username=request.user.username)
+				except:
+					message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
+					return manager(request, None, None, message )
 				form = PartialSubSectionForm(request.POST, request.FILES)
-				user.registeringSubSection(form)
+				if user.registeringSubSection(form):
+					message = Message(TextMessage.SUBSECTION_SUCCESS_ADD, TypeMessage.SUCCESS)
+				else:
+					message = Message(TextMessage.SUBSECTION_ERROR_ADD, TypeMessage.ERROR)
 			except:
 				pass
-			return HttpResponseRedirect("/newspaper/userAuthenticated/manager/")
 		else:
 			form = PartialSubSectionForm()
 			option = _("SubSection")
@@ -28,10 +37,11 @@ def addSubSection(request):
 			open_subsections2 = True
 			return render(request, "newspaper/userAuthenticated/subsection/addSubSection.html", locals())
 	else:
-		print "Sem permisão"
-	return HttpResponseRedirect("/newspaper/userAuthenticated/manager/")
+		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
+	return manager(request, None, None, message )
 
 def editSubSection(request, id_subsection):
+	message = None
 	if request.user.has_perm('newspaper.keep_subsection'):
 		news = News.objects.all()
 		sections = Section.objects.all()
@@ -40,13 +50,21 @@ def editSubSection(request, id_subsection):
 		try:
 			subsection = SubSection.objects.get(id = id_subsection)
 		except:
-			return HttpResponseRedirect("/newspaper/userAuthenticated/manager/")
+			message = Message(TextMessage.SUBSECTION_NOT_FOUND, TypeMessage.ERROR)
+			return manager(request, None, None, message )
 
 		if request.method == "POST":
 			try:
-				user = Redator.objects.get(username=request.user.username)
+				try:
+					user = Redator.objects.get(username=request.user.username)
+				except:
+					message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
+					return manager(request, None, None, message)
 				form = PartialSubSectionForm(request.POST, request.FILES, instance=subsection)
-				user.editSubSection(form)
+				if user.editSubSection(form):
+					message = Message(TextMessage.SUBSECTION_SUCCESS_EDIT, TypeMessage.SUCCESS)
+				else:
+					message = Message(TextMessage.SUBSECTION_ERROR_EDIT, TypeMessage.ERROR)
 			except:
 				pass
 		else:
@@ -57,17 +75,27 @@ def editSubSection(request, id_subsection):
 				open_subsections2 = True
 				return render(request, "newspaper/userAuthenticated/subsection/editSubSection.html", locals())
 			except:
-				pass
+				message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
 	else:
-		print "Sem Permissão"
-	return HttpResponseRedirect("/newspaper/userAuthenticated/manager/")
+		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
+	return manager(request, None, None, message )
 
 
 def remSubSection(request, id_subsection):
+	message = None
 	if request.user.has_perm('newspaper.keep_subsection'):
 		try:
-			user = Redator.objects.get(username=request.user.username)
-			user.remSubSection(id_subsection)
+			try:
+				user = Redator.objects.get(username=request.user.username)
+			except:
+				message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
+				return manager(request, None, None, message)
+			if user.remSubSection(id_subsection):
+				message = Message(TextMessage.SUBSECTION_SUCCESS_REM, TypeMessage.SUCCESS)
+			else:
+				message = Message(TextMessage.SUBSECTION_ERROR_REM, TypeMessage.ERROR)
 		except:
 			pass
-	return HttpResponseRedirect("/newspaper/userAuthenticated/manager/")
+	else:
+		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
+	return manager(request, None, None, message )

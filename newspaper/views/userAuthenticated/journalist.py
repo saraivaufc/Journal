@@ -50,7 +50,10 @@ def viewJournalist(request, id_journalist):
 		news = News.objects.all()
 		sections = Section.objects.all()
 		try:
-			journalist = Journalist.objects.get(id = id_journalist)
+			try:
+				journalist = Journalist.objects.get(id = id_journalist)
+			except:
+				message = Message(TextMessage.JOURNALIST_NOT_FOUND, TypeMessage.ERROR)
 			journalists = Journalist.objects.all()
 			open_journalist = True
 			return render(request, "newspaper/userAuthenticated/journalist/viewJournalist.html", locals())
@@ -76,24 +79,34 @@ def remJournalist(request, id_journalist):
 	return manager(request, None, None, message )
 
 def editJournalist(request, id_journalist):
+	message = None
 	if request.user.has_perm('newspaper.keep_journalist'):
 		news = News.objects.all()
 		sections = Section.objects.all()
 		try:
-			user = Redator.objects.get(username = request.user.username)
-			journalist = Journalist.objects.get(id = id_journalist)
+			try:
+				user = Redator.objects.get(username = request.user.username)
+			except:
+				message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
+
+			try:
+				journalist = Journalist.objects.get(id = id_journalist)
+			except:
+				message = Message(TextMessage.JOURNALIST_ERROR_REM, TypeMessage.ERROR)
 			journalists = Journalist.objects.all()
 		except:
-			print "Erro ao pegar Usuario ou jornalista"
-			return HttpResponseRedirect("/newspaper/userAuthenticated/manager/")
+			message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
 
 		if request.method == "POST":
 			form = PartialJournalistForm(request.POST, request.FILES, instance = journalist)
-			user.editJournalist(form)
+			if user.editJournalist(form):
+				message = Message(TextMessage.JOURNALIST_SUCCESS_EDIT, TypeMessage.SUCCESS)
+			else:
+				message = Message(TextMessage.JOURNALIST_ERROR_EDIT, TypeMessage.ERROR)
 		else:
 			form = PartialJournalistForm(instance = journalist) 
 			open_journalist = True
 			return render(request, "newspaper/userAuthenticated/journalist/editJournalist.html", locals())
 	else:
-		print "Sem permisão"
-	return HttpResponseRedirect("/newspaper/userAuthenticated/manager/")
+		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
+	return manager(request, None, None, message )
