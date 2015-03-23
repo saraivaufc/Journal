@@ -7,6 +7,6 @@ def index(request):
 	if request.user.is_authenticated():
 		return HttpResponseRedirect('/newspaper/home/')
 	else:
-		return HttpResponseRedirect('/newspaper/userAutheticated/')
+		return HttpResponseRedirect('/newspaper/userAuthenticated/')
 
 

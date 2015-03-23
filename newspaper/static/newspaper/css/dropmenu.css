@@ -120,12 +120,12 @@ label {
 
 /* Hide the file input using
 opacity */
-[type=file] {
+#input_profile_image [type=file] {
     position: absolute;
     filter: alpha(opacity=0);
     opacity: 0;
 }
-input,
+#input_profile_image input,
 [type=file] + label {
   border: 1px solid #CCC;
   border-radius: 3px;
@@ -136,7 +136,7 @@ input,
   left: 0;
   position: relative;
 }
-[type=file] + label {
+#input_profile_image [type=file] + label {
   text-align: center;
   top: 0.5em;
   /* Decorative */
@@ -145,6 +145,6 @@ input,
   border: none;
   cursor: pointer;
 }
-[type=file] + label:hover {
+#input_profile_image [type=file] + label:hover {
   background: #3399ff;
 }
