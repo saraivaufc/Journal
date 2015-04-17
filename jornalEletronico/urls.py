@@ -4,8 +4,6 @@ from django.conf import settings
 from newspaper.views import index
 admin.autodiscover()
 
-import permission; permission.autodiscover()
-
 urlpatterns = patterns('',
 	url(r'$^', index ),
 	url(r'^newspaper/', include('newspaper.urls', namespace="newspaper", app_name="newspaper")),

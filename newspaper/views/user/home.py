@@ -2,15 +2,15 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from newspaper.models import Section, SubSection, News, Classifield
 from datetime import datetime
-from newspaper.utils import getNewsFromSection
+from newspaper.utils import getNewsFromSection, filterList
 from newspaper.entities import Message, TypeMessage, TextMessage
 from django.utils.translation import ugettext as _
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_protect
 
-@cache_page(60 * 15)
+#@cache_page(60 * 15)
 @csrf_protect
-def home(request, id_section=None, id_subsection=None, message = None): 
+def home(request, id_section=None, id_subsection=None, message = None, id_page = 0): 
 	sections = []
 	sections = Section.objects.filter()
 	if id_section != None:
@@ -44,4 +44,12 @@ def home(request, id_section=None, id_subsection=None, message = None):
 		else:
 			news_image.append(i)
 	most_popular = news_image[:5]
+
+	try:
+		news_image = filterList(news_image, int(id_page), 2)
+		news_no_image = filterList(news_no_image, int(id_page), 5)
+		classifields = filterList(classifields, int(id_page), 5)
+	except:
+		print 'Erro'
+
 	return render(request, 'newspaper/user/home.html', locals())

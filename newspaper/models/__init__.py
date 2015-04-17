@@ -6,7 +6,6 @@ from .lector import Lector
 from .news import News
 from .section import Section
 from .subsection import SubSection
-from .creation import Creation
 from .redator import Redator
 from .user import User
 from .userAuthenticated import UserAuthenticated

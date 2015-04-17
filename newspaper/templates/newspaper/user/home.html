@@ -188,6 +188,25 @@
 	</div>
 	{% endblock %}
 
+	<hr class="divider-lite">
+		<div class="row">
+				<center>
+				<div class="btn-group" role="group">
+					<a href="/newspaper/{{ id_page|add:"-1" }}/">
+						<button class="btn btn-group">
+							<span class="glyphicon glyphicon-chevron-left"></span>
+						</button>	
+					</a>
+				</div>
+				<div class="btn-group" role="group">
+					<a href="/newspaper/{{ id_page|add:"1" }}/">
+						<button class="btn btn-group">							
+							<span class="glyphicon glyphicon-chevron-right"></span>
+						</button>
+					</a>
+				</div>
+				</center>
+		</div>
 {% endblock %}
 
 {% block modals %}

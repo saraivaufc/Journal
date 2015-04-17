@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils.translation import ugettext as _
-from .creation import Creation
 
 class SubSection(models.Model):
 	title = models.CharField(max_length=50, verbose_name=_("Title"), )

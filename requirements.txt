@@ -20,4 +20,4 @@ pysqlite==2.6.3
 django-permissionsx
 
 #easy_install
-sudo easy_install django-rosetta
+#sudo easy_install django-rosetta

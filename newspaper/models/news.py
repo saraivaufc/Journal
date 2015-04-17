@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 from datetime import datetime
-from .creation import Creation
 
 class News(models.Model):
 	title = models.CharField(max_length=500, verbose_name=_("Title"), )

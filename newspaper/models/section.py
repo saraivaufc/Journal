@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 from .subsection import SubSection
-from .creation import Creation
 
 
 class Section(models.Model):

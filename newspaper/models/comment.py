@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils.translation import ugettext as _
-from .creation import Creation
 from datetime import datetime
 
 class Comment(models.Model):
