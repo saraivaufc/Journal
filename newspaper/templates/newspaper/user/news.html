@@ -63,7 +63,7 @@
 					</div>
 				</div>
 			</p>
-			<!-- <h1>{% trans "Comments:" %}</h1>
+			<h1>{% trans "Comments:" %}</h1>
 			<hr class="divider-lite">
 			<ul>
 			{% for i in news.comments.all %}
@@ -103,8 +103,8 @@
 				<h1>{% trans "Add your comment:" %}</h1>
 				{% include "newspaper/_form.html" %}
 			{% else %}
-			{% endif %} -->
-			<div id="disqus_thread"></div>
+			{% endif %}
+			<!-- <div id="disqus_thread"></div>
 			<script type="text/javascript">
 			    /* * * CONFIGURATION VARIABLES * * */
 			    var disqus_shortname = 'theufctimes';
@@ -117,7 +117,7 @@
 			    })();
 			</script>
 			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
-			</noscript>
+			</noscript> -->
 		</div>
 	</div>
 {% endblock %}
