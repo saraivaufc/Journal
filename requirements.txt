@@ -16,7 +16,6 @@ django-role-permissions
 tox==1.7.0
 model-mommy==1.2.1
 django-discover-runner==1
-pysqlite==2.6.3
 django-permissionsx
 
 #easy_install
