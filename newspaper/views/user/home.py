@@ -52,4 +52,11 @@ def home(request, id_section=None, id_subsection=None, message = None, id_page =
 	except:
 		print 'Erro'
 
-	return render(request, 'newspaper/user/home.html', locals())
+	contex = {'sections' : sections,
+			  'news_image': news_image,
+			  'news_no_image': news_no_image,
+			  'most_popular': most_popular,
+			  'classifields': classifields,
+			  'message': message,
+			  'id_page': id_page}
+	return render(request, 'newspaper/user/home.html', contex)

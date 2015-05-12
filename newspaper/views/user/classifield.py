@@ -40,4 +40,10 @@ def viewClassifield(request, id_classifield):
 			message = Message(TextMessage.OFFER_ERROR_ADD, TypeMessage.ERROR)
 
 	form = PartialOfferForm()
-	return render(request, 'newspaper/user/classifield.html', locals())
+	
+	contex = {'form' : form, 
+			  'message' : message, 
+			  'sections': sections,
+			  'classifield': classifield,
+			  'classifields': classifields,}
+	return render(request, 'newspaper/user/classifield.html', contex)

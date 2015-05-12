@@ -59,4 +59,10 @@ def viewNews(request, id_news):
 		pass
 	
 	form = PartialCommentForm()
-	return render(request, 'newspaper/user/news.html', locals())
+
+	contex = {'message': message,
+			  'form': form, 
+			  'sections':sections,
+			  'news': news,
+			  'news_all': news_all}
+	return render(request, 'newspaper/user/news.html', contex)

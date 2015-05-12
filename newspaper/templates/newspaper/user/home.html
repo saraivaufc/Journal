@@ -57,6 +57,7 @@
 							{% else %}
 							<div class="item">
 							{% endif %}
+							{% if i.image %}
 								<div>
 									<img src="{{ i.image.url }}" alt="{{ i.title }}">
 									<div class="container">
@@ -70,6 +71,7 @@
 										</div>
 									</div>
 								</div>
+							{% endif %}
 							</div>
 						{% endfor %}
 					</div>
@@ -95,15 +97,6 @@
 							<a href="/newspaper/news/{{a.id}}/"><h1 class="text-left">{{a.title }}</h1></a>
 							<h3>{% trans "By" %} {{ a.author }} , {{ a.dating_news|naturaltime|capfirst }}.</h3>
 							<p class="text-justify">{{a.subtitle|safe}}</p>
-							<div class="container-flui">
-								<div class="row">
-									{% if a.video %}
-									<video width="100%" height="100%" controls>
-									<source src="{{ a.video.url }}" type="video/mp4">
-									</video> 
-									{% endif %}
-								</div>
-							</div>
 						</div>
 					</li>
 
@@ -121,12 +114,14 @@
 				{% for b in news_image %}
 				<li>
 					<div>
+						{% if b.image %}
 						<figure>
 							<a href="{{ b.image.url }}" class="boxer"
 							   title="{{ b.title }}" data-gallery="galleryNewsImage">
 							    <img class="img-responsive fill" src="{{ b.image.url }}"/>
 							</a>
 						</figure>
+						{% endif %}
 						<center>
 							<a href="/newspaper/news/{{b.id}}/"><h1>{{ b.title }}</h1></a>
 						</center>

@@ -6,7 +6,6 @@ class Journalist(UserAuthenticated):
 	def registeringNews(self, form): 
 		form.setAuthor(self.id)
 		if form.is_valid():
-			form.updateNameImage()
 			form.save()
 			return True
 		else:

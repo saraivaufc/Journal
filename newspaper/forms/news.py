@@ -36,9 +36,9 @@ class PartialNewsForm(ModelForm):
 			if image:
 				hash = hashlib.md5(image.read()).hexdigest()
 				image.name = "".join((hash, ".", image.name.split(".")[-1]))
+				return image
 		except:
 			pass
-		return image
 
 	def clean_video(self):
 		video = self.cleaned_data["video"]
@@ -49,7 +49,3 @@ class PartialNewsForm(ModelForm):
 		except:
 			pass
 		return video
-
-
-	def updateNameImage(self):
-		pass
