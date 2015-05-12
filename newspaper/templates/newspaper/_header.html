@@ -34,12 +34,12 @@
 					<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
 						{% for i in sections %}
 							<li class="dropdown-submenu">
-								<a tabindex="-1" href="/newspaper/{{ i.id }}/">{{ i.title }}</a>
+								<a tabindex="-1" href="/newspaper/home/section={{ i.id }}/">{{ i.title }}</a>
 
 								<ul class="dropdown-menu">
 									<li class="dropdown-header">{{ i.title }}</li>
 									{% for k in i.getSubSections %}
-										<li><a href="/newspaper/{{ i.id }}/{{ k.id }}/">{{ k.title }}</a></li>
+										<li><a href="/newspaper/home/section={{ i.id }}/subsection={{ k.id }}/">{{ k.title }}</a></li>
 									{% endfor %}
 								</ul>
 							</li>

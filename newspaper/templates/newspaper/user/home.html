@@ -180,9 +180,9 @@
 				<center>
 				<div class="btn-group" role="group">
 					{% if id_section == None %}
-					<a href="/newspaper/home/{{ id_page_left }}/">
+					<a href="/newspaper/home/page={{ id_page_left }}/">
 					{% else %}
-					<a href="/newspaper/home/section={{ id_section }}/{{ id_page_left }}/">
+					<a href="/newspaper/home/section={{ id_section }}/page={{ id_page_left }}/">
 					{% endif %}
 						<button class="btn btn-group">
 							<span class="glyphicon glyphicon-chevron-left"></span>
@@ -191,9 +191,9 @@
 				</div>
 				<div class="btn-group" role="group">
 					{% if id_section == None %}
-						<a href="/newspaper/home/{{ id_page_rigth }}/">
+						<a href="/newspaper/home/page={{ id_page_rigth }}/">
 					{% else %}
-						<a href="/newspaper/home/section={{ id_section }}/{{ id_page_rigth }}/">
+						<a href="/newspaper/home/section={{ id_section }}/page={{ id_page_rigth }}/">
 					{% endif %}
 						<button class="btn btn-group">							
 							<span class="glyphicon glyphicon-chevron-right"></span>

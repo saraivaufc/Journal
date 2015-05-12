@@ -50,7 +50,7 @@ def home(request, id_section=None, id_subsection=None, message = None, id_page =
 	#try:
 	news_image = filterList(news_image, int(id_page), 4)
 	news_no_image = filterList(news_no_image, int(id_page), 6)
-	classifields = filterList(classifields, int(id_page), 5)
+	classifields = filterList(classifields, int(id_page), 4)
 	#except:
 		#print 'Erro'
 
