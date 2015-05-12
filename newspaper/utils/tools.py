@@ -1,4 +1,6 @@
-def filterList(list, index=1, tam=0):
+def filterList(list, index=0, tam=0):
+	if index <= 0:
+		return list[:tam]
 	if index == None:
 		index = 1
 	if tam <= 0:

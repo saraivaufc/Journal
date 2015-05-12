@@ -24,7 +24,7 @@
 	    <ul class="mini-navigation-menu">
 			{% for i in sections %}
 				<li>
-	            	<a href="/newspaper/home/{{ i.id }}/">{{ i.title }}</a>
+	            	<a href="/newspaper/home/section={{ i.id }}/">{{ i.title }}</a>
 	        	</li>
 			{% endfor %}        
 	        	<li>
@@ -127,15 +127,6 @@
 						</center>
 						<h3>{% trans "By" %} {{ b.author }} , {{ b.dating_news|naturaltime|capfirst }}.</h3>
 						<p class="text-justify">{{ b.subtitle|safe }}</p>
-						<div class="container-fluid">
-							<div class="row">
-								{% if b.video %}
-								<video width="100%" height="100%" controls>
-									<source src="{{ b.video.url }}" type="video/mp4">
-								</video> 
-								{% endif %}
-							</div>
-						</div>
 					</div>
 				</li>
 				{% if forloop.last == False %}
@@ -188,14 +179,14 @@
 		<div class="row">
 				<center>
 				<div class="btn-group" role="group">
-					<a href="/newspaper/{{ id_page|add:"-1" }}/">
+					<a href="/newspaper/home/section={{ id_section }}/{{ id_page|add:"-1" }}/">
 						<button class="btn btn-group">
 							<span class="glyphicon glyphicon-chevron-left"></span>
 						</button>	
 					</a>
 				</div>
 				<div class="btn-group" role="group">
-					<a href="/newspaper/{{ id_page|add:"1" }}/">
+					<a href="/newspaper/home/section={{ id_section }}/{{ id_page|add:"1" }}/">
 						<button class="btn btn-group">							
 							<span class="glyphicon glyphicon-chevron-right"></span>
 						</button>

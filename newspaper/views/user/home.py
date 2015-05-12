@@ -10,14 +10,16 @@ from django.views.decorators.csrf import csrf_protect
 
 #@cache_page(60 * 15)
 @csrf_protect
-def home(request, id_section=None, id_subsection=None, message = None, id_page = 0): 
+def home(request, id_section=None, id_subsection=None, message = None, id_page = 1): 
 	sections = []
+	print id_section
 	sections = Section.objects.filter()
 	if id_section != None:
 		try:
 			section = Section.objects.get(id = int(id_section))
 			news_filter = getNewsFromSection(section)
 		except:
+			print "Errorororor"
 			news_filter = []
 			message = Message(TextMessage.SECTION_NOT_FOUND, TypeMessage.ERROR)
 	else:
@@ -45,12 +47,12 @@ def home(request, id_section=None, id_subsection=None, message = None, id_page =
 			news_image.append(i)
 	most_popular = news_image[:5]
 
-	try:
-		news_image = filterList(news_image, int(id_page), 2)
-		news_no_image = filterList(news_no_image, int(id_page), 5)
-		classifields = filterList(classifields, int(id_page), 5)
-	except:
-		print 'Erro'
+	#try:
+	news_image = filterList(news_image, int(id_page), 2)
+	news_no_image = filterList(news_no_image, int(id_page), 5)
+	classifields = filterList(classifields, int(id_page), 5)
+	#except:
+		#print 'Erro'
 
 	contex = {'sections' : sections,
 			  'news_image': news_image,
@@ -58,5 +60,6 @@ def home(request, id_section=None, id_subsection=None, message = None, id_page =
 			  'most_popular': most_popular,
 			  'classifields': classifields,
 			  'message': message,
-			  'id_page': id_page}
+			  'id_page': id_page,
+			  'id_section':id_section}
 	return render(request, 'newspaper/user/home.html', contex)
