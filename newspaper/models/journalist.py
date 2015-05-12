@@ -6,8 +6,8 @@ class Journalist(UserAuthenticated):
 	def registeringNews(self, form): 
 		form.setAuthor(self.id)
 		if form.is_valid():
-			form.my_clean_image()
-			form.my_clean_video()
+			form.cleaned_data['image'] = form.my_clean_image()
+			form.cleaned_data['video'] = form.my_clean_video()
 			form.save()
 			return True
 		else:

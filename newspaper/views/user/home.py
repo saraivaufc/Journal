@@ -48,11 +48,15 @@ def home(request, id_section=None, id_subsection=None, message = None, id_page =
 	most_popular = news_image[:5]
 
 	#try:
-	news_image = filterList(news_image, int(id_page), 2)
-	news_no_image = filterList(news_no_image, int(id_page), 5)
+	news_image = filterList(news_image, int(id_page), 4)
+	news_no_image = filterList(news_no_image, int(id_page), 6)
 	classifields = filterList(classifields, int(id_page), 5)
 	#except:
 		#print 'Erro'
+
+	id_page_left = int(id_page) - 1
+	if id_page_left <= 0: id_page_left = 1
+	id_page_rigth = int(id_page) + 1
 
 	contex = {'sections' : sections,
 			  'news_image': news_image,
@@ -61,5 +65,7 @@ def home(request, id_section=None, id_subsection=None, message = None, id_page =
 			  'classifields': classifields,
 			  'message': message,
 			  'id_page': id_page,
+			  'id_page_left': id_page_left,
+			  'id_page_rigth': id_page_rigth,
 			  'id_section':id_section}
 	return render(request, 'newspaper/user/home.html', contex)

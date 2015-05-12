@@ -179,14 +179,22 @@
 		<div class="row">
 				<center>
 				<div class="btn-group" role="group">
-					<a href="/newspaper/home/section={{ id_section }}/{{ id_page|add:"-1" }}/">
+					{% if id_section == None %}
+					<a href="/newspaper/home/{{ id_page_left }}/">
+					{% else %}
+					<a href="/newspaper/home/section={{ id_section }}/{{ id_page_left }}/">
+					{% endif %}
 						<button class="btn btn-group">
 							<span class="glyphicon glyphicon-chevron-left"></span>
 						</button>	
 					</a>
 				</div>
 				<div class="btn-group" role="group">
-					<a href="/newspaper/home/section={{ id_section }}/{{ id_page|add:"1" }}/">
+					{% if id_section == None %}
+						<a href="/newspaper/home/{{ id_page_rigth }}/">
+					{% else %}
+						<a href="/newspaper/home/section={{ id_section }}/{{ id_page_rigth }}/">
+					{% endif %}
 						<button class="btn btn-group">							
 							<span class="glyphicon glyphicon-chevron-right"></span>
 						</button>
