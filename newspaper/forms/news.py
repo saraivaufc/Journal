@@ -30,7 +30,7 @@ class PartialNewsForm(ModelForm):
 		data['author'] = author
 		self.data = data
 
-	def clean_image(self):
+	def my_clean_image(self):
 		image = self.cleaned_data["image"]
 		try:
 			if image:
@@ -39,8 +39,9 @@ class PartialNewsForm(ModelForm):
 				return image
 		except:
 			pass
+		return image
 
-	def clean_video(self):
+	def my_clean_video(self):
 		video = self.cleaned_data["video"]
 		try:
 			if video:
