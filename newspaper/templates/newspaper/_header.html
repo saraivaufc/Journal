@@ -18,9 +18,9 @@
 			<ul class="nav navbar-nav navbar-left">
 				<li>
 					{% if perms.newspaper.access_manager %}
-					<a id="home"  href="/newspaper/userAuthenticated/manager/">{% trans "HOME" %}</a>
+					<a id="home" title="{% trans "Home" %}" href="/newspaper/userAuthenticated/manager/">{% trans "HOME" %}</a>
 					{% else %}
-					<a id="home" href="/newspaper/">{% trans "HOME" %}</a>
+					<a id="home" title="{% trans "Home" %}" href="/newspaper/">{% trans "HOME" %}</a>
 					{% endif %}
 				</li>
 
@@ -29,17 +29,23 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "SECTIONS" %} <b class="caret"></b></a>
+					<a href="#" title="{% trans "SECTIONS" %}" class="dropdown-toggle" data-toggle="dropdown">
+						{% trans "SECTIONS" %} <b class="caret"></b>
+					</a>
 
 					<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
 						{% for i in sections %}
 							<li class="dropdown-submenu">
-								<a tabindex="-1" href="/newspaper/home/section={{ i.id }}/">{{ i.title }}</a>
+								<a tabindex="1" href="/newspaper/home/section={{ i.id }}/" title="{{ i.title }}">{{ i.title }}</a>
 
 								<ul class="dropdown-menu">
 									<li class="dropdown-header">{{ i.title }}</li>
 									{% for k in i.getSubSections %}
-										<li><a href="/newspaper/home/section={{ i.id }}/subsection={{ k.id }}/">{{ k.title }}</a></li>
+										<li>
+											<a tabindex="-1" href="/newspaper/home/section={{ i.id }}/subsection={{ k.id }}/" title="{{ k.title }}">
+											{{ k.title }}
+											</a>
+										</li>
 									{% endfor %}
 								</ul>
 							</li>
@@ -48,7 +54,9 @@
 				</li>
 
 				<li>
-					<a href="#"><span class="glyphicon glyphicon-search" ></span> {% trans "SEARCH" %}</a>
+					<a href="#" title="{% trans "SEARCH" %}">
+					<span class="glyphicon glyphicon-search" ></span> {% trans "SEARCH" %}
+					</a>
 				</li>
 				{% endif %}
 			</ul>
@@ -61,7 +69,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<a href="#" title="{{ request.user }}" class="dropdown-toggle" data-toggle="dropdown">
 						<span class="glyphicon glyphicon-user"></span> 
 						{{ request.user }} 
 						<b class="caret"></b>
@@ -70,16 +78,16 @@
 					<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
 						{% if perms.newspaper.access_manager  %}
 						<li>
-							<a href="/newspaper/">{% trans "LECTOR" %}</a>
+							<a title="{% trans "LECTOR" %}" href="/newspaper/">{% trans "LECTOR" %}</a>
 						</li>
 						<li>
-							<a href="/newspaper/userAuthenticated/manager/">
+							<a title="{% trans "MANAGER" %}" href="/newspaper/userAuthenticated/manager/">
 								{% trans "MANAGER" %}
 							</a>
 						</li>
 						{% endif %}
 						<li>
-							<a href="/newspaper/authentication/logout/">
+							<a title="{% trans "LOG OUT" %}" href="/newspaper/authentication/logout/">
 								{% trans "LOG OUT" %}
 							</a>
 						</li>
@@ -87,7 +95,7 @@
 				</li>
 				{% else %}
 				<li id="menuLogin" class="dropdown  dropdown-large">
-					<a id="navLogin" data-toggle="dropdown" href="#" class="dropdown-toggle">
+					<a id="navLogin" data-toggle="dropdown" href="#" class="dropdown-toggle" title="{% trans "LOG IN" %}">
 						{% trans "LOG IN" %}
 					</a>
 					<div style="padding:17px;" class="dropdown-menu dropdown-menu-large row">
@@ -98,12 +106,14 @@
 							{% csrf_token %}
 							<div class="form-group"> 
 								<input type="text" required="" 
-								placeholder="{% trans "Username" %}" 
+								placeholder="{% trans "Username" %}"
+								title="{% trans "Username" %}" 
 								id="username" name="username" class="form-control">
 							</div>
 							<div class="form-group">
 								<input type="password" required=""
-								placeholder="{% trans "Password" %}" 
+								placeholder="{% trans "Password" %}"
+								title="{% trans "Password" %}" 
 								id="password" name="password" class="form-control">
 							</div>
 							<button class="btn btn-default" id="btnLogin" type="submit">
@@ -112,8 +122,8 @@
 						</form>
 						<hr class="divider-lite">
 						<form>
-							<a data-target="#formRegister" data-toggle="collapse" id="btnNewUser" title="Fast and free sign up!" href="#" class="collapsed">
-								New User? Sign-up..
+							<a data-target="#formRegister" data-toggle="collapse" id="btnNewUser" title="Fast and free sign up!" href="#" class="collapsed" title="{% trans "New User? Sign-up.." %}">
+								{% trans "New User? Sign-up.." %}
 							</a>
 						</form>
 						<hr class="divider-lite">
@@ -121,17 +131,19 @@
 							{% csrf_token %}
 							<div class="form-group">
 								<input type="text" required=""
-								placeholder="{% trans "Firstname" %}" id="inputFirstname" 
+								placeholder="{% trans "Firstname" %}" id="inputFirstname"
+								title="{% trans "Firstname" %}" 
 								name="first_name" class="form-control">
 							</div>
 							<div class="form-group">
 								<input type="text" required="" 
-								placeholder="{% trans "Lastname" %}" id="inputLastname" 
+								placeholder="{% trans "Lastname" %}" id="inputLastname"
+								title="{% trans "Lastname" %}" 
 								name="last_name" class="form-control">
 							</div>
 							<div class="form-group">
 								<input type="email" required="" 
-								placeholder="{% trans "Email" %}" id="inputEmail" name="email" class="form-control">
+								placeholder="{% trans "Email" %}" id="inputEmail" name="email" class="form-control" title="{% trans "Email" %}">
 							</div>
 							<div class="form-group">
 								<input type="text" required="" 
@@ -140,17 +152,18 @@
 							</div>
 							<div class="form-group">
 								<input type="password" required="" 
-								placeholder="{% trans "Password" %} " id="password" 
+								placeholder="{% trans "Password" %}" title="{% trans "Password" %}" id="password" 
 								name="password" class="form-control vTextField required">
 							</div>
 							<div class="form-group">
 								<input type="password" required="" 
-								placeholder="{% trans "Repeat Password" %} " id="password2" 
+								placeholder="{% trans "Repeat Password" %} " id="password2"  title="{% trans "Repeat Password" %}" 
 								name="password2" class="form-control vTextField required">
 							</div>
 							<div id="input_profile_image" class="form-group">
 								<input id="id_profile_image" 
 									class="form-control"
+									title="{% trans "Profile Picture" %}" 
 									name="profile_image" type="file">
 									<label for="id_profile_image">
 										{% trans "Profile Picture" %}
@@ -164,7 +177,7 @@
 				</li>
 				{% endif %}
 				<li>
-					<a href="/latest/feed/">
+					<a href="/feed/" title="{% trans "RSS" %}">
 						<img class="rss-icon" src="{{ STATIC_URL }}/newspaper/img/rss.svg">
 					</a>
 				</li>

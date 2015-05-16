@@ -4,11 +4,16 @@
 {% load humanize %}
 
 {% block carousel %}
+{% endblock %}
 
+{% block title %}
+{{ news.title|title }}
 {% endblock %}
 
 {% block news %}
 	<div class="col-md-3 dividers">
+	<div class="container-fluid">
+	<div class="row">
 		<ul>
 			{% for i in news_all %}
 			<li>
@@ -37,7 +42,11 @@
 			{% endfor %}
 		</ul>
 	</div>
+	</div>
+	</div>
 	<div class="col-md-9 dividers">
+	<div class="container-fluid">
+	<div class="row">
 		<h1>{{ news.title|title }}</h1>
 		<h3>{% trans "By" %} {{ news.author }} , {{ news.dating_news|naturaltime|capfirst }}.</h3>
 		<hr class="divider">
@@ -118,6 +127,8 @@
 			</div>
 
 		</div>
+	</div>
+	</div>
 	</div>
 {% endblock %}
 

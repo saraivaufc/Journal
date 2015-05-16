@@ -2,25 +2,17 @@
 <div class="container-fluid">
 	<div class="row">
 	<hr class="divider">
-		
 		<header class="section-header">
 			<p class="section-heading" style="position: relative; margin-top: 20px;">
 				
 				<h3>
-					<a class="user-action text-right img-float-right" href="#home" style="color: blue;">{% trans "Go to Home Page" %} »</a>
+					<a class="user-action text-right img-float-right" href="#home" style="color: blue;" title="{% trans "Go to Home Page" %}">{% trans "Go to Home Page" %} »</a>
 				</h3>
 
-
-				<span class="visually-hidden">{% trans "Site Index" %}</span>
-				<a href="/newspaper/">
-					<svg aria-label="The New York Times" role="img" height="26" width="185" class="nyt-logo">
-						<image border="0" alt="The UFC Times" src="/static/newspaper/img/logos/logo-footer.png" xlink:href="/static/newspaper/img/logos/logo-footer.png" height="26" width="185"/>
-					</svg>
-					<img alt="The New York Times" class="nyt-logo-print" src="/static/newspaper/img/logos/logo-footer.png">
-				</a>
+				<image border="0" alt="The UFC Times" title="" src="/static/newspaper/img/logos/logo-footer.png" xlink:href="/static/newspaper/img/logos/logo-footer.png" height="26" width="185" title="{% trans "Logo Site" %}"/>
 			</p>
 		</header>
-
+		<div class="table-responsive">
 		<table class="table">
 			<tr>
 			{% for i in sections %}
@@ -32,7 +24,11 @@
 							</tr>
 							{% for k in i.getSubSections %}
 							<tr>
-								<td><a href="/newspaper/{{ i.id }}/{{ k.id }}/">{{ k.title }}</a></td>
+								<td>
+									<a href="/newspaper/{{ i.id }}/{{ k.id }}/" title="{{ k.title }}">
+									{{ k.title }}
+									</a>
+								</td>
 							</tr>
 							{% endfor %}
 						</table>
@@ -41,6 +37,7 @@
 			{% endfor %}
 			</tr>
 		</table>
+		</div>
 	<hr class="divider">
 
 
@@ -54,12 +51,12 @@
 				</li>
 				
 				<li class="wide-viewport-item">
-					<a href="#">{% trans "Contact Us" %}
+					<a href="#" title="{% trans "Contact Us" %}">{% trans "Contact Us" %}
 					</a>
 				</li>
 	
 				<li>
-					<a itemprop="usageTerms" href="#">
+					<a itemprop="usageTerms" href="#" title="{% trans "Terms of Service" %}">
 						{% trans "Terms of Service" %}
 					</a>
 				</li>

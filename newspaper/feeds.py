@@ -7,7 +7,7 @@ from models import News
 class NewsLatests(Feed):
 	title = _('Latest News Published in The UFC Times')
 	link = '/newspaper/'
-	description = _("Updates on changes and additions to The UFC Times.")
+	description = _("The UFC is reported here!")
 
 	def items(self):
 		return News.objects.order_by('-pub_date')[:5]

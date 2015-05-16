@@ -4,7 +4,7 @@ from datetime import datetime
 from .offer import Offer
 
 class Classifield(models.Model):
-	title = models.CharField(max_length=50, verbose_name=_("Title"), )
+	title = models.CharField(max_length=100, verbose_name=_("Title"), )
 	description = models.TextField(verbose_name=_("Description"), )
 	price = models.FloatField(default=0, verbose_name=_("Price"),)
 	image = models.ImageField(verbose_name=_("Image"),upload_to = 'documents/imagen/classifield/%Y/%m/%d', null=True, blank=True, default=None)
