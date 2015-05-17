@@ -97,7 +97,9 @@
 					{% for a in news_no_image %}
 					<li>
 						<div>
-							<a href="/newspaper/news/{{a.id}}/"><h1 class="text-left">{{a.title }}</h1></a>
+							<a href="/newspaper/news/{{a.id}}/">
+								<h1 id="index" class="text-left">{{a.title }}</h1>
+							</a>
 							<h3>{% trans "By" %} {{ a.author }} , {{ a.dating_news|naturaltime|capfirst }}.</h3>
 							<p class="text-justify">{{a.subtitle|safe}}</p>
 						</div>
