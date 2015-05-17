@@ -1,6 +1,15 @@
 $("#button-contrast").click(function(){
 	$("*").toggleClass("contrast");
 	$("a, h1, h2, h3").toggleClass("link_contrast");
+	if($(this).hasClass("disable-contrast")){
+		$(this).removeClass("disable-contrast");
+		$(this).addClass("enable-contrast");
+		$(this).text("Desativar Auto contraste[2]");	
+	}else if($(this).hasClass("enable-contrast")){
+		$(this).removeClass("enable-contrast");
+		$(this).addClass("disable-contrast");
+		$(this).text("Ativar Auto contraste[2]");
+	}
 });
 
 $("#button-font").click(function(){
