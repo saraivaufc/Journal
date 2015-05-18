@@ -1,16 +1,22 @@
+{% load i18n %}
+
 <!-- Falta traduzir isso daqui -->
 <center>
 	<ul class="nav nav-pills nav-justified">
 		<li>
-			<a href="#index" accesskey="1" title="pular para o conteúdo principal da página - atalho nº1">Pular para o conteúdo[1]
+			<a href="#index" accesskey="1" title="{% trans "Skip to main content of the page - Shortcut #1" %}">{% trans "Jump to Content" %}[1]
 			</a>
 		</li>
 		<li>
-			<a href="#" class="disable-contrast" id="button-contrast" accesskey="2" title="pular para o conteúdo principal da página - atalho nº1">Ativar Auto contraste[2]
+			<a href="#menu" accesskey="2" title="Skip to the page menu - Shortcut #2">{% trans "Jump to Menu" %}[2]
 			</a>
 		</li>
 		<li>
-			<a href="#" class="font-minus" id="button-font" accesskey="3" title="pular para o conteúdo principal da página - atalho nº1">Aumentar a Letra[3]
+			<a href="#" class="disable-contrast" id="button-contrast" accesskey="3" title="{% trans "On/Off High Contrast - Shortcut #3" %}">Enable High Contrast[3]
+			</a>
+		</li>
+		<li>
+			<a href="#" class="font-minus" id="button-font" accesskey="4" title="{% trans "Increase / Decrease Font - Shortcut #4" %}">Increase Letter[4]
 			</a>
 		</li>
 	</ul>

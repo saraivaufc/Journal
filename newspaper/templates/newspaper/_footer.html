@@ -6,10 +6,10 @@
 			<p class="section-heading" style="position: relative; margin-top: 20px;">
 				
 				<h3>
-					<a class="user-action text-right img-float-right" href="#home" style="color: blue;" title="{% trans "Go to Home Page" %}">{% trans "Go to Home Page" %} »</a>
+					<a class="user-action text-right img-float-right" href="#home" style="color: blue;">{% trans "Go to Home Page" %} »</a>
 				</h3>
 
-				<image border="0" alt="The UFC Times" title="" src="/static/newspaper/img/logos/logo-footer.png" xlink:href="/static/newspaper/img/logos/logo-footer.png" height="26" width="185" title="{% trans "Logo Site" %}"/>
+				<image border="0" alt="The UFC Times" src="/static/newspaper/img/logos/logo-footer.png" xlink:href="/static/newspaper/img/logos/logo-footer.png" height="26" width="185" title="{% trans "Logo Site" %}"/>
 			</p>
 		</header>
 		<div class="table-responsive">
@@ -25,7 +25,7 @@
 							{% for k in i.getSubSections %}
 							<tr>
 								<td>
-									<a href="/newspaper/{{ i.id }}/{{ k.id }}/" title="{{ k.title }}">
+									<a href="/newspaper/{{ i.id }}/{{ k.id }}/">
 									{{ k.title }}
 									</a>
 								</td>
@@ -51,12 +51,12 @@
 				</li>
 				
 				<li class="wide-viewport-item">
-					<a href="#" title="{% trans "Contact Us" %}">{% trans "Contact Us" %}
+					<a href="#" >{% trans "Contact Us" %}
 					</a>
 				</li>
 	
 				<li>
-					<a itemprop="usageTerms" href="#" title="{% trans "Terms of Service" %}">
+					<a itemprop="usageTerms" href="#">
 						{% trans "Terms of Service" %}
 					</a>
 				</li>
