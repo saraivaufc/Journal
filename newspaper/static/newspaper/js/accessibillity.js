@@ -2,6 +2,7 @@ $(function(){
 	if(readCookie("contrast")){
 		$("*").addClass("contrast");	
 		$("a, h1, h2, h3").addClass("link_contrast");
+		$(".btn").addClass("btn_contrast");
 		var button_contrast = $("#button-contrast");
 		button_contrast.removeClass("disable-contrast");
 		button_contrast.addClass("enable-contrast");
@@ -20,6 +21,7 @@ $("#button-contrast").click(function(){
 	var csrf = $("input[name='csrfmiddlewaretoken']").val();
 	$("*").toggleClass("contrast");
 	$("a, h1, h2, h3").toggleClass("link_contrast");
+	$(".btn").toggleClass("btn_contrast");
 	if($(this).hasClass("disable-contrast")){
 		$(this).removeClass("disable-contrast");
 		$(this).addClass("enable-contrast");
