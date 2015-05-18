@@ -10,7 +10,7 @@ from .classifield import *
 from .authetication import *
 
 def index(request):
-	if request.user.is_authenticated():
+	if not request.user.is_authenticated():
 		return HttpResponseRedirect('/home/')
 	else:
 		return HttpResponseRedirect('/userAutheticated/home/')
