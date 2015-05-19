@@ -3,7 +3,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.utils.translation import ugettext as _
-from newspaper.models import News, Journalist, Redator
+from newspaper.models import News, Journalist, Redator, Section
 from newspaper.forms import NewsForm, PartialNewsForm
 from newspaper.entities import Message, TypeMessage, TextMessage
 from django.utils.translation import ugettext as _
@@ -27,6 +27,7 @@ def addNews(request):
 		else:
 			form = PartialNewsForm()
 			option = _("News")
+			sections = Section.objects.all()
 			return render(request, "newspaper/userAuthenticated/news/addNews.html", locals())
 	else:
 		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
@@ -61,6 +62,7 @@ def editNews(request, id_news):
 			try:
 				form = PartialNewsForm(instance = news)
 				option = _("News")
+				sections = Section.objects.all()
 				return render(request, "newspaper/userAuthenticated/news/editNews.html", locals())
 			except:
 				pass
