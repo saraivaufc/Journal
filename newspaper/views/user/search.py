@@ -1,16 +1,13 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect, HttpResponse
-
-def search(request):
-	return HttpResponse("Hello")
-
-
 #-*-  encoding=utf-8 -*-
 
+from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect, HttpResponse
+from newspaper.entities import Message, TypeMessage, TextMessage
 from newspaper.models import Section, SubSection, News
 from newspaper.views.user import home, viewNews
 import string
 from django.utils.translation import ugettext_lazy as _
+
 
 def search(request):
 	if request.method == "POST":
@@ -43,7 +40,8 @@ def search(request):
 
 		print itemsCount
 		if maxItemCount == 0:
-			return HttpResponse("Nenhuma resultado")
+			message = Message(TextMessage.NO_RESULTS_FOUND, TypeMessage.ERROR)
+			return home(request, None, None, message)
 		try:
 			id = None
 			for key, value in itemsCount.items():

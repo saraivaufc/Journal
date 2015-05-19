@@ -127,7 +127,8 @@ class TextMessage():
 	OFFER_REQUIRED_MINIMUM_VALUE = _("Your offer must be greater than the minimum value and the best offer currently ranked.")
 
 	OFFER_NOT_PERMISSION = _("Unable to offer on the news")
-	
+
+	NO_RESULTS_FOUND  = _("No results found")
 	
 
 
