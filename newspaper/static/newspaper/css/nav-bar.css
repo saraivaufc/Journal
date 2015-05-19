@@ -7,3 +7,14 @@
 	font-weight: bold !important;
 	color: #000;
 }
+
+.icon-zoom-in
+{
+  position:relative;
+  top:-8px;
+  z-index:999;
+}
+.input-append input
+{
+  height:30px;
+}

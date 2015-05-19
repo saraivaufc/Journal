@@ -18,7 +18,6 @@ $(function(){
 });
 
 $("#button-contrast").click(function(){
-	var csrf = $("input[name='csrfmiddlewaretoken']").val();
 	$("*").toggleClass("contrast");
 	$("a, h1, h2, h3").toggleClass("link_contrast");
 	$(".btn").toggleClass("btn_contrast");
@@ -27,11 +26,13 @@ $("#button-contrast").click(function(){
 		$(this).addClass("enable-contrast");
 		$(this).text("Disable High Contrast[2]");
 		generateCookie("contrast", true , 7);
+		console.log("Contrar Enable");
 	}else if($(this).hasClass("enable-contrast")){
 		$(this).removeClass("enable-contrast");
 		$(this).addClass("disable-contrast");
 		$(this).text("Enable High Contrast[2]");
 		eraseCookie("contrast");
+		console.log("Contrar Disable");
 	}
 });
 

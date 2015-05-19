@@ -8,6 +8,7 @@ function generateCookie(strCookie, strValue, lngDays) {
   	$.cookie(strCookie, strValue, {
     	expires : lngDays
 	});
+	console.log("generateCookie");
 }
 
 /**
@@ -15,6 +16,7 @@ function generateCookie(strCookie, strValue, lngDays) {
  */
 
 function readCookie(nameCookie) {
+	console.log("readCookie");
 	return $.cookie(nameCookie);
 }
 
@@ -23,4 +25,5 @@ function readCookie(nameCookie) {
  */
 function eraseCookie(strCookie) {
 	$.removeCookie(strCookie);
+	console.log("removeCookie");
 }

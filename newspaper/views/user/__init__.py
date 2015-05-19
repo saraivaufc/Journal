@@ -8,9 +8,10 @@ from .home import *
 from .news import *
 from .classifield import *
 from .authetication import *
+from .search import *
 
 def index(request):
-	if not request.user.is_authenticated():
-		return HttpResponseRedirect('/home/')
-	else:
+	if request.user.is_authenticated():
 		return HttpResponseRedirect('/userAutheticated/home/')
+	else:
+		return HttpResponseRedirect('/home/')

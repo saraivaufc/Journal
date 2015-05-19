@@ -53,11 +53,14 @@
 					</ul>
 				</li>
 
-				<li>
-					<a href="#">
-					<span class="glyphicon glyphicon-search" ></span> {% trans "SEARCH" %}
-					</a>
-				</li>
+	            <form class="navbar-form pull-left form-search" action="/newspaper/search/news/" method="post">
+	            {% csrf_token %}
+					<div class="input-append">
+				 		<input data-provide="typeahead" data-items="4"  type="text" 
+				           class="span2 search-query" name="search">
+				        <button class="btn" type="submit">Search</button>
+				    </div>
+				</form>
 				{% endif %}
 			</ul>
 			{% endblock %}

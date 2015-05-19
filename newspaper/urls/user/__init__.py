@@ -5,4 +5,5 @@ urlpatterns = patterns('',
 	url(r'^news/', include('newspaper.urls.user.news')),
 	url(r'^classifield/', include('newspaper.urls.user.classifield')),
 	url(r'^authentication/', include('newspaper.urls.user.authentication')),
+	url(r'^search/', include('newspaper.urls.user.search')),
 )
