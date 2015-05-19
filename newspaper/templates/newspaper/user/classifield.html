@@ -34,7 +34,7 @@
 					</h5>
 					{% endif %}
 
-					<p class="text-justify">{{ i.description|safe|truncatewords_html:50 }}</p>
+					<p class="text-justify">{{ i.description|linebreaks|truncatewords_html:50 }}</p>
 				</div>
 			</li>
 			{% if forloop.last == False %}
