@@ -6,14 +6,14 @@ $(function(){
 		var button_contrast = $("#button-contrast");
 		button_contrast.removeClass("disable-contrast");
 		button_contrast.addClass("enable-contrast");
-		button_contrast.text("Disable High Contrast[2]");
+		button_contrast.text("High Contrast-ON [3]");
 	}
 	if(readCookie("font")){
 		font_plus();
 		var button_font = $("#button-font");
 		button_font.removeClass("font-minus");
 		button_font.addClass("font-plus");
-		button_font.text("Decrease Letter[3]");
+		button_font.text("Big Font-ON [4]");
 	}
 });
 
@@ -24,13 +24,13 @@ $("#button-contrast").click(function(){
 	if($(this).hasClass("disable-contrast")){
 		$(this).removeClass("disable-contrast");
 		$(this).addClass("enable-contrast");
-		$(this).text("Disable High Contrast[2]");
+		$(this).text("High Contrast-ON [3]");
 		generateCookie("contrast", true , 7);
 		console.log("Contrar Enable");
 	}else if($(this).hasClass("enable-contrast")){
 		$(this).removeClass("enable-contrast");
 		$(this).addClass("disable-contrast");
-		$(this).text("Enable High Contrast[2]");
+		$(this).text("High Contrast-OFF [3]");
 		eraseCookie("contrast");
 		console.log("Contrar Disable");
 	}
@@ -41,13 +41,13 @@ $("#button-font").click(function(){
 		font_minus();
 		$(this).removeClass("font-plus");
 		$(this).addClass("font-minus");
-		$(this).text("Increase Letter[3]");
+		$(this).text("Big Font-OFF [4]");
 		eraseCookie("font");
 	}else if ($(this).hasClass("font-minus")) {
 		font_plus();
 		$(this).removeClass("font-minus");
 		$(this).addClass("font-plus");
-		$(this).text("Decrease Letter[3]");
+		$(this).text("Big Font-On [4]");
 		generateCookie("font", true , 7);
 	};
 });
