@@ -3,25 +3,32 @@
 
 <div>
 	<h2 class="text-left">{{ classifield.title }}</h2>
-	{% if classifield.image != '' %}
-	<figure class="img-float-right">
-		<a href="{{ classifield.image.url }}" class="boxer" title="{{ classifield.title }}" data-gallery="gallery">
-		    <img class="img-responsive" src="{{ classifield.image.url }}"/>
-		</a>
-	</figure>
-	{% endif %}
+	<div class="container-fluid">
+	<div class="row">
+		{% if classifield.image != '' %}
+		<figure class="img-float-right">
+			<a href="{{ classifield.image.url }}" class="boxer" title="{{ classifield.title }}" data-gallery="gallery">
+			    <img class="img-responsive" src="{{ classifield.image.url }}"/>
+			</a>
+		</figure>
+		{% endif %}
 
-	<h5>
-		{% trans "Minimum Value:" %} {{classifield.price}}<br>
-		{% trans "Contact Phone:" %} {{classifield.phone|phone2numeric}}<br>
-		{% if i.getBestOffer != None %}
-			{% blocktrans with author_offer=classifield.getBestOffer.author_offer value=classifield.getBestOffer.value date_offer=classifield.getBestOffer.date_offer|naturaltime|capfirst %}
-				Best Offer By: {{ author_offer }} with Value: {{ value }}, {{date_offer}} .
-			{% endblocktrans %}
-	</h5>
-	{% endif %}
-	<p class="text-justify">{{ classifield.description|safe|truncatewords_html:50 }}</p>
-	{% if perms.newspaper.keep_classifield %}
+		<h5>
+			{% trans "Minimum Value:" %} {{classifield.price}}<br>
+			{% trans "Contact Phone:" %} {{classifield.phone|phone2numeric}}<br>
+			{% if i.getBestOffer != None %}
+				{% blocktrans with author_offer=classifield.getBestOffer.author_offer value=classifield.getBestOffer.value date_offer=classifield.getBestOffer.date_offer|naturaltime|capfirst %}
+					Best Offer By: {{ author_offer }} with Value: {{ value }}, {{date_offer}} .
+				{% endblocktrans %}
+			{% endif %}
+		</h5>
+		<p class="text-justify">
+			{{ classifield.description|linebreaks }}
+		</p>
+	</div>
+	</div>
+	
+	{% if perms.newspaper.keep_classifield and classifield.offers.all|length > 0 %}
 		<h1>{% trans "List Offers: " %}</h1>
 		{% include "newspaper/userAuthenticated/offer/_render_list_offer.html" %}	
 	{% endif %}

@@ -24,14 +24,14 @@
 	<hr class="divider">
 		<nav id="mini-navigation" class="mini-navigation">
 	    <ul class="mini-navigation-menu">
+				<li>
+	        		<a href="/newspaper/home/">{% trans "All" %}</a>
+	        	</li>
 			{% for i in sections %}
 				<li>
 	            	<a href="/newspaper/home/section={{ i.id }}/">{{ i.title }}</a>
 	        	</li>
 			{% endfor %}        
-	        	<li>
-	        		<a href="/newspaper/home/">{% trans "All" %}</a>
-	        	</li>
 		</ul>
 	    </nav>
 	<hr class="divider">

@@ -44,28 +44,31 @@
 		</ul>
 	</div>
 	<div class="col-md-9 dividers">
-		<h1 id="index">{{ classifield.title }}</h1>
-		<h5>
-			{% trans "Minimum Value:" %} {{classifield.price}}<br>
-			{% trans "Contact Phone:" %} {{classifield.phone|phone2numeric}}<br>
-		{% if classifield.getBestOffer != None %}
-			{% blocktrans with author_offer=classifield.getBestOffer.author_offer value=classifield.getBestOffer.value date_offer=classifield.getBestOffer.date_offer|naturaltime|capfirst %}
-				Best Offer By: {{ author_offer }} with Value: {{ value }}, {{date_offer}} .
-			{% endblocktrans %}
-		</h5>
-		{% endif %}
-		<hr class="divider">
-		<div>
-			<p class="text-justify">
-				{% if classifield.image != '' %}
-					<figure class="img-float-right">
-						<a href="{{ classifield.image.url }}" class="boxer" title="{{ classifield.title }}" data-gallery="gallery">
-						    <img class="img-responsive" src="{{ classifield.image.url }}"/>
-						</a>
-					</figure>
+		<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8">
+				<h1 id="index">{{ classifield.title }}</h1>
+				<h5>
+					{% trans "Minimum Value:" %} {{classifield.price}}<br>
+					{% trans "Contact Phone:" %} {{classifield.phone|phone2numeric}}<br>
+				{% if classifield.getBestOffer != None %}
+					{% blocktrans with author_offer=classifield.getBestOffer.author_offer value=classifield.getBestOffer.value date_offer=classifield.getBestOffer.date_offer|naturaltime|capfirst %}
+						Best Offer By: {{ author_offer }} with Value: {{ value }}, {{date_offer}} .
+					{% endblocktrans %}
+				</h5>
 				{% endif %}
-				<p class="text-justify">{{ classifield.description|safe }}</p>
-			</p>
+				<hr class="divider">
+
+				<p class="text-justify">{{ classifield.description|linebreaks }}</p>	
+			</div>
+			<div class="col-md-4">
+				{% if classifield.image != '' %}
+					<a href="{{ classifield.image.url }}" class="boxer" title="{{ classifield.title }}" data-gallery="gallery">
+					    <img class="img-full" src="{{ classifield.image.url }}"/>
+					</a>
+				{% endif %}
+			</div>
+		</div>
 		</div>
 		{% if perms.newspaper.keep_classifield %}
 		<h1>{% trans "List Offers: " %}</h1>
