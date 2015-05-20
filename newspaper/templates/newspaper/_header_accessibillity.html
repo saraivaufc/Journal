@@ -1,23 +1,21 @@
 {% load i18n %}
 
 <!-- Falta traduzir isso daqui -->
-<center>
-	<ul class="nav nav-pills nav-justified">
-		<li>
-			<a href="#index" accesskey="1" title="{% trans "Skip to main content of the page - Shortcut #1" %}">{% trans "Jump to Content" %}[1]
-			</a>
-		</li>
-		<li>
-			<a href="#menu" accesskey="2" title="Skip to the page menu - Shortcut #2">{% trans "Jump to Menu" %}[2]
-			</a>
-		</li>
-		<li>
-			<a href="#" class="disable-contrast" id="button-contrast" accesskey="3" title="{% trans "On/Off High Contrast - Shortcut #3" %}">Enable High Contrast[3]
-			</a>
-		</li>
-		<li>
-			<a href="#" class="font-minus" id="button-font" accesskey="4" title="{% trans "Increase / Decrease Font - Shortcut #4" %}">Increase Letter[4]
-			</a>
-		</li>
-	</ul>
-</center>
+<ul id="nav-accessibillity" class="nav nav-pills nav-justified row" >
+	<div class="col-xs-3 text-center hidden-xs">
+		<a href="#index" accesskey="1" title="{% trans "Skip to main content of the page - Shortcut #1" %}">{% trans "Jump to Content" %}[1]
+		</a>
+	</div>
+	<div class="col-xs-3 text-center hidden-xs">
+		<a href="#menu" accesskey="2" title="Skip to the page menu - Shortcut #2">{% trans "Jump to Menu" %}[2]
+		</a>
+	</div>
+	<div class="col-xs-6 text-center">
+		<a href="#" class="disable-contrast" id="button-contrast" accesskey="3" title="{% trans "On/Off High Contrast - Shortcut #3" %}">Enable High Contrast[3]
+		</a>
+	</div>
+	<div class="col-xs-6 text-center">
+		<a href="#" class="font-minus" id="button-font" accesskey="4" title="{% trans "Increase / Decrease Font - Shortcut #4" %}">Increase Letter[4]
+		</a>
+	</div>
+</ul>
