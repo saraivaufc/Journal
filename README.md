@@ -9,8 +9,8 @@ Execute:
   2. python manager.py runserver
 
 Users:
-  lector     -- password = lector
-  journalist -- password = journalist
-  redator    -- password = admin
+  1. lector     -- password = lector
+  2. journalist -- password = journalist
+  3. redator    -- password = admin
   
   
