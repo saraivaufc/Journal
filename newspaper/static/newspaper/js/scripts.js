@@ -45,6 +45,7 @@ var searchValues = [];
 $(function(){
 	$.get("/newspaper/services/sections/all/", function(data){
 		var sections = (JSON.parse(data).sections);
+		
 		for(var i=0 ; i< sections.length; i++){
 			searchValues.push(sections[i]);
 		}
