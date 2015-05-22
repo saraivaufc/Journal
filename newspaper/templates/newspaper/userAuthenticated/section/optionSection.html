@@ -2,14 +2,16 @@
 {% load humanize %}
 
 <!--News -->
-<ul class="list-group">
-  <li class="list-group-item active" >
+<li>
   	<h3>
   		<div class="container-fluid">
 	  		<div class="col-xs-6  col-md-8 text-center">
-		 		<a data-toggle="collapse" data-parent="#accordion" href="#collapseSection2">
-	  				{% trans "Sections and SubSections" %}
-	  			</a>
+	  			<div class="row">
+			 		<img style='float: left; margin-right: 5px;'  src='/static/newspaper/img/icons/news.png' />
+			 		<span item-title="true">
+			  			{% trans "Sections and SubSections" %}
+			  		</span>
+		  		</div>
 		 	</div>
 			<div class="col-xs-6 col-md-4 text-right">
 				{% if perms.newspaper.keep_section %}
@@ -20,14 +22,14 @@
 			</div>
 		</div>
   	</h3>
-  </li>
-	  {% if open_sections2 %}
-	  <ul  id="collapseSection2" class="list-group panel-collapse collapse in">
+
+  	{% if open_sections2 %}
+	<ul item-expanded='true' >
 	  {% else %}
-	  <ul  id="collapseSection2" class="list-group panel-collapse collapse">
+	<ul item-expanded='false'>
 	  {% endif %}
   		{% for i in sections %}
-  		<li class="list-group-item">
+  		<li>
   			<div class="container-fluid">
 		  		<div class="col-xs-6  col-md-6 text-left">
 			 		<a data-toggle="collapse" data-parent="#collapseSection2" href="#collapse2{{i.id}}">
@@ -43,14 +45,14 @@
 					</a>
 				</div>
 			</div>
-  		</li>
-  		{% if open_subsections2 %}
-  			<ul id="collapse2{{i.id}}" class="list-group panel-collapse collapse in">
-  		{% else %}
-  			<ul id="collapse2{{i.id}}" class="list-group panel-collapse collapse">
-  		{% endif %}
+
+			{% if open_subsections2 %}
+  			<ul>
+  			{% else %}
+  			<ul>
+  			{% endif %}
 				{% for k in i.getSubSections %}
-				<li class="list-group-item list-retreat">
+				<li>
 					<div class="container-fluid">
 			  		<div class="col-xs-6  col-md-8 text-left">
 			  			<h4>{{ k.title }}</h4>
@@ -66,7 +68,7 @@
 				</div>
 	  			</li>
 	  			{% empty %}
-	  			<li class="list-group-item list-group-item-warning list-retreat">
+	  			<li>
 	  				<div class="container-fluid">
 	  					<div class="row">
 	  						<h4>{% trans "Section does not have subsection." %}</h4>
@@ -74,12 +76,16 @@
 	  				</div>
 	  			</li>
 	  			{% endfor %}
-  		</ul>
+  			</ul>
+
+
+  		</li>
   		{% empty %}
 		<li class="list-group-item list-group-item-warning">
 			{% trans "No sections" %}
 		</li>
   		{% endfor %}
-  </ul>
-</ul>
+  	</ul>
+
+</li>
 <!-- Quit News -->

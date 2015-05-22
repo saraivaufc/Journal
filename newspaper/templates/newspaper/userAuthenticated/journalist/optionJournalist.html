@@ -2,15 +2,15 @@
 {% load humanize %}
 
 <!--Jornalist -->
-<ul class="list-group">
-  <li class="list-group-item active" >
+<li item-expanded='false'>
   	<h3>
   		<div class="container-fluid">
 	  		<div class="col-xs-6  col-md-8  text-center">
 	  			<div class="row">
-			 		<a data-toggle="collapse" data-parent="#accordion" href="#collapseJournalist">
-		  				{% trans "Journalists" %}
-		  			</a>
+			 		<img style='float: left; margin-right: 5px;'  src='/static/newspaper/img/icons/journalist.png' />
+			  		<span item-title="true">
+			  			{% trans "Journalists" %}
+			  		</span>
 	  			</div>
 		 	</div>
 			<div class="col-xs-6 col-md-4 text-right">
@@ -24,14 +24,14 @@
 			</div>
 		</div>
   	</h3>
-  </li>
-	  {% if open_journalist %}
-	  <ul  id="collapseJournalist" class="list-group panel-collapse collapse in">
+
+  	{% if open_journalist %}
+	  <ul item-expanded='true'>
 	  {% else %}
-	  <ul  id="collapseJournalist" class="list-group panel-collapse collapse">
+	  <ul item-expanded='false'>
 	  {% endif %}
   		{% for i in journalists %}
-	  		<li class="list-group-item">
+	  		<li>
 	  			<div class="container-fluid">
 			  		<div class="col-xs-6  col-md-6 text-left">
 		  				<h4>{{ i.username }}</h4>
@@ -57,5 +57,6 @@
   			</li>
   		{% endfor %}
   	</ul>
-</ul>
+
+  </li>
 <!-- Quit News -->

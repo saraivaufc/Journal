@@ -2,31 +2,38 @@
 {% load humanize %}
 
 <!--News -->
-<ul class="list-group">
-  <li class="list-group-item active" >
+{% if open_sections %}
+<li id="Mail" item-expanded='true'>
+{% else %}
+<li id="Mail" item-expanded='false'>
+{% endif %}
   	<h3>
   		<div class="container-fluid">
 	  		<div class="col-xs-6  col-md-8 text-center">
-		 		<a data-toggle="collapse" data-parent="#accordion" href="#collapseNews">
-	  				{% trans "News" %}
-	  			</a>
+		 		<div class="row">
+			 		<img style='float: left; margin-right: 5px;'  src='/static/newspaper/img/icons/news.png' />
+			  		<span item-title="true">
+			  			{% trans "News" %}
+			  		</span>
+		  		</div>
 		 	</div>
 			<div class="col-xs-6 col-md-4 text-right">
-				{% if perms.newspaper.keep_news %}
-				<a href="/newspaper/userAuthenticated/manager/news/add/">
-					<span class="glyphicon glyphicon-plus pointer"></span>
-				</a>
-				{% endif %}
+				<div class="row">
+					{% if perms.newspaper.keep_news %}
+					<a href="/newspaper/userAuthenticated/manager/news/add/">
+						<span class="glyphicon glyphicon-plus pointer"></span>
+					</a>
+					{% endif %}
+				</div>
 			</div>
 		</div>
   	</h3>
-  </li>
-	  {% if open_sections %}
-	  <ul  id="collapseNews" class="list-group panel-collapse collapse in">
-	  {% else %}
-	  <ul  id="collapseNews" class="list-group panel-collapse collapse">
-	  {% endif %}
-  		<li class="list-group-item">
+  	{% if open_subsections %}
+  	<ul item-expanded='true'>
+  	{% else %}
+  	<ul item-expanded='false'>
+  	{% endif %}
+		<li>
   			<div class="container-fluid">
 		  		<div class="col-xs-6  col-md-8 text-left">
 			 		<a href="#collapse{{i.id}}">
@@ -41,7 +48,7 @@
 			</div>
   		</li>
   		{% for i in sections %}
-  		<li class="list-group-item">
+  		<li>
   			<div class="container-fluid">
 		  		<div class="col-xs-6  col-md-8 text-left">
 			 		<a data-toggle="collapse" data-parent="#collapseNews" href="#collapse{{i.id}}">
@@ -54,38 +61,35 @@
 					</a>
 				</div>
 			</div>
-  		</li>
-  		{% if open_subsections %}
-  			<ul id="collapse{{i.id}}" class="list-group panel-collapse collapse in">
-  		{% else %}
-  			<ul id="collapse{{i.id}}" class="list-group panel-collapse collapse">
-  		{% endif %}
-				{% for k in i.getSubSections %}
-				<li class="list-group-item list-retreat">
-					<div class="container-fluid">
-			  		<div class="col-xs-6  col-md-8 text-left">
-			  			<h4>{{ k.title }}</h4>
-				 	</div>
-					<div class="col-xs-6 col-md-4 text-right">
-						<a href="/newspaper/userAuthenticated/manager/section={{i.id }}/subsection={{k.id}}/">
-							<span class=" glyphicon glyphicon-eye-open pointer"></span>
-						</a>
+	  			<ul>
+					{% for k in i.getSubSections %}
+					<li>
+						<div class="container-fluid">
+				  		<div class="col-xs-6  col-md-8 text-left">
+				  			<h4>{{ k.title }}</h4>
+					 	</div>
+						<div class="col-xs-6 col-md-4 text-right">
+							<a href="/newspaper/userAuthenticated/manager/section={{i.id }}/subsection={{k.id}}/">
+								<span class=" glyphicon glyphicon-eye-open pointer"></span>
+							</a>
+						</div>
 					</div>
-				</div>
-  			</li>
+	  			</li>
+  		</li>
   			{% empty %}
-  			<li class="list-group-item list-group-item-warning list-retreat">
+  			<li>
   				<h4>{% trans "Section does not have subsection." %}</h4>
   			</li>
   			{% endfor %}
   		</ul>
   		{% empty %}
-  		<ul class="list-group">
-  			<li class="list-group-item list-group-item-warning">
+  		<ul>
+  			<li>
   				{% trans "No sections" %}
   			</li>
   		</ul>
   		{% endfor %}
   </ul>
-</ul>
+</li>
+	 
 <!-- Quit News -->

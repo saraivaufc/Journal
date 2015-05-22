@@ -1,15 +1,16 @@
 {% load i18n %}
 {% load humanize %}
 
-
-<ul class="list-group">
-  <li class="list-group-item active" >
+  <li id="Mail" item-expanded='false'>
   	<h3>
   		<div class="container-fluid">
 	  		<div class="col-xs-6  col-md-8 text-center">
-		 		<a data-toggle="collapse" data-parent="#accordion" href="#collapseClassifield">
-	  				{% trans "Classifield" %}
-	  			</a>
+		 		<div class="row">
+		 			<img style='float: left; margin-right: 5px;'  src='/static/newspaper/img/icons/classifields.png' />
+			  		<span item-title="true">
+			  			{% trans "Classifields" %}
+			  		</span>
+		 		</div>
 		 	</div>
 			<div class="col-xs-6 col-md-4 text-right">
 				{% if perms.newspaper.keep_classifield %}
@@ -20,21 +21,25 @@
 			</div>
 		</div>
   	</h3>
-  </li>
-  {% if open_classfield %}
-  <ul id="collapseClassifield" class="list-group panel-collapse collapse in">
-  {% else %}
-  <ul id="collapseClassifield" class="list-group panel-collapse collapse">
-  {% endif %}
-		<li class="list-group-item">
+
+  	{% if open_classfield %}
+	  	<ul>
+	{% else %}
+	  	<ul>
+	{% endif %}
+		<li>
 			<div class="container-fluid">
-	  		<div class="col-xs-12  col-md-12">
-	  			<a href="/newspaper/userAuthenticated/manager/classifield/view/">
-	  				<h2 class="text-center">
-		  				<span class="glyphicon glyphicon-play-circle"></span>
-		  			</h2>
-	  			</a>
-		 	</div>
+		  		<div class="col-xs-6  col-md-8 text-left">
+			 		<a href="#collapse{{i.id}}">
+		  				<h4>{%  trans "All" %}</h4>
+		  			</a>
+			 	</div>
+				<div class="col-xs-6 col-md-4 text-right">
+					<a href="/newspaper/userAuthenticated/manager/classifield/view/">
+						<span class=" glyphicon glyphicon-eye-open pointer"></span>
+					</a>
+				</div>
+			</div>
 		</li>
 	</ul>
-</ul>
+</li>
