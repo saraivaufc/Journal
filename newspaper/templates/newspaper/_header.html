@@ -55,11 +55,15 @@
 
 	            <form class="navbar-form pull-left form-search" action="/newspaper/search/news/" method="post">
 	            {% csrf_token %}
-					<div class="input-append">
-				 		<input data-provide="typeahead" data-items="4"  type="text" 
-				           class="span2 search-query" name="search">
-				        <button class="btn" type="submit">Search</button>
-				    </div>
+					<div class="form-group">
+						<div class="btn-group">
+							<input  id="search" name="search" type="text" class="form-control" placeholder="{%  trans "Search..." %}">
+							<span id="searchclear" class="glyphicon glyphicon-remove-circle hidden"></span>
+						</div>
+						<button id="btn-submit" type="submit" class="btn btn-submit pull-right">
+							<span class=" glyphicon glyphicon-search"></span>
+						</button>
+					</div>
 				</form>
 				{% endif %}
 			</ul>

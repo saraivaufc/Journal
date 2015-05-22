@@ -40,3 +40,40 @@ $("[type=file]").on("change", function(){
 		$(this).next().text(dflt);
 	}
 });
+
+var searchValues = [];
+$(function(){
+	$.get("/newspaper/services/sections/all/", function(data){
+		var sections = (JSON.parse(data).sections);
+		for(var i=0 ; i< sections.length; i++){
+			searchValues.push(sections[i]);
+		}
+	});
+	$.get("/newspaper/services/subsections/all/", function(data){
+		var subsections = (JSON.parse(data)).subsections;
+		for(var i=0 ; i< subsections.length; i++){
+			searchValues.push(subsections[i]);
+		}
+	});
+});
+
+$("#search").autocomplete({
+	source: searchValues
+});
+
+$(function(){
+	$("#search").keyup(function(){
+		var text = $("#search").val();
+		if(text.length > 0){
+			$("#searchclear").removeClass("hidden");
+		}else{
+			$("#searchclear").addClass("hidden");
+		}
+	});
+
+	$("#searchclear").click(function(){
+		$("#search").val('');
+		$("#searchclear").addClass("hidden");
+	});
+});
+
