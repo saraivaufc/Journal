@@ -61,7 +61,7 @@
 						</a>
 					</figure>
 				{% endif %}
-				<p class="text-justify">{{ news.description|linebreaks }}</p>
+				<p class="text-justify">{{ news.description|safe|linebreaks }}</p>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">

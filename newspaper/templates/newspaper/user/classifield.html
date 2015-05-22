@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block news %}
-	<div class="col-md-3 dividers hidden-xs">
+	<div class="col-md-4 dividers hidden-xs">
 		<ul>
 			{% for i in classifields %}
 			<li>
@@ -34,7 +34,7 @@
 					</h5>
 					{% endif %}
 
-					<p class="text-justify">{{ i.description|linebreaks|truncatewords_html:50 }}</p>
+					<p class="text-justify">{{ i.description|safe|linebreaks|truncatewords_html:50 }}</p>
 				</div>
 			</li>
 			{% if forloop.last == False %}
@@ -43,17 +43,22 @@
 			{% endfor %}
 		</ul>
 	</div>
-	<div class="col-md-9 dividers">
+	<div class="col-md-8 dividers">
 		<div class="container-fluid">
 		<div class="row">
+			{% if classifield.image != '' %}
 			<div class="col-md-4">
-				{% if classifield.image != '' %}
 					<a href="{{ classifield.image.url }}" class="boxer" title="{{ classifield.title }}" data-gallery="gallery">
 					    <img class="img-full" src="{{ classifield.image.url }}"/>
 					</a>
-				{% endif %}
 			</div>
+			{% endif %}
+
+			{% if classifield.image == '' %}
+			<div class="col-md-12">
+			{% else %}
 			<div class="col-md-8">
+			{% endif %}
 				<h1 id="index">{{ classifield.title }}</h1>
 				<h5>
 					{% trans "Minimum Value:" %} {{classifield.price}}<br>
@@ -66,7 +71,7 @@
 				{% endif %}
 				<hr class="divider">
 
-				<p class="text-justify">{{ classifield.description|linebreaks }}</p>	
+				<p class="text-justify">{{ classifield.description|safe|linebreaks }}</p>	
 			</div>
 		</div>
 		</div>

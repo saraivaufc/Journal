@@ -21,6 +21,9 @@ class PartialClassifieldForm(ModelForm):
 			'price': NumberInput(attrs={'required': 'required'}),
 			'phone' : TextInput(),
 		}
+	def __init__(self, *args, **kwargs):
+		super(PartialClassifieldForm, self).__init__(*args, **kwargs)
+		self.fields['description'].widget.attrs['class'] = 'ckeditor'
 
 	def clean_image(self):
 		image = self.cleaned_data["image"]

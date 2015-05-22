@@ -68,7 +68,7 @@
 											<div class="box-text">
 												<a href="/newspaper/news/{{i.id}}/"><h1>{{ i.title }}</h1></a>
 												<p class="text-center">
-													{{ i.subtitle }} 
+													{{ i.subtitle|safe }} 
 												</p>
 											</div>
 										</div>
@@ -130,7 +130,7 @@
 				{% if classifields|length == 0 %}
 					<div class="col-md-8 col-md-offset-2 dividers">
 				{% else %}
-					<div class="col-md-9 dividers">
+					<div class="col-md-8 dividers">
 				{% endif %}
 			{% else %}
 			<div class="col-md-6 dividers">
@@ -153,7 +153,7 @@
 							<a href="/newspaper/news/{{b.id}}/"><h1>{{ b.title }}</h1></a>
 						</center>
 						<h3>{% trans "By" %} {{ b.author }} , {{ b.dating_news|naturaltime|capfirst }}.</h3>
-						<p class="text-justify">{{ b.subtitle|linebreaks }}</p>
+						<p class="text-justify">{{ b.subtitle|safe|linebreaks }}</p>
 					</div>
 				</li>
 				{% if forloop.last == False %}
@@ -169,7 +169,11 @@
 			{% if classifields|length == 0 %}
 			<div class="col-md-3 dividers hidden">
 			{% else %}
-			<div class="col-md-3 dividers">
+				{% if news_no_image|length == 0 %}
+					<div class="col-md-4 dividers">
+				{% else %}
+					<div class="col-md-3 dividers">
+				{% endif %}
 			{% endif %}
 			<div class="container-fluid">
 			<div class="row">
@@ -196,7 +200,9 @@
 						</a>
 					</figure>
 					{% endif %}
-					<p class="text-justify">{{c.description|linebreaks|truncatewords_html:50}}</p>
+					<p class="text-justify">
+						{{c.description|safe|linebreaks|truncatewords_html:50}}
+					</p>
 				</li>
 				{% if forloop.last == False %}
 					<hr class="divider-lite">

@@ -5,7 +5,6 @@ from .subsection import SubSection
 
 class Section(models.Model):
 	title = models.CharField(max_length=50, verbose_name=_("Title"), )
-	image = models.ImageField(verbose_name=_("Image"),upload_to = 'documents/imagen/section/%Y/%m/%d', null=True, blank=True, default=None)
 	def __unicode__(self):
 		return self.title
 

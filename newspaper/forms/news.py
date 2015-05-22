@@ -23,7 +23,11 @@ class PartialNewsForm(ModelForm):
 			'subsection': Select(attrs={'required': 'required'}),
 			'author': HiddenInput(),
 		}
-
+	def __init__(self, *args, **kwargs):
+		super(PartialNewsForm, self).__init__(*args, **kwargs)
+		self.fields['description'].widget.attrs['class'] = 'ckeditor'
+		self.fields['subtitle'].widget.attrs['class'] = 'ckeditor'
+		
 
 	def setAuthor(self, author):
 		data = self.data.copy()
