@@ -7,3 +7,10 @@ Install:
 Execute:
   1. python manager.py createcachetable
   2. python manager.py runserver
+
+Users:
+  lector     -- password = lector
+  journalist -- password = journalist
+  redator    -- password = admin
+  
+  
