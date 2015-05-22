@@ -11,6 +11,7 @@ from django.utils.translation import ugettext as _
 from newspaper.views.user import home
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_protect
+from newspaper.utils import filterList
 
 #@cache_page(60 * 15)
 @csrf_protect
@@ -57,9 +58,8 @@ def viewNews(request, id_news):
 					news_all.append(k)
 	except:
 		pass
-	
+	news_all = filterList(news_all, 1, 4)
 	form = PartialCommentForm()
-
 	contex = {'message': message,
 			  'form': form, 
 			  'sections':sections,

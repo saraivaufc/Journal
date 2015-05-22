@@ -92,7 +92,11 @@
 
 			{% block news %}
 			<!-- News Wihout imagens -->
+			{% if news_no_image|length == 0 %}
+			<div class="col-md-3 dividers hidden">
+			{% else %}
 			<div class="col-md-3 dividers">
+			{% endif %}
 			<div class="container-fluid">
 			<div class="row">
 				<ul>
@@ -118,7 +122,11 @@
 			</div>
 
 			<!-- News Wihout imagens -->
+			{% if news_no_image|length == 0 %}
+			<div class="col-md-9 dividers">
+			{% else %}
 			<div class="col-md-6 dividers">
+			{% endif %}
 			<div class="container-fluid">
 			<div class="row">
 				<ul>
@@ -129,7 +137,7 @@
 						<figure>
 							<a href="{{ b.image.url }}" class="boxer"
 							   title="{{ b.title }}" data-gallery="galleryNewsImage">
-							    <img class="img-responsive fill" src="{{ b.image.url }}"/>
+							    <img class="img-responsive fill" title="{{ b.title }}" src="{{ b.image.url }}"/>
 							</a>
 						</figure>
 						{% endif %}
@@ -156,8 +164,9 @@
 				<ul>
 				{% for c in classifields %}
 				<li>
-					<a href="/newspaper/classifield/{{c.id}}/"><h1 class="text-left">{{c.title}}</h1></a>
-
+					<a href="/newspaper/classifield/{{c.id}}/">
+						<h1 class="text-left">{{c.title}}</h1>
+					</a>
 					<h5>
 						{% trans "Minimum Value:" %} {{c.price}}<br>
 						{% trans "Contact Phone:" %} {{c.phone|phone2numeric}}<br>
@@ -170,8 +179,8 @@
 
 					{% if c.image != '' %}
 					<figure>
-						<a href="{{ c.image.url }}" class="boxer" title="{{ c.title }}" data-gallery="galleryClassfields">
-						    <img class="img-responsive" src="{{ c.image.url }}"/>
+						<a href="{{ c.image.url }}" class="boxer" alt="{{ c.title }}" data-gallery="galleryClassfields">
+						    <img class="img-responsive" title="{{ c.title }}" src="{{ c.image.url }}"/>
 						</a>
 					</figure>
 					{% endif %}
@@ -198,9 +207,9 @@
 				<center>
 				<div class="btn-group" role="group">
 					{% if id_section == None %}
-					<a href="/newspaper/home/page={{ id_page_left }}/">
+					<a href="/newspaper/home/page={{ id_page_left }}/" alt="{% trans "Page Previous" %}">
 					{% else %}
-					<a href="/newspaper/home/section={{ id_section }}/page={{ id_page_left }}/">
+					<a href="/newspaper/home/section={{ id_section }}/page={{ id_page_left }}/" alt="{% trans "Page Previous" %}">
 					{% endif %}
 						<button class="btn btn-group">
 							<span class="glyphicon glyphicon-chevron-left"></span>
@@ -209,9 +218,9 @@
 				</div>
 				<div class="btn-group" role="group">
 					{% if id_section == None %}
-						<a href="/newspaper/home/page={{ id_page_rigth }}/">
+						<a href="/newspaper/home/page={{ id_page_rigth }}/" alt="{% trans "Page Next" %}">
 					{% else %}
-						<a href="/newspaper/home/section={{ id_section }}/page={{ id_page_rigth }}/">
+						<a href="/newspaper/home/section={{ id_section }}/page={{ id_page_rigth }}/" alt="{% trans "Page Next" %}">
 					{% endif %}
 						<button class="btn btn-group">							
 							<span class="glyphicon glyphicon-chevron-right"></span>

@@ -4,6 +4,7 @@ from newspaper.models import Classifield, Section, Lector
 from newspaper.forms import PartialOfferForm
 from newspaper.entities import Message, TypeMessage,TextMessage
 from django.utils.translation import ugettext as _
+from newspaper.utils import filterList
 from .home import home
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_protect
@@ -40,7 +41,7 @@ def viewClassifield(request, id_classifield):
 			message = Message(TextMessage.OFFER_ERROR_ADD, TypeMessage.ERROR)
 
 	form = PartialOfferForm()
-	
+	classifields = filterList(classifields, 1, 3)
 	contex = {'form' : form, 
 			  'message' : message, 
 			  'sections': sections,
