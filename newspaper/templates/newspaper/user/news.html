@@ -11,7 +11,11 @@
 {% endblock %}
 
 {% block news %}
+	{% if news_all|length == 0 %}
+	<div class="col-md-3 dividers hidden-xs hidden">
+	{% else %}
 	<div class="col-md-3 dividers hidden-xs">
+	{% endif %}
 	<div class="container-fluid">
 	<div class="row">
 		<ul>
@@ -46,10 +50,24 @@
 	</div>
 	</div>
 	</div>
+
+	{% if news_all|length == 0 %}
+	<div class="col-md-12 dividers">
+	{% else %}
 	<div class="col-md-9 dividers">
-	<div class="container-fluid">
+	{% endif %}
+	<div id="news" class="container-fluid">
 	<div class="row">
-		<h1 id="index">{{ news.title|title }}</h1>
+		<div class="row">
+		<div class="col-md-11">
+			<h1 id="index" >{{ news.title|title }}</h1>
+		</div>
+		<div class="col-md-1">
+			<h1 id="print" class="pointer">
+				<span class="glyphicon glyphicon-print"></span>
+			</h1>
+		</div>
+		</div>
 		<h3>{% trans "By" %} {{ news.author }} , {{ news.dating_news|naturaltime|capfirst }}.</h3>
 		<hr class="divider">
 		<div>

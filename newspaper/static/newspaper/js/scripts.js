@@ -80,3 +80,21 @@ $(function(){
 	});
 });
 
+
+$("#print").click(function () {
+    var gridContent = $("#news").html();
+    title = $("#index").val();
+    var newWindow = window.open('', '', 'width=800, height=500'),
+    document = newWindow.document.open(),
+    pageContent =
+        '<!DOCTYPE html>\n' +
+        '<html>\n' +
+        '<head>\n' +
+        '<meta charset="utf-8" />\n' +
+        '<title>' + title + '</title>\n' +
+        '</head>\n' +
+        '<body class="text-center" style="overflow-x:auto">\n' + gridContent + '\n</body>\n</html>';
+    document.write(pageContent);
+    document.close();
+    newWindow.print();
+});
