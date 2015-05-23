@@ -3,12 +3,12 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from newspaper.models import News, Section, SubSection, Journalist
-from newspaper.utils import getNewsFromSection
+from newspaper.utils import getNewsFromSection , filterList
 from newspaper.entities import Message, TypeMessage, TextMessage
 from django.utils.translation import ugettext as _
 from newspaper.views.user import home
 
-def manager(request, id_section = None, id_subsection = None, message = None):
+def manager(request, id_section = None, id_subsection = None,id_page = 1, message = None):
 	if not request.user.has_perm('newspaper.access_manager'):
 		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
 		return home(request,None, None, message)
@@ -34,5 +34,8 @@ def manager(request, id_section = None, id_subsection = None, message = None):
 			open_subsections = True
 		except:
 			news = []
-
+	news = filterList(news, int(id_page), 10)
+	id_page_left = int(id_page) - 1
+	if id_page_left <= 0: id_page_left = 1
+	id_page_rigth = int(id_page) + 1
 	return render(request, 'newspaper/userAuthenticated/manager.html', locals())

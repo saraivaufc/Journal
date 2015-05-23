@@ -32,6 +32,36 @@
         </div>
         <div class="splitter-panel">
         	{% block right %}
+        		<hr class="divider-lite">
+				<div class="container-fluid">
+				<div class="row">
+						<center>
+						<div class="btn-group" role="group">
+							{% if id_section == None %}
+							<a href="/newspaper/userAuthenticated/manager/page={{ id_page_left }}/" alt="{% trans "Page Previous" %}">
+							{% else %}
+							<a href="/newspaper/userAuthenticated/manager/section={{ id_section }}/page={{ id_page_left }}/" alt="{% trans "Page Previous" %}">
+							{% endif %}
+								<button class="btn btn-group">
+									<span class="glyphicon glyphicon-chevron-left"></span>
+								</button>	
+							</a>
+						</div>
+						<a>{% trans "Page: " %}{{ id_page }}</a>
+						<div class="btn-group" role="group">
+							{% if id_section == None %}
+								<a href="/newspaper/userAuthenticated/manager/page={{ id_page_rigth }}/" alt="{% trans "Page Next" %}">
+							{% else %}
+								<a href="/newspaper/userAuthenticated/manager/section={{ id_section }}/page={{ id_page_rigth }}/" alt="{% trans "Page Next" %}">
+							{% endif %}
+								<button class="btn btn-group">							
+									<span class="glyphicon glyphicon-chevron-right"></span>
+								</button>
+							</a>
+						</div>
+						</center>
+				</div>
+				</div>
 				{% include "newspaper/userAuthenticated/news/_render_list_news.html" %}
 			{% endblock %}
         </div>
