@@ -27,6 +27,7 @@ class PartialNewsForm(ModelForm):
 		super(PartialNewsForm, self).__init__(*args, **kwargs)
 		self.fields['description'].widget.attrs['class'] = 'ckeditor'
 		self.fields['subtitle'].widget.attrs['class'] = 'ckeditor'
+		self.fields['subsection'].widget.attrs['class'] = 'jqx-dropdownlist-content'
 		
 
 	def setAuthor(self, author):

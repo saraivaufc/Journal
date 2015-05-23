@@ -9,7 +9,7 @@
 
 {% block container %}
 <div id='jqxWidget'>
-    <div id="mainSplitter">
+    <div id="mainSplitter">    	
         <div class="splitter-panel">
         	<div style="border: none;" id='jqxTree'>
            	<ul>
@@ -31,7 +31,7 @@
 			</div>
         </div>
         <div class="splitter-panel">
-            {% block right %}
+        	{% block right %}
 				{% include "newspaper/userAuthenticated/news/_render_list_news.html" %}
 			{% endblock %}
         </div>

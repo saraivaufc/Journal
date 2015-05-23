@@ -1,8 +1,10 @@
 $(function(){
+	$('#jqxTree').jqxTree({  height: '100%', width: '100%' });
 	$('#mainSplitter').jqxSplitter({
         width: '100%', 
-        height: 1000, 
-        panels: [{ size: 300 }] 
+        height: 500, 
+        panels: [{ size: 500 }] 
     });
-    $('#jqxTree').jqxTree({  height: '100%', width: '100%' });
 });
+
+$("#id_subsection").jqxDropDownList({filterable:true});

@@ -12,4 +12,3 @@ def subsections(request):
 
 
 
-

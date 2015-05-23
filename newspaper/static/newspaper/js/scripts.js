@@ -56,10 +56,9 @@ $(function(){
 			searchValues.push(subsections[i]);
 		}
 	});
-});
-
-$("#search").autocomplete({
-	source: searchValues
+	$("#search").autocomplete({
+		source: searchValues
+	});
 });
 
 $(function(){

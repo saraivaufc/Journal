@@ -34,54 +34,48 @@
   	<ul item-expanded='false'>
   	{% endif %}
 		<li>
-  			<div class="container-fluid">
-		  		<div class="col-xs-6  col-md-8 text-left">
-			 		<a href="#collapse{{i.id}}">
-		  				<h4>{%  trans "All" %}</h4>
-		  			</a>
-			 	</div>
-				<div class="col-xs-6 col-md-4 text-right">
-					<a href="/newspaper/userAuthenticated/manager/">
-						<span class=" glyphicon glyphicon-eye-open pointer"></span>
-					</a>
-				</div>
+	  		<div class="col-xs-6  col-md-8 text-left">
+		 		<a href="#collapse{{i.id}}">
+	  				<h4>{%  trans "All" %}</h4>
+	  			</a>
+		 	</div>
+			<div class="col-xs-6 col-md-4 text-right">
+				<a href="/newspaper/userAuthenticated/manager/">
+					<span class=" glyphicon glyphicon-eye-open pointer"></span>
+				</a>
 			</div>
   		</li>
   		{% for i in sections %}
-  		<li>
-  			<div class="container-fluid">
+	  		<li>
 		  		<div class="col-xs-6  col-md-8 text-left">
-			 		<a data-toggle="collapse" data-parent="#collapseNews" href="#collapse{{i.id}}">
-		  				<h4>{{ i.title }}</h4>
-		  			</a>
-			 	</div>
+		  			<h4>{{ i.title|ljust:"30" }}</h4>
+		  		</div>
 				<div class="col-xs-6 col-md-4 text-right">
 					<a href="/newspaper/userAuthenticated/manager/section={{i.id }}/">
 						<span class=" glyphicon glyphicon-eye-open pointer"></span>
 					</a>
 				</div>
-			</div>
-	  			<ul>
+		  		<ul>
 					{% for k in i.getSubSections %}
-					<li>
-						<div class="container-fluid">
-				  		<div class="col-xs-6  col-md-8 text-left">
-				  			<h4>{{ k.title }}</h4>
-					 	</div>
-						<div class="col-xs-6 col-md-4 text-right">
-							<a href="/newspaper/userAuthenticated/manager/section={{i.id }}/subsection={{k.id}}/">
-								<span class=" glyphicon glyphicon-eye-open pointer"></span>
-							</a>
-						</div>
-					</div>
-	  			</li>
-  		</li>
-  			{% empty %}
-  			<li>
-  				<h4>{% trans "Section does not have subsection." %}</h4>
+						<li>
+							<div class="container-fluid">
+						  		<div class="col-xs-6  col-md-8 text-left">
+						  			<h4>{{ k.title|ljust:"30" }}</h4>
+							 	</div>
+								<div class="col-xs-6 col-md-4 text-right">
+									<a href="/newspaper/userAuthenticated/manager/section={{i.id }}/subsection={{k.id}}/">
+										<span class=" glyphicon glyphicon-eye-open pointer"></span>
+									</a>
+								</div>
+							</div>
+		  				</li>
+  					{% empty %}
+  						<li>
+  							<h4>{% trans "Section does not have subsection." %}</h4>
+  						</li>
+  					{% endfor %}
+  				</ul>
   			</li>
-  			{% endfor %}
-  		</ul>
   		{% empty %}
   		<ul>
   			<li>
