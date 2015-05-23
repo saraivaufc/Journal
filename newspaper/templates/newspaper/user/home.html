@@ -149,6 +149,7 @@
 							</a>
 						</figure>
 						{% endif %}
+						<br>
 						<center>
 							<a href="/newspaper/news/{{b.id}}/"><h1>{{ b.title }}</h1></a>
 						</center>
@@ -196,7 +197,7 @@
 					{% if c.image != '' %}
 					<figure>
 						<a href="{{ c.image.url }}" class="boxer" alt="{{ c.title }}" data-gallery="galleryClassfields">
-						    <img class="img-responsive" title="{{ c.title }}" src="{{ c.image.url }}"/>
+						    <img class="img-responsive fill" title="{{ c.title }}" src="{{ c.image.url }}"/>
 						</a>
 					</figure>
 					{% endif %}
@@ -234,6 +235,7 @@
 						</button>	
 					</a>
 				</div>
+				<a>{% trans "Page:" %}{{ id_page }}</a>
 				<div class="btn-group" role="group">
 					{% if id_section == None %}
 						<a href="/newspaper/home/page={{ id_page_rigth }}/" alt="{% trans "Page Next" %}">

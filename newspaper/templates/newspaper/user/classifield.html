@@ -17,9 +17,10 @@
 						<h2 class="text-left">{{ i.title }}</h2>
 					</a>
 					{% if i.image != '' %}
+					<br>
 					<figure>
 						<a href="{{ i.image.url }}" class="boxer" title="{{ i.title }}" data-gallery="gallery">
-						    <img class="img-responsive" src="{{ i.image.url }}"/>
+						    <img class="img-responsive fill" src="{{ i.image.url }}"/>
 						</a>
 					</figure>
 					{% endif %}
@@ -47,9 +48,9 @@
 		<div class="container-fluid">
 		<div class="row">
 			{% if classifield.image != '' %}
-			<div class="col-md-4">
+			<div class="col-md-12">
 					<a href="{{ classifield.image.url }}" class="boxer" title="{{ classifield.title }}" data-gallery="gallery">
-					    <img class="img-full" src="{{ classifield.image.url }}"/>
+					    <img class="img-responsive fill" src="{{ classifield.image.url }}"/>
 					</a>
 			</div>
 			{% endif %}
@@ -57,8 +58,9 @@
 			{% if classifield.image == '' %}
 			<div class="col-md-12">
 			{% else %}
-			<div class="col-md-8">
+			<div class="col-md-12">
 			{% endif %}
+				<br>
 				<h1 id="index">{{ classifield.title }}</h1>
 				<h5>
 					{% trans "Minimum Value:" %} {{classifield.price}}<br>
