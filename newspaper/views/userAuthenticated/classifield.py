@@ -3,11 +3,38 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.utils.translation import ugettext as _
+from newspaper.utils import filterList
 from newspaper.models import Redator, Classifield, News, Journalist, Section, SubSection, Offer
 from newspaper.forms import ClassifieldForm, PartialClassifieldForm
 from newspaper.entities import Message, TypeMessage,TextMessage
 from django.utils.translation import ugettext as _
 from newspaper.views.userAuthenticated import manager
+
+
+def viewClassifield(request, id_page = 1, message = None):
+	try:
+		id_page = int(id_page)
+	except:
+		id_page = 1
+	open_classfield = True
+	if request.user.has_perm('newspaper.keep_classifield'):
+		news = News.objects.all()
+		sections = Section.objects.all()
+		if request.user.has_perm('newspaper.keep_journalist'):
+			journalists = Journalist.objects.all()
+		try:
+			classifields = Classifield.objects.all()
+			classifields = filterList(classifields, int(id_page), 10)
+			id_page_left = int(id_page) - 1
+			if id_page_left <= 0: id_page_left = 1
+			id_page_rigth = int(id_page) + 1
+			if len(filterList(classifields, int(id_page_rigth), 10)) == 0: id_page_rigth = None
+			return render(request, "newspaper/userAuthenticated/classifield/viewClassifields.html", locals())
+		except:
+			message = Message(TextMessage.CLASSIFIELDS_NOT_FOUND, TypeMessage.ERROR)
+	else:
+		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
+	return viewClassifield(request,id_page, message )
 
 def addClassifield(request):
 	message = None
@@ -39,23 +66,7 @@ def addClassifield(request):
 			return render(request, "newspaper/userAuthenticated/classifield/addClassifield.html", locals())
 	else:
 		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-	return viewClassifield(request, message )
-
-def viewClassifield(request, message = None):
-	open_classfield = True
-	if request.user.has_perm('newspaper.keep_classifield'):
-		news = News.objects.all()
-		sections = Section.objects.all()
-		if request.user.has_perm('newspaper.keep_journalist'):
-			journalists = Journalist.objects.all()
-		try:
-			classifields = Classifield.objects.all()
-			return render(request, "newspaper/userAuthenticated/classifield/viewClassifields.html", locals())
-		except:
-			message = Message(TextMessage.CLASSIFIELDS_NOT_FOUND, TypeMessage.ERROR)
-	else:
-		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-	return viewClassifield(request, message )
+	return viewClassifield(request,1,message )
 
 def remClassifield(request, id_classifield):
 	message = None
@@ -105,4 +116,4 @@ def editClassifield(request, id_classifield):
 			return render(request, "newspaper/userAuthenticated/classifield/editClassifield.html", locals())
 	else:
 		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-	return viewClassifield(request, message)
+	return viewClassifield(request,1,  message)

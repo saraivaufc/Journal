@@ -32,7 +32,7 @@ def addNews(request):
 	else:
 		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
 
-	return manager(request, None, None, message )
+	return manager(request, None, None,1, message )
 
 def editNews(request, id_news):
 	message = None
@@ -41,7 +41,7 @@ def editNews(request, id_news):
 			news = News.objects.get(id = id_news)
 		except:
 			message = Message(TextMessage.NEWS_NOT_FOUND, TypeMessage.ERROR)
-			return manager(request, None, None, message )
+			return manager(request, None, None,1, message )
 
 		if request.method == "POST":
 			try:
@@ -49,7 +49,7 @@ def editNews(request, id_news):
 					user = Journalist.objects.get(username=request.user.username)
 				except:
 					message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-					return manager(request, None, None, message )
+					return manager(request, None, None,1, message )
 				form = PartialNewsForm(request.POST, request.FILES, instance=news)
 				if user.editNews(form):
 					message = Message(TextMessage.NEWS_SUCCESS_EDIT, TypeMessage.SUCCESS)
@@ -68,7 +68,7 @@ def editNews(request, id_news):
 				pass
 	else:
 		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-	return manager(request, None, None, message )
+	return manager(request, None, None,1, message )
 
 
 def remNews(request, id_news):
@@ -82,7 +82,7 @@ def remNews(request, id_news):
 					user = Redator.objects.get(username=request.user.username)
 				except:
 					message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-					return manager(request, None, None, message )
+					return manager(request, None, None,1, message )
 
 			if user.deleteNews(id_news):
 				message = Message(TextMessage.NEWS_SUCCESS_REM, TypeMessage.SUCCESS)
@@ -92,4 +92,4 @@ def remNews(request, id_news):
 			message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
 	else:
 		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-	return manager(request, None, None, message )
+	return manager(request, None, None,1,  message )

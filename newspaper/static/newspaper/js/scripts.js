@@ -13,19 +13,22 @@ $(function(){
 	var alert_danger = $("#alert-danger");
 	var alert_warning = $("#alert-warning");
 	var alert_info = $("#alert-info");
+	try{
+		if(alert_success.length) {
+			$().toastmessage('showSuccessToast', alert_success.val());	
+		};
+		if(alert_danger.length) {
+			$().toastmessage('showErrorToast', alert_danger.val());
+		};
+		if (alert_warning.length) {
+			$().toastmessage('showWarningToast', alert_warning.val());	
+		};
 
-	if(alert_success.length) {
-		$().toastmessage('showSuccessToast', alert_success.val());	
-	};
-	if(alert_danger.length) {
-		$().toastmessage('showErrorToast', alert_danger.val());
-	};
-	if (alert_warning.length) {
-		$().toastmessage('showWarningToast', alert_warning.val());	
-	};
-
-	if(alert_info.length) {
-		$().toastmessage('showNoticeToast', alert_info.val());
+		if(alert_info.length) {
+			$().toastmessage('showNoticeToast', alert_info.val());
+		}
+	}catch(e){
+		console.log("Erro alerts");
 	}	
 	
 });

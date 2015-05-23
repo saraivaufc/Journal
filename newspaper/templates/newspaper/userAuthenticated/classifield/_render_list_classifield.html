@@ -2,6 +2,27 @@
 {% load humanize %}
 
 <div class="panel-group" id="accordion">
+	<div class="container-fluid">
+	<div class="row">
+			<center>
+			{% if id_page != 1 %}
+				<div class="btn-group" role="group">
+					<a href="/newspaper/userAuthenticated/manager/classifield/view/page={{ id_page_left }}/" alt="{% trans "Page Previous" %}">
+						<span class="glyphicon glyphicon-chevron-left"></span>
+					</a>
+				</div>
+			{% endif %}
+			<a>{% trans "Page: " %}{{ id_page }}</a>
+			{% if id_page_rigth != None %}
+				<div class="btn-group" role="group">
+					<a href="/newspaper/userAuthenticated/manager/classifield/view/page={{ id_page_rigth }}/" alt="{% trans "Page Next" %}">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+					</a>
+				</div>
+			{% endif %}
+			</center>
+	</div>
+	</div>
 {% for classifield in classifields %}
 <div class="panel panel-default">
 	<div class="panel-heading">
@@ -32,7 +53,7 @@
 </div>
 {% empty %}
 <div class="jumbotron">
-	<h1 class="text-center">{% trans "There are no classifields" %}</h1>
+	<h2 class="text-center">{% trans "There are no classifields" %}</h2>
 </div>
 {% endfor %}
 </div>

@@ -23,7 +23,7 @@ def addSection(request):
 					user = Redator.objects.get(username=request.user.username)
 				except:
 					message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-					return manager(request, None, None, message )
+					return manager(request, None, None,1, message )
 				form = PartialSectionForm(request.POST, request.FILES)
 				if user.registeringSection(form):
 					message = Message(TextMessage.SECTION_SUCCESS_ADD, TypeMessage.SUCCESS)
@@ -31,7 +31,7 @@ def addSection(request):
 					message = Message(TextMessage.SECTION_ERROR_ADD, TypeMessage.ERROR)
 			except:
 				pass
-			return manager(request, None, None, message )
+			return manager(request, None, None,1, message )
 		else:
 			form = PartialSectionForm()
 			option = _("Section")
@@ -40,7 +40,7 @@ def addSection(request):
 			return render(request, "newspaper/userAuthenticated/section/addSection.html", locals())
 	else:
 		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-	return manager(request, None, None, message )
+	return manager(request, None, None,1,  message )
 
 def editSection(request, id_section):
 	message = None
@@ -53,7 +53,7 @@ def editSection(request, id_section):
 			section = Section.objects.get(id = id_section)
 		except:
 			message = Message(TextMessage.SECTION_NOT_FOUND, TypeMessage.ERROR)
-			return manager(request, None, None, message )
+			return manager(request, None, None,1, message )
 
 		if request.method == "POST":
 			try:
@@ -61,7 +61,7 @@ def editSection(request, id_section):
 					user = Redator.objects.get(username=request.user.username)
 				except:
 					message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-					return manager(request, None, None, message )
+					return manager(request, None, None,1, message )
 
 				form = PartialSectionForm(request.POST, request.FILES, instance=section)
 				if user.editSection(form):
@@ -81,7 +81,7 @@ def editSection(request, id_section):
 				pass
 	else:
 		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-	return manager(request, None, None, message )
+	return manager(request, None, None,1, message )
 
 
 def remSection(request, id_section):
@@ -92,7 +92,7 @@ def remSection(request, id_section):
 				user = Redator.objects.get(username=request.user.username)
 			except:
 				message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-				return manager(request, None, None, message )
+				return manager(request, None, None,1, message )
 			if user.remSection(id_section):
 				message = Message(TextMessage.SECTION_SUCCESS_REM, TypeMessage.SUCCESS)
 			else:
@@ -101,4 +101,4 @@ def remSection(request, id_section):
 			pass
 	else:
 		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-	return manager(request, None, None, message )
+	return manager(request, None, None,1, message )
