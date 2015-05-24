@@ -121,9 +121,9 @@ class TextMessage():
 	COMMENT_ERROR_REM = _("Error remove comment")
 
 	COMMENT_NOT_FOUND = _("Comment not found")
-	COMMENT_NOT_FOUND = _("Classifields not found")
+	COMMENT_NOT_FOUND = _("Comment not found")
 
-	#Comments
+	#Offers
 	OFFER_SUCCESS_ADD = _("Offer successfully added")
 	OFFER_ERROR_ADD = _("Error adding offer")
 	

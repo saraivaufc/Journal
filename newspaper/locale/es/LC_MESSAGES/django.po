@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-22 18:47+0000\n"
+"POT-Creation-Date: 2015-05-23 22:20-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -138,233 +138,271 @@ msgstr ""
 msgid "Journalist not found"
 msgstr ""
 
-#: newspaper/entities/message.py:62
-msgid "Section successfully added"
+#: newspaper/entities/message.py:61
+msgid "Redator successfully added"
 msgstr ""
 
-#: newspaper/entities/message.py:63
-msgid "Error adding section"
+#: newspaper/entities/message.py:62
+msgid "Error adding redator"
+msgstr ""
+
+#: newspaper/entities/message.py:64
+msgid "Redator successfully edit"
 msgstr ""
 
 #: newspaper/entities/message.py:65
-msgid "Section successfully edit"
+msgid "Error edit redator"
 msgstr ""
 
-#: newspaper/entities/message.py:66
-msgid "Error edit section"
+#: newspaper/entities/message.py:67
+msgid "Redator successfully removed"
 msgstr ""
 
 #: newspaper/entities/message.py:68
-msgid "Section successfully removed"
+msgid "Error remove redator"
 msgstr ""
 
-#: newspaper/entities/message.py:69
-msgid "Error remove section"
-msgstr ""
-
-#: newspaper/entities/message.py:71
-msgid "Section not found"
+#: newspaper/entities/message.py:70
+msgid "Redator not found"
 msgstr ""
 
 #: newspaper/entities/message.py:74
-msgid "SubSection successfully added"
+msgid "Section successfully added"
 msgstr ""
 
 #: newspaper/entities/message.py:75
-msgid "Error adding subsection"
+msgid "Error adding section"
 msgstr ""
 
 #: newspaper/entities/message.py:77
-msgid "SubSection successfully edit"
+msgid "Section successfully edit"
 msgstr ""
 
 #: newspaper/entities/message.py:78
-msgid "Error edit subsection"
+msgid "Error edit section"
 msgstr ""
 
 #: newspaper/entities/message.py:80
-msgid "SubSection successfully removed"
+msgid "Section successfully removed"
 msgstr ""
 
 #: newspaper/entities/message.py:81
-msgid "Error remove subsection"
+msgid "Error remove section"
 msgstr ""
 
 #: newspaper/entities/message.py:83
-msgid "SubSection not found"
+msgid "Section not found"
 msgstr ""
 
 #: newspaper/entities/message.py:86
-msgid "Classifield successfully added"
+msgid "SubSection successfully added"
 msgstr ""
 
 #: newspaper/entities/message.py:87
-msgid "Error adding classifield"
+msgid "Error adding subsection"
 msgstr ""
 
 #: newspaper/entities/message.py:89
-msgid "Classifield successfully edit"
+msgid "SubSection successfully edit"
 msgstr ""
 
 #: newspaper/entities/message.py:90
-msgid "Error edit classifield"
+msgid "Error edit subsection"
 msgstr ""
 
 #: newspaper/entities/message.py:92
-msgid "Classifield successfully removed"
+msgid "SubSection successfully removed"
 msgstr ""
 
 #: newspaper/entities/message.py:93
-msgid "Error remove classifield"
+msgid "Error remove subsection"
 msgstr ""
 
 #: newspaper/entities/message.py:95
-msgid "Classifield not found"
+msgid "SubSection not found"
 msgstr ""
 
-#: newspaper/entities/message.py:96 newspaper/entities/message.py:112
-msgid "Classifields not found"
+#: newspaper/entities/message.py:98
+msgid "Classifield successfully added"
 msgstr ""
 
 #: newspaper/entities/message.py:99
-msgid "Error pick up the parameters"
+msgid "Error adding classifield"
+msgstr ""
+
+#: newspaper/entities/message.py:101
+msgid "Classifield successfully edit"
 msgstr ""
 
 #: newspaper/entities/message.py:102
-msgid "Comment successfully added"
+msgid "Error edit classifield"
 msgstr ""
 
-#: newspaper/entities/message.py:103
-msgid "Error adding comment"
+#: newspaper/entities/message.py:104
+msgid "Classifield successfully removed"
 msgstr ""
 
 #: newspaper/entities/message.py:105
-msgid "Comment successfully edit"
+msgid "Error remove classifield"
 msgstr ""
 
-#: newspaper/entities/message.py:106
-msgid "Error edit comment"
+#: newspaper/entities/message.py:107
+msgid "Classifield not found"
 msgstr ""
 
 #: newspaper/entities/message.py:108
-msgid "Comment successfully removed"
-msgstr ""
-
-#: newspaper/entities/message.py:109
-msgid "Error remove comment"
+msgid "Classifields not found"
 msgstr ""
 
 #: newspaper/entities/message.py:111
-msgid "Comment not found"
+msgid "Error pick up the parameters"
+msgstr ""
+
+#: newspaper/entities/message.py:114
+msgid "Comment successfully added"
 msgstr ""
 
 #: newspaper/entities/message.py:115
-msgid "Offer successfully added"
+msgid "Error adding comment"
 msgstr ""
 
-#: newspaper/entities/message.py:116
-msgid "Error adding offer"
+#: newspaper/entities/message.py:117
+msgid "Comment successfully edit"
 msgstr ""
 
 #: newspaper/entities/message.py:118
-msgid "Offer successfully edit"
+msgid "Error edit comment"
 msgstr ""
 
-#: newspaper/entities/message.py:119
-msgid "Error edit offer"
+#: newspaper/entities/message.py:120
+msgid "Comment successfully removed"
 msgstr ""
 
 #: newspaper/entities/message.py:121
-msgid "Offer successfully removed"
+msgid "Error remove comment"
 msgstr ""
 
-#: newspaper/entities/message.py:122
-msgid "Error remove offer"
-msgstr ""
-
-#: newspaper/entities/message.py:124 newspaper/entities/message.py:125
-msgid "Offer not found"
+#: newspaper/entities/message.py:123 newspaper/entities/message.py:124
+msgid "Comment not found"
 msgstr ""
 
 #: newspaper/entities/message.py:127
+msgid "Offer successfully added"
+msgstr ""
+
+#: newspaper/entities/message.py:128
+msgid "Error adding offer"
+msgstr ""
+
+#: newspaper/entities/message.py:130
+msgid "Offer successfully edit"
+msgstr ""
+
+#: newspaper/entities/message.py:131
+msgid "Error edit offer"
+msgstr ""
+
+#: newspaper/entities/message.py:133
+msgid "Offer successfully removed"
+msgstr ""
+
+#: newspaper/entities/message.py:134
+msgid "Error remove offer"
+msgstr ""
+
+#: newspaper/entities/message.py:136 newspaper/entities/message.py:137
+msgid "Offer not found"
+msgstr ""
+
+#: newspaper/entities/message.py:139
 msgid ""
 "Your offer must be greater than the minimum value and the best offer "
 "currently ranked."
 msgstr ""
 
-#: newspaper/entities/message.py:129
+#: newspaper/entities/message.py:141
 msgid "Unable to offer on the news"
 msgstr ""
 
-#: newspaper/models/classifield.py:8 newspaper/models/news.py:7
-#: newspaper/models/section.py:8 newspaper/models/subsection.py:6
+#: newspaper/entities/message.py:143
+msgid "No results found"
+msgstr ""
+
+#: newspaper/feeds.py:8
+msgid "Latest News Published in The UFC Times"
+msgstr ""
+
+#: newspaper/feeds.py:10
+msgid "The UFC is reported here!"
+msgstr ""
+
+#: newspaper/models/classifield.py:7 newspaper/models/news.py:6
+#: newspaper/models/section.py:7 newspaper/models/subsection.py:5
 msgid "Title"
 msgstr ""
 
-#: newspaper/models/classifield.py:9 newspaper/models/news.py:9
-#: newspaper/models/subsection.py:7
+#: newspaper/models/classifield.py:8 newspaper/models/news.py:8
 msgid "Description"
 msgstr ""
 
-#: newspaper/models/classifield.py:10
+#: newspaper/models/classifield.py:9
 msgid "Price"
 msgstr ""
 
-#: newspaper/models/classifield.py:11 newspaper/models/comment.py:9
-#: newspaper/models/news.py:13 newspaper/models/section.py:9
-#: newspaper/models/subsection.py:8
+#: newspaper/models/classifield.py:10 newspaper/models/comment.py:8
+#: newspaper/models/news.py:12
 msgid "Image"
 msgstr ""
 
-#: newspaper/models/classifield.py:12
+#: newspaper/models/classifield.py:11
 msgid "Creador Classifield"
 msgstr ""
 
-#: newspaper/models/classifield.py:13 newspaper/models/offer.py:10
+#: newspaper/models/classifield.py:12 newspaper/models/offer.py:9
 msgid "Phone Contact"
 msgstr ""
 
-#: newspaper/models/classifield.py:14 newspaper/models/offer.py:19
+#: newspaper/models/classifield.py:13 newspaper/models/offer.py:18
 msgid "Offers"
+msgstr ""
+
+#: newspaper/models/classifield.py:20
+#: newspaper/views/userAuthenticated/classifield.py:65
+msgid "Classifield"
 msgstr ""
 
 #: newspaper/models/classifield.py:21
 #: newspaper/templates/newspaper/userAuthenticated/classifield/optionClassifield.html:11
-#: newspaper/views/userAuthenticated/classifield.py:38
-msgid "Classifield"
-msgstr ""
-
-#: newspaper/models/classifield.py:22
 msgid "Classifields"
 msgstr ""
 
-#: newspaper/models/comment.py:7 newspaper/models/news.py:10
-#: newspaper/models/offer.py:7
+#: newspaper/models/comment.py:6 newspaper/models/news.py:9
+#: newspaper/models/offer.py:6
 msgid "Author"
 msgstr ""
 
-#: newspaper/models/comment.py:8
+#: newspaper/models/comment.py:7
 msgid "Text"
 msgstr ""
 
-#: newspaper/models/comment.py:10
+#: newspaper/models/comment.py:9
 msgid "Dating Comment"
 msgstr ""
 
-#: newspaper/models/comment.py:17
+#: newspaper/models/comment.py:16
 msgid "Comment"
 msgstr ""
 
-#: newspaper/models/comment.py:18 newspaper/models/news.py:15
+#: newspaper/models/comment.py:17 newspaper/models/news.py:14
 msgid "Comments"
 msgstr ""
 
-#: newspaper/models/journalist.py:34
+#: newspaper/models/journalist.py:33
 #: newspaper/views/userAuthenticated/journalist.py:42
 msgid "Journalist"
 msgstr ""
 
-#: newspaper/models/journalist.py:35
+#: newspaper/models/journalist.py:34
 #: newspaper/templates/newspaper/userAuthenticated/journalist/optionJournalist.html:12
 msgid "Journalists"
 msgstr ""
@@ -377,68 +415,71 @@ msgstr ""
 msgid "Lectors"
 msgstr ""
 
-#: newspaper/models/news.py:8
+#: newspaper/models/news.py:7
 msgid "Subtitle"
 msgstr ""
 
-#: newspaper/models/news.py:11
+#: newspaper/models/news.py:10
 msgid "Dating News"
 msgstr ""
 
-#: newspaper/models/news.py:12 newspaper/models/subsection.py:15
-#: newspaper/templates/newspaper/userAuthenticated/section/modals.html:26
+#: newspaper/models/news.py:11 newspaper/models/subsection.py:12
+#: newspaper/templates/newspaper/userAuthenticated/section/modals.html:25
 #: newspaper/views/userAuthenticated/subsection.py:35
 #: newspaper/views/userAuthenticated/subsection.py:73
 msgid "SubSection"
 msgstr ""
 
-#: newspaper/models/news.py:14
+#: newspaper/models/news.py:13
 msgid "Video"
 msgstr ""
 
-#: newspaper/models/news.py:23 newspaper/models/news.py:24
-#: newspaper/templates/newspaper/userAuthenticated/news/optionNews.html:11
+#: newspaper/models/news.py:22 newspaper/models/news.py:23
+#: newspaper/templates/newspaper/userAuthenticated/news/optionNews.html:16
 #: newspaper/views/userAuthenticated/news.py:29
-#: newspaper/views/userAuthenticated/news.py:63
+#: newspaper/views/userAuthenticated/news.py:64
 msgid "News"
 msgstr ""
 
-#: newspaper/models/offer.py:8
+#: newspaper/models/offer.py:7
 msgid "Dating Offer"
 msgstr ""
 
-#: newspaper/models/offer.py:9
+#: newspaper/models/offer.py:8
 msgid "Value"
 msgstr ""
 
-#: newspaper/models/offer.py:11
+#: newspaper/models/offer.py:10
 msgid "Details"
 msgstr ""
 
-#: newspaper/models/offer.py:18
+#: newspaper/models/offer.py:17
 msgid "Offer"
 msgstr ""
 
-#: newspaper/models/redator.py:112
+#: newspaper/models/redator.py:147
+#: newspaper/views/userAuthenticated/redator.py:42
 msgid "Redator"
 msgstr ""
 
-#: newspaper/models/redator.py:113
+#: newspaper/models/redator.py:148
+#: newspaper/templates/newspaper/userAuthenticated/redator/optionRedator.html:12
 msgid "Redators"
 msgstr ""
 
-#: newspaper/models/section.py:15
-#: newspaper/templates/newspaper/userAuthenticated/section/modals.html:17
+#: newspaper/models/section.py:13
+#: newspaper/templates/newspaper/userAuthenticated/section/modals.html:16
 #: newspaper/views/userAuthenticated/section.py:37
 #: newspaper/views/userAuthenticated/section.py:76
 msgid "Section"
 msgstr ""
 
-#: newspaper/models/section.py:16 newspaper/models/subsection.py:9
+#: newspaper/models/section.py:14 newspaper/models/subsection.py:6
+#: newspaper/templates/newspaper/userAuthenticated/section/optionSection.html:12
 msgid "Sections"
 msgstr ""
 
-#: newspaper/models/subsection.py:16
+#: newspaper/models/subsection.py:13
 msgid "SubSections"
 msgstr ""
 
@@ -463,26 +504,30 @@ msgid "Users Authenticated"
 msgstr ""
 
 #: newspaper/templates/newspaper/_base.html:13
-msgid "The New York Times"
+msgid "The UFC Times - "
 msgstr ""
 
 #: newspaper/templates/newspaper/_base.html:13
 msgid "Breaking News, World News & Multimedia"
 msgstr ""
 
-#: newspaper/templates/newspaper/_footer.html:10
+#: newspaper/templates/newspaper/_base.html:66
+msgid "The beginning of the site UFC Times"
+msgstr ""
+
+#: newspaper/templates/newspaper/_footer.html:9
 msgid "Go to Home Page"
 msgstr ""
 
-#: newspaper/templates/newspaper/_footer.html:14
-msgid "Site Index"
+#: newspaper/templates/newspaper/_footer.html:12
+msgid "Logo Site"
 msgstr ""
 
-#: newspaper/templates/newspaper/_footer.html:57
+#: newspaper/templates/newspaper/_footer.html:54
 msgid "Contact Us"
 msgstr ""
 
-#: newspaper/templates/newspaper/_footer.html:63
+#: newspaper/templates/newspaper/_footer.html:60
 msgid "Terms of Service"
 msgstr ""
 
@@ -495,71 +540,105 @@ msgstr ""
 msgid "HOME"
 msgstr ""
 
-#: newspaper/templates/newspaper/_header.html:32
+#: newspaper/templates/newspaper/_header.html:33
 msgid "SECTIONS"
 msgstr ""
 
-#: newspaper/templates/newspaper/_header.html:51
-msgid "SEARCH"
+#: newspaper/templates/newspaper/_header.html:60
+msgid "Search..."
 msgstr ""
 
-#: newspaper/templates/newspaper/_header.html:73
+#: newspaper/templates/newspaper/_header.html:88
 msgid "LECTOR"
 msgstr ""
 
-#: newspaper/templates/newspaper/_header.html:77
+#: newspaper/templates/newspaper/_header.html:92
 msgid "MANAGER"
 msgstr ""
 
-#: newspaper/templates/newspaper/_header.html:83
+#: newspaper/templates/newspaper/_header.html:98
 msgid "LOG OUT"
 msgstr ""
 
-#: newspaper/templates/newspaper/_header.html:91
+#: newspaper/templates/newspaper/_header.html:106
 msgid "LOG IN"
 msgstr ""
 
-#: newspaper/templates/newspaper/_header.html:95
 #: newspaper/templates/newspaper/_header.html:110
+#: newspaper/templates/newspaper/_header.html:127
 msgid "Login"
 msgstr ""
 
-#: newspaper/templates/newspaper/_header.html:101
-#: newspaper/templates/newspaper/_header.html:138
+#: newspaper/templates/newspaper/_header.html:116
+#: newspaper/templates/newspaper/_header.html:117
+#: newspaper/templates/newspaper/_header.html:157
 msgid "Username"
 msgstr ""
 
-#: newspaper/templates/newspaper/_header.html:106
-#: newspaper/templates/newspaper/_header.html:143
+#: newspaper/templates/newspaper/_header.html:122
+#: newspaper/templates/newspaper/_header.html:123
+#: newspaper/templates/newspaper/_header.html:162
 msgid "Password"
 msgstr ""
 
-#: newspaper/templates/newspaper/_header.html:124
+#: newspaper/templates/newspaper/_header.html:132
+#: newspaper/templates/newspaper/_header.html:133
+msgid "New User? Sign-up.."
+msgstr ""
+
+#: newspaper/templates/newspaper/_header.html:141
+#: newspaper/templates/newspaper/_header.html:142
 msgid "Firstname"
 msgstr ""
 
-#: newspaper/templates/newspaper/_header.html:129
+#: newspaper/templates/newspaper/_header.html:147
+#: newspaper/templates/newspaper/_header.html:148
 msgid "Lastname"
 msgstr ""
 
-#: newspaper/templates/newspaper/_header.html:134
+#: newspaper/templates/newspaper/_header.html:153
 msgid "Email"
 msgstr ""
 
-#: newspaper/templates/newspaper/_header.html:138
+#: newspaper/templates/newspaper/_header.html:157
 msgid "Choose a username"
 msgstr ""
 
-#: newspaper/templates/newspaper/_header.html:148
+#: newspaper/templates/newspaper/_header.html:167
 msgid "Repeat Password"
 msgstr ""
 
-#: newspaper/templates/newspaper/_header.html:156
+#: newspaper/templates/newspaper/_header.html:173
+#: newspaper/templates/newspaper/_header.html:176
 msgid "Profile Picture"
 msgstr ""
 
-#: newspaper/templates/newspaper/_header.html:160
+#: newspaper/templates/newspaper/_header.html:180
 msgid "Sign Up"
+msgstr ""
+
+#: newspaper/templates/newspaper/_header.html:187
+msgid "RSS"
+msgstr ""
+
+#: newspaper/templates/newspaper/_header_accessibillity.html:7
+msgid "Skip to main content of the page - Shortcut #1"
+msgstr ""
+
+#: newspaper/templates/newspaper/_header_accessibillity.html:7
+msgid "Jump to Content"
+msgstr ""
+
+#: newspaper/templates/newspaper/_header_accessibillity.html:11
+msgid "Jump to Menu"
+msgstr ""
+
+#: newspaper/templates/newspaper/_header_accessibillity.html:15
+msgid "On/Off High Contrast - Shortcut #3"
+msgstr ""
+
+#: newspaper/templates/newspaper/_header_accessibillity.html:19
+msgid "Increase / Decrease Font - Shortcut #4"
 msgstr ""
 
 #: newspaper/templates/newspaper/_no_script.html:6
@@ -569,22 +648,22 @@ msgid ""
 "\"_blank\">instructions on how to enable JavaScript in your browser </a>."
 msgstr ""
 
-#: newspaper/templates/newspaper/user/classifield.html:28
-#: newspaper/templates/newspaper/user/classifield.html:50
-#: newspaper/templates/newspaper/user/home.html:161
-#: newspaper/templates/newspaper/userAuthenticated/classifield/_render_classifield.html:15
+#: newspaper/templates/newspaper/user/classifield.html:29
+#: newspaper/templates/newspaper/user/classifield.html:66
+#: newspaper/templates/newspaper/user/home.html:190
+#: newspaper/templates/newspaper/userAuthenticated/classifield/_render_classifield.html:17
 msgid "Minimum Value:"
 msgstr ""
 
-#: newspaper/templates/newspaper/user/classifield.html:29
-#: newspaper/templates/newspaper/user/classifield.html:51
-#: newspaper/templates/newspaper/user/home.html:162
-#: newspaper/templates/newspaper/userAuthenticated/classifield/_render_classifield.html:16
+#: newspaper/templates/newspaper/user/classifield.html:30
+#: newspaper/templates/newspaper/user/classifield.html:67
+#: newspaper/templates/newspaper/user/home.html:191
+#: newspaper/templates/newspaper/userAuthenticated/classifield/_render_classifield.html:18
 msgid "Contact Phone:"
 msgstr ""
 
-#: newspaper/templates/newspaper/user/classifield.html:31
-#: newspaper/templates/newspaper/user/home.html:164
+#: newspaper/templates/newspaper/user/classifield.html:32
+#: newspaper/templates/newspaper/user/home.html:193
 #, python-format
 msgid ""
 "\n"
@@ -593,57 +672,77 @@ msgid ""
 "\t\t\t\t\t\t"
 msgstr ""
 
-#: newspaper/templates/newspaper/user/classifield.html:53
-#: newspaper/templates/newspaper/userAuthenticated/classifield/_render_classifield.html:18
+#: newspaper/templates/newspaper/user/classifield.html:69
 #, python-format
 msgid ""
 "\n"
-"\t\t\t\tBest Offer By: %(author_offer)s with Value: %(value)s, "
+"\t\t\t\t\t\tBest Offer By: %(author_offer)s with Value: %(value)s, "
 "%(date_offer)s .\n"
-"\t\t\t"
+"\t\t\t\t\t"
 msgstr ""
 
-#: newspaper/templates/newspaper/user/classifield.html:72
-#: newspaper/templates/newspaper/userAuthenticated/classifield/_render_classifield.html:25
+#: newspaper/templates/newspaper/user/classifield.html:81
+#: newspaper/templates/newspaper/userAuthenticated/classifield/_render_classifield.html:32
 msgid "List Offers: "
 msgstr ""
 
-#: newspaper/templates/newspaper/user/classifield.html:77
+#: newspaper/templates/newspaper/user/classifield.html:86
 msgid "Add Offer: "
 msgstr ""
 
-#: newspaper/templates/newspaper/user/home.html:15
+#: newspaper/templates/newspaper/user/home.html:16
 msgid "It is"
 msgstr ""
 
-#: newspaper/templates/newspaper/user/home.html:31
-#: newspaper/templates/newspaper/userAuthenticated/news/optionNews.html:33
+#: newspaper/templates/newspaper/user/home.html:28
+#: newspaper/templates/newspaper/userAuthenticated/classifield/optionClassifield.html:34
+#: newspaper/templates/newspaper/userAuthenticated/news/optionNews.html:39
 msgid "All"
 msgstr ""
 
-#: newspaper/templates/newspaper/user/home.html:85
+#: newspaper/templates/newspaper/user/home.html:90
 msgid "There are no questions available."
 msgstr ""
 
-#: newspaper/templates/newspaper/user/home.html:96
-#: newspaper/templates/newspaper/user/home.html:133
-#: newspaper/templates/newspaper/user/news.html:20
-#: newspaper/templates/newspaper/user/news.html:42
+#: newspaper/templates/newspaper/user/home.html:113
+#: newspaper/templates/newspaper/user/home.html:158
+#: newspaper/templates/newspaper/user/news.html:31
+#: newspaper/templates/newspaper/user/news.html:71
 #: newspaper/templates/newspaper/userAuthenticated/news/_render_news.html:4
 msgid "By"
 msgstr ""
 
-#: newspaper/templates/newspaper/user/news.html:66
+#: newspaper/templates/newspaper/user/home.html:231
+#: newspaper/templates/newspaper/user/home.html:233
+#: newspaper/templates/newspaper/userAuthenticated/classifield/_render_list_classifield.html:10
+#: newspaper/templates/newspaper/userAuthenticated/news/_render_list_news.html:11
+#: newspaper/templates/newspaper/userAuthenticated/news/_render_list_news.html:13
+msgid "Page Previous"
+msgstr ""
+
+#: newspaper/templates/newspaper/user/home.html:240
+msgid "Page:"
+msgstr ""
+
+#: newspaper/templates/newspaper/user/home.html:243
+#: newspaper/templates/newspaper/user/home.html:245
+#: newspaper/templates/newspaper/userAuthenticated/classifield/_render_list_classifield.html:18
+#: newspaper/templates/newspaper/userAuthenticated/news/_render_list_news.html:23
+#: newspaper/templates/newspaper/userAuthenticated/news/_render_list_news.html:25
+msgid "Page Next"
+msgstr ""
+
+#: newspaper/templates/newspaper/user/news.html:95
 #: newspaper/templates/newspaper/userAuthenticated/news/_render_news.html:28
 msgid "Comments:"
 msgstr ""
 
-#: newspaper/templates/newspaper/user/news.html:99
+#: newspaper/templates/newspaper/user/news.html:128
 #: newspaper/templates/newspaper/userAuthenticated/news/_render_news.html:61
 msgid "News has no comments."
 msgstr ""
 
-#: newspaper/templates/newspaper/user/news.html:103
+#: newspaper/templates/newspaper/user/news.html:132
 #: newspaper/templates/newspaper/userAuthenticated/news/_render_news.html:65
 msgid "Add your comment:"
 msgstr ""
@@ -653,7 +752,21 @@ msgstr ""
 msgid "Add %(option)s"
 msgstr ""
 
-#: newspaper/templates/newspaper/userAuthenticated/classifield/_render_list_classifield.html:35
+#: newspaper/templates/newspaper/userAuthenticated/classifield/_render_classifield.html:20
+#, python-format
+msgid ""
+"\n"
+"\t\t\t\t\tBest Offer By: %(author_offer)s with Value: %(value)s, "
+"%(date_offer)s .\n"
+"\t\t\t\t"
+msgstr ""
+
+#: newspaper/templates/newspaper/userAuthenticated/classifield/_render_list_classifield.html:15
+#: newspaper/templates/newspaper/userAuthenticated/news/_render_list_news.html:19
+msgid "Page: "
+msgstr ""
+
+#: newspaper/templates/newspaper/userAuthenticated/classifield/_render_list_classifield.html:56
 msgid "There are no classifields"
 msgstr ""
 
@@ -663,18 +776,22 @@ msgid "Edit %(option)s"
 msgstr ""
 
 #: newspaper/templates/newspaper/userAuthenticated/journalist/_render_journalist.html:8
+#: newspaper/templates/newspaper/userAuthenticated/redator/_render_redator.html:8
 msgid "Username:"
 msgstr ""
 
 #: newspaper/templates/newspaper/userAuthenticated/journalist/_render_journalist.html:12
+#: newspaper/templates/newspaper/userAuthenticated/redator/_render_redator.html:12
 msgid "First Name:"
 msgstr ""
 
 #: newspaper/templates/newspaper/userAuthenticated/journalist/_render_journalist.html:16
+#: newspaper/templates/newspaper/userAuthenticated/redator/_render_redator.html:16
 msgid "Last Name:"
 msgstr ""
 
 #: newspaper/templates/newspaper/userAuthenticated/journalist/_render_journalist.html:20
+#: newspaper/templates/newspaper/userAuthenticated/redator/_render_redator.html:20
 msgid "Email:"
 msgstr ""
 
@@ -682,21 +799,21 @@ msgstr ""
 msgid "There is no Journalists"
 msgstr ""
 
-#: newspaper/templates/newspaper/userAuthenticated/news/_render_list_news.html:37
+#: newspaper/templates/newspaper/userAuthenticated/news/_render_list_news.html:67
 msgid "There are no news"
 msgstr ""
 
-#: newspaper/templates/newspaper/userAuthenticated/news/_render_list_news.html:41
+#: newspaper/templates/newspaper/userAuthenticated/news/_render_list_news.html:71
 msgid "All News"
 msgstr ""
 
-#: newspaper/templates/newspaper/userAuthenticated/news/optionNews.html:78
-#: newspaper/templates/newspaper/userAuthenticated/section/optionSection.html:72
+#: newspaper/templates/newspaper/userAuthenticated/news/optionNews.html:74
+#: newspaper/templates/newspaper/userAuthenticated/section/optionSection.html:74
 msgid "Section does not have subsection."
 msgstr ""
 
-#: newspaper/templates/newspaper/userAuthenticated/news/optionNews.html:85
-#: newspaper/templates/newspaper/userAuthenticated/section/optionSection.html:80
+#: newspaper/templates/newspaper/userAuthenticated/news/optionNews.html:82
+#: newspaper/templates/newspaper/userAuthenticated/section/optionSection.html:85
 msgid "No sections"
 msgstr ""
 
@@ -720,14 +837,14 @@ msgstr ""
 msgid "Details:"
 msgstr ""
 
-#: newspaper/templates/newspaper/userAuthenticated/section/modals.html:9
+#: newspaper/templates/newspaper/userAuthenticated/redator/optionRedator.html:56
+msgid "There is no redators"
+msgstr ""
+
+#: newspaper/templates/newspaper/userAuthenticated/section/modals.html:8
 msgid "Choose an option..."
 msgstr ""
 
-#: newspaper/templates/newspaper/userAuthenticated/section/modals.html:35
+#: newspaper/templates/newspaper/userAuthenticated/section/modals.html:34
 msgid "Close"
-msgstr ""
-
-#: newspaper/templates/newspaper/userAuthenticated/section/optionSection.html:11
-msgid "Sections and SubSections"
 msgstr ""
