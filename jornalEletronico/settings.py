@@ -95,12 +95,6 @@ CACHES = {
     },
 }
 
-CACHES.update({
-    'djconfig': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-    },
-})
-
 
 
 WSGI_APPLICATION = 'jornalEletronico.wsgi.application'
