@@ -38,7 +38,7 @@ def addSubSection(request):
 			return render(request, "newspaper/userAuthenticated/subsection/addSubSection.html", locals())
 	else:
 		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-	return manager(request, None, None, message )
+	return manager(request, None, None,1, message )
 
 def editSubSection(request, id_subsection):
 	message = None
@@ -51,7 +51,7 @@ def editSubSection(request, id_subsection):
 			subsection = SubSection.objects.get(id = id_subsection)
 		except:
 			message = Message(TextMessage.SUBSECTION_NOT_FOUND, TypeMessage.ERROR)
-			return manager(request, None, None, message )
+			return manager(request, None, None, 1, message )
 
 		if request.method == "POST":
 			try:
@@ -59,7 +59,7 @@ def editSubSection(request, id_subsection):
 					user = Redator.objects.get(username=request.user.username)
 				except:
 					message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-					return manager(request, None, None, message)
+					return manager(request, None, None, 1, message)
 				form = PartialSubSectionForm(request.POST, request.FILES, instance=subsection)
 				if user.editSubSection(form):
 					message = Message(TextMessage.SUBSECTION_SUCCESS_EDIT, TypeMessage.SUCCESS)
@@ -78,7 +78,7 @@ def editSubSection(request, id_subsection):
 				message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
 	else:
 		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-	return manager(request, None, None, message )
+	return manager(request, None, None, 1, message )
 
 
 def remSubSection(request, id_subsection):
@@ -89,7 +89,7 @@ def remSubSection(request, id_subsection):
 				user = Redator.objects.get(username=request.user.username)
 			except:
 				message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-				return manager(request, None, None, message)
+				return manager(request, None, None, 1, message)
 			if user.remSubSection(id_subsection):
 				message = Message(TextMessage.SUBSECTION_SUCCESS_REM, TypeMessage.SUCCESS)
 			else:
@@ -98,4 +98,4 @@ def remSubSection(request, id_subsection):
 			pass
 	else:
 		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-	return manager(request, None, None, message )
+	return manager(request, None, None, 1, message )

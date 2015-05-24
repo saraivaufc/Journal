@@ -11,7 +11,7 @@ class SectionForm(ModelForm):
 class PartialSectionForm(ModelForm):
 	class Meta:
 		model= Section
-		fields = ['title']
+		fields = ['title', 'image']
 		widgets = {
 			'title': TextInput(attrs={'required': 'required'}),
 		}

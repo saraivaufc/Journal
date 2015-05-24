@@ -32,9 +32,12 @@
   		<li>
   			<div class="container-fluid">
 		  		<div class="col-xs-6  col-md-6 text-left">
-			 		<a data-toggle="collapse" data-parent="#collapseSection2" href="#collapse2{{i.id}}">
-		  				<h4>{{ i.title }}</h4>
-		  			</a>
+			 		{% if i.image != '' %}
+	  				<img class="img-circle" style='float: left; margin-right: 5px; width: 26px; height: 26px;'  src='{{ i.image.url }}' />
+	  				{% endif %}
+			  		<span>
+			  			{{ i.title }}
+			  		</span>
 			 	</div>
 			 	<div class="col-xs-6 col-md-4 text-right">
 					<a href="/newspaper/userAuthenticated/manager/section/edit/{{i.id }}/">
@@ -55,7 +58,12 @@
 				<li>
 					<div class="container-fluid">
 			  		<div class="col-xs-6  col-md-8 text-left">
-			  			<h4>{{ k.title }}</h4>
+			  			{% if k.image != '' %}
+		  				<img class="img-circle" style='float: left; margin-right: 5px; width: 26px; height: 26px;'  src='{{ k.image.url }}' />
+		  				{% endif %}
+				  		<span>
+				  			{{ k.title }}
+				  		</span>
 				 	</div>
 				 	<div class="col-xs-6 col-md-4 text-right">
 						<a href="/newspaper/userAuthenticated/manager/subsection/edit/{{k.id }}/">

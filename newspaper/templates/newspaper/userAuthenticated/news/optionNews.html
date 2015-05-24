@@ -48,7 +48,12 @@
   		{% for i in sections %}
 	  		<li>
 		  		<div class="col-xs-6  col-md-8 text-left">
-		  			<h4>{{ i.title|ljust:"30" }}</h4>
+		  			{% if i.image != '' %}
+	  				<img class="img-circle" style='float: left; margin-right: 5px; width: 26px; height: 26px;'  src='{{ i.image.url }}' />
+	  				{% endif %}
+			  		<span>
+			  			{{ i.title }}
+			  		</span>
 		  		</div>
 				<div class="col-xs-6 col-md-4 text-right">
 					<a href="/newspaper/userAuthenticated/manager/section={{i.id }}/">
@@ -60,7 +65,12 @@
 						<li>
 							<div class="container-fluid">
 						  		<div class="col-xs-6  col-md-8 text-left">
-						  			<h4>{{ k.title|ljust:"30" }}</h4>
+						  			{% if k.image != '' %}
+					  				<img class="img-circle" style='float: left; margin-right: 5px; width: 26px; height: 26px;'  src='{{ k.image.url }}' />
+					  				{% endif %}
+							  		<span>
+							  			{{ k.title }}
+							  		</span>
 							 	</div>
 								<div class="col-xs-6 col-md-4 text-right">
 									<a href="/newspaper/userAuthenticated/manager/section={{i.id }}/subsection={{k.id}}/">
