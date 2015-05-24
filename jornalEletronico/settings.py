@@ -97,8 +97,7 @@ CACHES = {
 
 CACHES.update({
     'djconfig': {
-        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-        'LOCATION': 'newspaper_cache',
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
     },
 })
 
@@ -168,4 +167,3 @@ STATIC_URL = '/static/'
 
 #settings email
 EMAIL_ADMINS = ['saraiva.ufc@gmail.com','saraiva@alu.ufc.br']
-
