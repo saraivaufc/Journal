@@ -17,6 +17,24 @@ class Redator(UserAuthenticated):
 			return True
 		else:
 			return False
+	def registeringRedator(self, form):
+		if form.is_valid():	
+			form.save()
+			data = form.cleaned_data
+			username = data['username']
+			from newspaper.models import Redator
+			u = Redator.objects.get(username = username)
+			permission1 = Permission.objects.get(codename='keep_journalist')
+			permission2 = Permission.objects.get(codename='keep_redator')
+			permission3 = Permission.objects.get(codename='keep_classifield')
+			permission4 = Permission.objects.get(codename='keep_section')
+			permission5 = Permission.objects.get(codename='keep_subsection')
+			permission6 = Permission.objects.filter(codename='delete_news')[0]
+			permission7 = Permission.objects.get(codename='access_manager')
+			u.user_permissions.add(permission1, permission2,permission3,permission4,permission5,permission6,permission7)
+			return True
+		else:
+			return False
 
 	def editJournalist(self,form):
 		if form.is_valid():
@@ -24,12 +42,29 @@ class Redator(UserAuthenticated):
 			return True
 		else:
 			return False
+
+	def editRedator(self,form):
+		if form.is_valid():
+			form.save()
+			return True
+		else:
+			return False
+
 	def remJournalist(self, id):
 		try:
 			Journalist.objects.get(id = id).delete()
 			return True
 		except:
 			return False
+
+	def remRedator(self, id):
+		try:
+			from newspaper.models import Redator
+			Redator.objects.get(id = id).delete()
+			return True
+		except:
+			return False
+
 
 	def deleteNews(self, id_news):
 		try:
@@ -112,6 +147,7 @@ class Redator(UserAuthenticated):
 		verbose_name = _("Redator")
 		verbose_name_plural = _("Redators")
 		permissions = (("keep_journalist", "Keep Journalist"),
+					   ("keep_redator", "Keep Redator"),
                        ("keep_classifield", "Keep Classifield"),
                        ("keep_section", "Keep Section"),
                        ("keep_subsection", "Keep SubSection"),

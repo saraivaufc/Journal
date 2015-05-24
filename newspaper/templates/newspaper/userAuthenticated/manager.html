@@ -17,12 +17,19 @@
 				{% if perms.newspaper.keep_news or perms.newspaper.delete_news %}
 					{% include "newspaper/userAuthenticated/news/optionNews.html" %}
 				{% endif %}
+				
 				{% if perms.newspaper.keep_journalist or perms.newspaper.keep_journalist %}
 					{% include "newspaper/userAuthenticated/journalist/optionJournalist.html" %}
 				{% endif %}
+
+				{% if perms.newspaper.keep_redator or perms.newspaper.keep_redator %}
+					{% include "newspaper/userAuthenticated/redator/optionRedator.html" %}
+				{% endif %}
+				
 				{% if perms.newspaper.keep_section or perms.newspaper.keep_subsection %}
 					{% include "newspaper/userAuthenticated/section/optionSection.html" %}
 				{% endif %}
+				
 				{% if perms.newspaper.keep_classifield %}
 					{% include "newspaper/userAuthenticated/classifield/optionClassifield.html" %}
 				{% endif %}

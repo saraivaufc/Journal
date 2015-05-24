@@ -1,0 +1,62 @@
+{% load i18n %}
+{% load humanize %}
+
+<!--Jornalist -->
+<li item-expanded='false'>
+  	<h3>
+  		<div class="container-fluid">
+	  		<div class="col-xs-6  col-md-8  text-center">
+	  			<div class="row">
+			 		<img style='float: left; margin-right: 5px;'  src='/static/newspaper/img/icons/redator.png' />
+			  		<span item-title="true">
+			  			{% trans "Redators" %}
+			  		</span>
+	  			</div>
+		 	</div>
+			<div class="col-xs-6 col-md-4 text-right">
+				<div class="row">
+					{% if perms.newspaper.keep_redator %}
+					<a href="/newspaper/userAuthenticated/manager/redator/add/">
+						<span class="glyphicon glyphicon-plus pointer"></span>
+					</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+  	</h3>
+
+  	{% if open_redator %}
+	  <ul item-expanded='true'>
+	  {% else %}
+	  <ul item-expanded='false'>
+	  {% endif %}
+  		{% for i in redators %}
+	  		<li>
+	  			<div class="container-fluid">
+			  		<div class="col-xs-6  col-md-6 text-left">
+		  				<h4>{{ i.username }}</h4>
+				 	</div>
+					<div class="col-xs-6 col-md-6 text-right">
+						<a href="/newspaper/userAuthenticated/manager/redator/view/{{i.id}}/">
+							<span class=" glyphicon glyphicon-eye-open pointer"></span>
+						</a>
+						&nbsp;
+						<a href="/newspaper/userAuthenticated/manager/redator/edit/{{i.id}}/">
+							<span class="  glyphicon glyphicon-edit pointer"></span>
+						</a>
+						&nbsp;
+						<a href="/newspaper/userAuthenticated/manager/redator/rem/{{i.id}}/">
+							<span class="  glyphicon glyphicon-remove pointer"></span>
+						</a>
+					</div>
+				</div>
+	  		</li>
+	  		{% empty %}
+  			<li class="list-group-item list-group-item-warning">
+  				{% trans "There is no redators" %}
+  			</li>
+  		{% endfor %}
+  	</ul>
+
+  </li>
+<!-- Quit News -->

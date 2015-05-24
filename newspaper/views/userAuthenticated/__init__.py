@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from .manager import *
 from .news import *
 from .journalist import *
+from .redator import *
 from .section import *
 from .subsection import *
 from .classifield import *

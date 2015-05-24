@@ -57,6 +57,18 @@ class TextMessage():
 
 	JOURNALIST_NOT_FOUND = _("Journalist not found")
 
+	#Redator
+	REDATOR_SUCCESS_ADD = _("Redator successfully added")
+	REDATOR_ERROR_ADD = _("Error adding redator")
+	
+	REDATOR_SUCCESS_EDIT = _("Redator successfully edit")
+	REDATOR_ERROR_EDIT = _("Error edit redator")
+	
+	REDATOR_SUCCESS_REM = _("Redator successfully removed")
+	REDATOR_ERROR_REM = _("Error remove redator")
+
+	REDATOR_NOT_FOUND = _("Redator not found")
+
 	
 	#Section
 	SECTION_SUCCESS_ADD = _("Section successfully added")

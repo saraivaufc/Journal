@@ -2,7 +2,7 @@
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
-from newspaper.models import News, Section, SubSection, Journalist
+from newspaper.models import News, Section, SubSection, Journalist, Redator
 from newspaper.utils import getNewsFromSection , filterList
 from newspaper.entities import Message, TypeMessage, TextMessage
 from django.utils.translation import ugettext as _
@@ -21,6 +21,8 @@ def manager(request, id_section = None, id_subsection = None,id_page = 1, messag
 	sections = Section.objects.all()
 	if request.user.has_perm('newspaper.keep_journalist'):
 		journalists = Journalist.objects.all()
+	if request.user.has_perm('newspaper.keep_redator'):
+		redators = Redator.objects.all()
 
 	if id_section == None and id_subsection == None:
 		news_all = News.objects.all()

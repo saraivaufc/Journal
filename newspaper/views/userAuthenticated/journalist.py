@@ -30,21 +30,21 @@ def addJournalist(request):
 				user = Redator.objects.get(username = request.user.username)
 			except:
 				message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.SUCCESS)
-				return manager(request, None, None, message)
+				return manager(request, None, None,1, message)
 				
 			if user.registeringJournalist(form):
 				message = Message(TextMessage.JOURNALIST_SUCCESS_ADD, TypeMessage.SUCCESS)
 			else:
 				message = Message(TextMessage.JOURNALIST_ERROR_ADD, TypeMessage.ERROR)
 
-			return manager(request, None, None, message )
-		form = PartialJournalistForm
+			return manager(request, None, None,1, message )
+		form = PartialJournalistForm()
 		option = _("Journalist")
 		open_journalist = True
 		return render(request, "newspaper/userAuthenticated/journalist/addJournalist.html", locals())
 	else:
 		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-	return manager(request, None, None, message )
+	return manager(request, None, None,1, message )
 
 def viewJournalist(request, id_journalist):
 	message = None
@@ -63,7 +63,7 @@ def viewJournalist(request, id_journalist):
 			message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
 	else:
 		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-	return manager(request, None, None, message )
+	return manager(request, None, None,1, message )
 
 def remJournalist(request, id_journalist):
 	message = None
@@ -78,7 +78,7 @@ def remJournalist(request, id_journalist):
 			message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
 	else:
 		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-	return manager(request, None, None, message )
+	return manager(request, None, None,1, message )
 
 def editJournalist(request, id_journalist):
 	message = None
@@ -111,4 +111,4 @@ def editJournalist(request, id_journalist):
 			return render(request, "newspaper/userAuthenticated/journalist/editJournalist.html", locals())
 	else:
 		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-	return manager(request, None, None, message )
+	return manager(request, None, None,1, message )
