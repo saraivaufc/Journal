@@ -95,6 +95,13 @@ CACHES = {
     },
 }
 
+CACHES.update({
+    'djconfig': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'newspaper_cache',
+    },
+})
+
 
 
 WSGI_APPLICATION = 'jornalEletronico.wsgi.application'
