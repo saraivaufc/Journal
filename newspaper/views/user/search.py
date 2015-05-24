@@ -7,8 +7,9 @@ from newspaper.models import Section, SubSection, News
 from newspaper.views.user import home, viewNews
 import string
 from django.utils.translation import ugettext_lazy as _
+from django.views.decorators.cache import cache_page
 
-
+@cache_page(60 * 60)
 def search(request):
 	if request.method == "POST":
 		search = request.POST['search']
