@@ -9,111 +9,105 @@ from newspaper.forms import ClassifieldForm, PartialClassifieldForm
 from newspaper.entities import Message, TypeMessage,TextMessage
 from django.utils.translation import ugettext as _
 from newspaper.views.userAuthenticated import manager
+from django.contrib.auth.decorators import permission_required
 
-
+@permission_required('newspaper.keep_classifield')
 def viewClassifield(request, id_page = 1, message = None):
 	try:
 		id_page = int(id_page)
 	except:
 		id_page = 1
 	open_classfield = True
-	if request.user.has_perm('newspaper.keep_classifield'):
+	try:
+		classifields = Classifield.objects.all()
+		classifields = filterList(classifields, int(id_page), 10)
+		id_page_left = int(id_page) - 1
+		if id_page_left <= 0: id_page_left = 1
+		id_page_rigth = int(id_page) + 1
+		if len(filterList(classifields, int(id_page_rigth), 10)) == 0: id_page_rigth = None
 		news = News.objects.all()
 		sections = Section.objects.all()
-		if request.user.has_perm('newspaper.keep_journalist'):
-			journalists = Journalist.objects.all()
-		try:
-			classifields = Classifield.objects.all()
-			classifields = filterList(classifields, int(id_page), 10)
-			id_page_left = int(id_page) - 1
-			if id_page_left <= 0: id_page_left = 1
-			id_page_rigth = int(id_page) + 1
-			if len(filterList(classifields, int(id_page_rigth), 10)) == 0: id_page_rigth = None
-			return render(request, "newspaper/userAuthenticated/classifield/viewClassifields.html", locals())
-		except:
-			message = Message(TextMessage.CLASSIFIELDS_NOT_FOUND, TypeMessage.ERROR)
-	else:
-		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
+		journalists = Journalist.objects.all()
+		redators = Redator.objects.all()
+		return render(request, "newspaper/userAuthenticated/classifield/viewClassifields.html", locals())
+	except:
+		message = Message(TextMessage.CLASSIFIELDS_NOT_FOUND, TypeMessage.ERROR)
 	return viewClassifield(request,id_page, message )
 
+
+@permission_required('newspaper.keep_classifield')
 def addClassifield(request):
 	message = None
 	open_classfield = True
-	if request.user.has_perm('newspaper.keep_classifield'):
-		news = News.objects.all()
-		sections = Section.objects.all()
-		if request.user.has_perm('newspaper.keep_journalist'):
-			journalists = Journalist.objects.all()
-
-		if request.method == "POST":
-			try:
-				try:
-					user = Redator.objects.get(username=request.user.username)
-				except:
-					message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-					return manager(request, None, None, message )
-				form = PartialClassifieldForm(request.POST, request.FILES)
-				if user.registeringClassifield(form):
-					message = Message(TextMessage.CLASSIFIELD_SUCCESS_ADD, TypeMessage.SUCCESS)
-				else:
-					message = Message(TextMessage.CLASSIFIELD_ERROR_ADD, TypeMessage.ERROR)
-			except:
-				pass
-			return viewClassifield(request, message )
-		else:
-			form = PartialClassifieldForm()
-			option = _("Classifield")
-			return render(request, "newspaper/userAuthenticated/classifield/addClassifield.html", locals())
-	else:
-		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-	return viewClassifield(request,1,message )
-
-def remClassifield(request, id_classifield):
-	message = None
-	if request.user.has_perm('newspaper.keep_classifield'):
+	if request.method == "POST":
 		try:
 			try:
-				user = Redator.objects.get(username = request.user.username)
+				user = Redator.objects.get(username=request.user.username)
 			except:
 				message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-				return viewClassifield(request, message )
-			if user.remClassifield(id_classifield):
-				message = Message(TextMessage.CLASSIFIELD_SUCCESS_REM, TypeMessage.SUCCESS)
+				return manager(request, None, None,1,  message )
+			form = PartialClassifieldForm(request.POST, request.FILES)
+			if user.registeringClassifield(form):
+				message = Message(TextMessage.CLASSIFIELD_SUCCESS_ADD, TypeMessage.SUCCESS)
 			else:
-				message = Message(TextMessage.CLASSIFIELD_ERROR_REM, TypeMessage.ERROR)
+				message = Message(TextMessage.CLASSIFIELD_ERROR_ADD, TypeMessage.ERROR)
 		except:
 			pass
+		return viewClassifield(request, 1, message )
 	else:
-		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-	return viewClassifield(request, message )
+		form = PartialClassifieldForm()
+		option = _("Classifield")
 
+		news = News.objects.all()
+		sections = Section.objects.all()
+		journalists = Journalist.objects.all()
+		redators = Redator.objects.all()
+		return render(request, "newspaper/userAuthenticated/classifield/addClassifield.html", locals())
+	return viewClassifield(request,1,message )
+
+
+@permission_required('newspaper.keep_classifield')
+def remClassifield(request, id_classifield):
+	message = None
+	try:
+		try:
+			user = Redator.objects.get(username = request.user.username)
+		except:
+			message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
+			return viewClassifield(request, message )
+		if user.remClassifield(id_classifield):
+			message = Message(TextMessage.CLASSIFIELD_SUCCESS_REM, TypeMessage.SUCCESS)
+		else:
+			message = Message(TextMessage.CLASSIFIELD_ERROR_REM, TypeMessage.ERROR)
+	except:
+		pass
+	return viewClassifield(request,1, message)
+
+@permission_required('newspaper.keep_classifield')
 def editClassifield(request, id_classifield):
 	message = None
 	open_classfield = True
-	if request.user.has_perm('newspaper.keep_classifield'):
+	try:
+		classifield = Classifield.objects.get(id = id_classifield)
+	except:
+		message = Message(TextMessage.CLASSIFIELD_NOT_FOUND, TypeMessage.ERROR)
+		return manager(request, None, None, 1, message )
+	if request.method == "POST":
+		try:
+			user = Redator.objects.get(username = request.user.username)
+		except:
+			message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
+			return manager(request, None, None, 1, message )
+		form = PartialClassifieldForm(request.POST, request.FILES, instance = classifield)
+		if user.editClassifield(form):
+			message = Message(TextMessage.CLASSIFIELD_SUCCESS_EDIT, TypeMessage.SUCCESS)
+		else:
+			message = Message(TextMessage.CLASSIFIELD_ERROR_EDIT, TypeMessage.ERROR)
+	else:
+		form = PartialClassifieldForm(instance = classifield) 
 		news = News.objects.all()
 		sections = Section.objects.all()
-		if request.user.has_perm('newspaper.keep_journalist'):
-			journalists = Journalist.objects.all()
-			try:
-				classifield = Classifield.objects.get(id = id_classifield)
-			except:
-				message = Message(TextMessage.CLASSIFIELD_NOT_FOUND, TypeMessage.ERROR)
-				return manager(request, None, None, message )
-		if request.method == "POST":
-			try:
-				user = Redator.objects.get(username = request.user.username)
-			except:
-				message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-				return manager(request, None, None, message )
-			form = PartialClassifieldForm(request.POST, request.FILES, instance = classifield)
-			if user.editClassifield(form):
-				message = Message(TextMessage.CLASSIFIELD_SUCCESS_EDIT, TypeMessage.SUCCESS)
-			else:
-				message = Message(TextMessage.CLASSIFIELD_ERROR_EDIT, TypeMessage.ERROR)
-		else:
-			form = PartialClassifieldForm(instance = classifield) 
-			return render(request, "newspaper/userAuthenticated/classifield/editClassifield.html", locals())
-	else:
-		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-	return viewClassifield(request,1,  message)
+		journalists = Journalist.objects.all()
+		redators = Redator.objects.all()
+		return render(request, "newspaper/userAuthenticated/classifield/editClassifield.html", locals())
+	return viewClassifield(request,1, message)

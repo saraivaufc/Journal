@@ -12,11 +12,6 @@ from newspaper.views.userAuthenticated import manager
 def addSection(request):
 	message = None 
 	if request.user.has_perm('newspaper.keep_section'):
-		news = News.objects.all()
-		sections = Section.objects.all()
-		subsections = SubSection.objects.all()
-		if request.user.has_perm('newspaper.keep_journalist'):
-			journalists = Journalist.objects.all()
 		if request.method == "POST":
 			try:
 				try:
@@ -37,6 +32,12 @@ def addSection(request):
 			option = _("Section")
 			open_sections2 = True
 			open_subsections2 = True
+			
+
+			news = News.objects.all()
+			sections = Section.objects.all()
+			journalists = Journalist.objects.all()
+			redators = Redator.objects.all()
 			return render(request, "newspaper/userAuthenticated/section/addSection.html", locals())
 	else:
 		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
@@ -45,10 +46,6 @@ def addSection(request):
 def editSection(request, id_section):
 	message = None
 	if request.user.has_perm('newspaper.keep_section'):
-		news = News.objects.all()
-		sections = Section.objects.all()
-		if request.user.has_perm('newspaper.keep_journalist'):
-			journalists = Journalist.objects.all()
 		try:
 			section = Section.objects.get(id = id_section)
 		except:
@@ -76,6 +73,11 @@ def editSection(request, id_section):
 				option = _("Section")
 				open_sections2 = True
 				open_subsections2 = True
+				
+				news = News.objects.all()
+				sections = Section.objects.all()
+				journalists = Journalist.objects.all()
+				redators = Redator.objects.all()
 				return render(request, "newspaper/userAuthenticated/section/editSection.html", locals())
 			except:
 				pass

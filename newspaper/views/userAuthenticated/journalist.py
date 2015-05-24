@@ -12,103 +12,103 @@ try:
 	from hashlib import md5
 except:
 	from md5 import new as md5
+from django.contrib.auth.decorators import permission_required
 
-def addJournalist(request):
+
+@permission_required('newspaper.keep_journalist')
+def viewJournalist(request, id_journalist):
 	message = None
-	if request.user.has_perm('newspaper.keep_journalist') :
+	try:
+		try:
+			journalist = Journalist.objects.get(id = id_journalist)
+		except:
+			message = Message(TextMessage.JOURNALIST_NOT_FOUND, TypeMessage.ERROR)
+		open_journalist = True
+		option = _("Journalist")
 		news = News.objects.all()
 		sections = Section.objects.all()
 		journalists = Journalist.objects.all()
-		if request.method == "POST":
-			try:
-				request.POST = request.POST.copy()
-				request.POST['password'] =  md5(request.POST['password'] ).hexdigest()
-			except:
-				pass
-			form = PartialJournalistForm(request.POST, request.FILES)
-			try:
-				user = Redator.objects.get(username = request.user.username)
-			except:
-				message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.SUCCESS)
-				return manager(request, None, None,1, message)
-				
-			if user.registeringJournalist(form):
-				message = Message(TextMessage.JOURNALIST_SUCCESS_ADD, TypeMessage.SUCCESS)
-			else:
-				message = Message(TextMessage.JOURNALIST_ERROR_ADD, TypeMessage.ERROR)
-
-			return manager(request, None, None,1, message )
-		form = PartialJournalistForm()
-		option = _("Journalist")
-		open_journalist = True
-		return render(request, "newspaper/userAuthenticated/journalist/addJournalist.html", locals())
-	else:
-		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
+		redators = Redator.objects.all()
+		return render(request, "newspaper/userAuthenticated/journalist/viewJournalist.html", locals())
+	except:
+		message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
 	return manager(request, None, None,1, message )
 
-def viewJournalist(request, id_journalist):
+@permission_required('newspaper.keep_journalist')
+def addJournalist(request):
 	message = None
-	if request.user.has_perm('newspaper.keep_journalist'):
-		news = News.objects.all()
-		sections = Section.objects.all()
+	if request.method == "POST":
 		try:
-			try:
-				journalist = Journalist.objects.get(id = id_journalist)
-			except:
-				message = Message(TextMessage.JOURNALIST_NOT_FOUND, TypeMessage.ERROR)
-			journalists = Journalist.objects.all()
-			open_journalist = True
-			return render(request, "newspaper/userAuthenticated/journalist/viewJournalist.html", locals())
+			request.POST = request.POST.copy()
+			request.POST['password'] =  md5(request.POST['password'] ).hexdigest()
 		except:
-			message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-	else:
-		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-	return manager(request, None, None,1, message )
-
-def remJournalist(request, id_journalist):
-	message = None
-	if request.user.has_perm('newspaper.keep_journalist'):
+			pass
+		form = PartialJournalistForm(request.POST, request.FILES)
 		try:
 			user = Redator.objects.get(username = request.user.username)
-			if user.remJournalist(id_journalist):
-				message = Message(TextMessage.JOURNALIST_SUCCESS_REM, TypeMessage.SUCCESS)
-			else:
-				message = Message(TextMessage.JOURNALIST_ERROR_REM, TypeMessage.ERROR)
 		except:
-			message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-	else:
-		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
+			message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.SUCCESS)
+			return manager(request, None, None,1, message)
+			
+		if user.registeringJournalist(form):
+			message = Message(TextMessage.JOURNALIST_SUCCESS_ADD, TypeMessage.SUCCESS)
+		else:
+			message = Message(TextMessage.JOURNALIST_ERROR_ADD, TypeMessage.ERROR)
+
+		return manager(request, None, None,1, message )
+	form = PartialJournalistForm()
+	option = _("Journalist")
+	open_journalist = True
+
+	news = News.objects.all()
+	sections = Section.objects.all()
+	journalists = Journalist.objects.all()
+	redators = Redator.objects.all()
+	return render(request, "newspaper/userAuthenticated/journalist/addJournalist.html", locals())
+
+
+@permission_required('newspaper.keep_journalist')
+def remJournalist(request, id_journalist):
+	message = None
+	try:
+		user = Redator.objects.get(username = request.user.username)
+		if user.remJournalist(id_journalist):
+			message = Message(TextMessage.JOURNALIST_SUCCESS_REM, TypeMessage.SUCCESS)
+		else:
+			message = Message(TextMessage.JOURNALIST_ERROR_REM, TypeMessage.ERROR)
+	except:
+		message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
 	return manager(request, None, None,1, message )
 
+@permission_required('newspaper.keep_journalist')
 def editJournalist(request, id_journalist):
 	message = None
-	if request.user.has_perm('newspaper.keep_journalist'):
+	try:
+		try:
+			user = Redator.objects.get(username = request.user.username)
+		except:
+			message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
+
+		try:
+			journalist = Journalist.objects.get(id = id_journalist)
+		except:
+			message = Message(TextMessage.JOURNALIST_ERROR_REM, TypeMessage.ERROR)
+	except:
+		message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
+
+	if request.method == "POST":
+		form = PartialJournalistForm(request.POST, request.FILES, instance = journalist)
+		if user.editJournalist(form):
+			message = Message(TextMessage.JOURNALIST_SUCCESS_EDIT, TypeMessage.SUCCESS)
+		else:
+			message = Message(TextMessage.JOURNALIST_ERROR_EDIT, TypeMessage.ERROR)
+	else:
+		form = PartialJournalistForm(instance = journalist) 
+		open_journalist = True
+		option = _("Journalist")
 		news = News.objects.all()
 		sections = Section.objects.all()
-		try:
-			try:
-				user = Redator.objects.get(username = request.user.username)
-			except:
-				message = Message(TextMessage.USER_NOT_FOUND, TypeMessage.ERROR)
-
-			try:
-				journalist = Journalist.objects.get(id = id_journalist)
-			except:
-				message = Message(TextMessage.JOURNALIST_ERROR_REM, TypeMessage.ERROR)
-			journalists = Journalist.objects.all()
-		except:
-			message = Message(TextMessage.ERROR_FORM, TypeMessage.ERROR)
-
-		if request.method == "POST":
-			form = PartialJournalistForm(request.POST, request.FILES, instance = journalist)
-			if user.editJournalist(form):
-				message = Message(TextMessage.JOURNALIST_SUCCESS_EDIT, TypeMessage.SUCCESS)
-			else:
-				message = Message(TextMessage.JOURNALIST_ERROR_EDIT, TypeMessage.ERROR)
-		else:
-			form = PartialJournalistForm(instance = journalist) 
-			open_journalist = True
-			return render(request, "newspaper/userAuthenticated/journalist/editJournalist.html", locals())
-	else:
-		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
+		journalists = Journalist.objects.all()
+		redators = Redator.objects.all()
+		return render(request, "newspaper/userAuthenticated/journalist/editJournalist.html", locals())
 	return manager(request, None, None,1, message )

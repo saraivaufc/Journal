@@ -7,15 +7,14 @@ from newspaper.utils import getNewsFromSection , filterList
 from newspaper.entities import Message, TypeMessage, TextMessage
 from django.utils.translation import ugettext as _
 from newspaper.views.user import home
+from django.contrib.auth.decorators import permission_required
 
+@permission_required('newspaper.access_manager')
 def manager(request, id_section = None, id_subsection = None,id_page = 1, message = None):
 	try:
 		id_page = int(id_page)
 	except:
 		id_page = 1
-	if not request.user.has_perm('newspaper.access_manager'):
-		message = Message(TextMessage.USER_NOT_PERMISSION, TypeMessage.ERROR)
-		return home(request,None, None, message)
 
 	news_all = News.objects.all()
 	sections = Section.objects.all()

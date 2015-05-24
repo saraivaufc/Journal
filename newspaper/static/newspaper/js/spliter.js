@@ -3,6 +3,6 @@ $(function(){
 	$('#mainSplitter').jqxSplitter({
         width: '100%', 
         height: 800, 
-        panels: [{ size: 200 }] 
+        panels: [{ size: 250 }] 
     });
 });

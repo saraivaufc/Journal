@@ -109,3 +109,12 @@
 .splitter-panel{
 	overflow:auto;
 }
+
+.bold{
+	font-weight: bold;
+}
+
+#figure-person{
+	height: 200px;
+	width: 200px;
+}
