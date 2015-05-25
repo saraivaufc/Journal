@@ -1,6 +1,6 @@
 Install:
   1. First you need to have installed pip: https://pip.pypa.io/en/latest/installing.html
-  2. sudo apt-get install python-dev 
+  2. sudo apt-get install python-dev python-psycopg2
   3. pip install -r requirements.txt
   4. sudo apt-get install easy_install
   5. sudo easy_install django-rosetta
