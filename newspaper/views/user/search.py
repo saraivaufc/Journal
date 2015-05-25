@@ -9,7 +9,6 @@ import string
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.cache import cache_page
 
-@cache_page(60 * 60)
 def search(request):
 	if request.method == "POST":
 		search = request.POST['search']
@@ -42,7 +41,7 @@ def search(request):
 		print itemsCount
 		if maxItemCount == 0:
 			message = Message(TextMessage.NO_RESULTS_FOUND, TypeMessage.ERROR)
-			return home(request, None, None, message)
+			return home(request, None, None,message)
 		try:
 			id = None
 			for key, value in itemsCount.items():
@@ -51,8 +50,8 @@ def search(request):
 
 			news = News.objects.get(id = id)
 			searchResult = search
+			request.method = "GET"
 			return viewNews(request, news.id)
-
 		except:
 			return HttpResponseRedirect('/newspaper/')
 

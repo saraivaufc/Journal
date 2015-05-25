@@ -123,6 +123,8 @@ class TextMessage():
 	COMMENT_NOT_FOUND = _("Comment not found")
 	COMMENT_NOT_FOUND = _("Comment not found")
 
+	COMMENT_NOT_PERMISSION = _("Unable to comment on the news")
+
 	#Offers
 	OFFER_SUCCESS_ADD = _("Offer successfully added")
 	OFFER_ERROR_ADD = _("Error adding offer")
