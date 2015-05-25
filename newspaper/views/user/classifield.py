@@ -9,7 +9,7 @@ from .home import home
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_protect
 
-@cache_page(60 * 15)
+#@cache_page(60 * 15)
 @csrf_protect
 def viewClassifield(request, id_classifield):
 	message = None

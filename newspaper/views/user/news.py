@@ -13,7 +13,7 @@ from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_protect
 from newspaper.utils import filterList
 
-@cache_page(60 * 15)
+#@cache_page(60 * 15)
 @csrf_protect
 def viewNews(request, id_news):
 	message = None
