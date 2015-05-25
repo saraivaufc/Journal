@@ -10,7 +10,7 @@ class NewsLatests(Feed):
 	description = _("The UFC is reported here!")
 
 	def items(self):
-		return News.objects.order_by('-pub_date')[:5]
+		return News.objects.order_by('-dating_news')[:5]
 
 	def item_title(self, item):
 		return item.title
